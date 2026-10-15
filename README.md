@@ -1,30 +1,49 @@
-# olgasirenko.com — About page
+# olgasirenko.com — React Application
 
-Production build of `project/Olga Sirenko About.dc.html` (Claude Design handoff). Plain HTML and CSS with no framework or build step, so the files are deployed exactly as they are here.
+Personal portfolio and about page for Olga Sirenko — Product Design Leader & AI Systems Architect.
 
+Rewritten as a modular React application using Vite and TypeScript, faithfully preserving the Calm Editorial design system, typography, dark/light theme persistence, responsive layouts, and SEO structured metadata.
+
+## Tech Stack
+- **Framework:** React 19 + TypeScript
+- **Bundler:** Vite 6
+- **Styling:** Custom CSS design tokens with support for dark & light themes, fluid typography (`clamp`), spring motion easing, and glassmorphism.
+- **Typography:** Self-hosted Fraunces, IBM Plex Sans, and IBM Plex Mono webfonts.
+
+## Project Structure
 ```
-site/
-├── index.html        page markup, SEO/JSON-LD, ~10 lines of JS for the theme toggle
-├── css/styles.css    design tokens (light + dark), layout, components
-├── fonts/            self-hosted WOFF2: Fraunces, IBM Plex Sans, IBM Plex Mono
-├── images/           portrait-about.jpg (900×900)
-└── favicon.svg       "OS" monogram
+├── public/
+│   ├── favicon.svg          # "OS" monogram SVG icon
+│   ├── fonts/               # Self-hosted WOFF2 fonts (Fraunces, IBM Plex Sans/Mono)
+│   └── images/              # Portrait photo (portrait-about.jpg)
+├── src/
+│   ├── components/
+│   │   ├── Header.tsx       # Sticky blur header with brand monogram & theme toggle
+│   │   ├── Hero.tsx         # Hero section with headline, lede, and portrait with duotone glow
+│   │   ├── Principles.tsx   # 4 core operating principles & leadership cards
+│   │   ├── Career.tsx       # Career trajectory & impact timeline
+│   │   ├── Contact.tsx      # Contact CTA card with email and LinkedIn links
+│   │   └── Footer.tsx       # Footer with square monogram and location info
+│   ├── data/
+│   │   └── portfolioData.ts # Structured content data
+│   ├── hooks/
+│   │   └── useTheme.ts      # Theme management hook with localStorage sync (`os-site:theme`)
+│   ├── types.ts             # TypeScript definitions
+│   ├── styles.css           # Design tokens, themes, layouts, and components
+│   ├── App.tsx              # Main application shell
+│   └── main.tsx             # React DOM entry point
+├── index.html               # HTML shell, pre-paint theme script, and Person JSON-LD
+├── package.json             # NPM scripts and dependencies
+├── tsconfig.json            # TypeScript configuration
+└── vite.config.ts           # Vite server configuration (port 3000)
 ```
 
-## Run locally
-```
-python3 -m http.server -d site 8000   # or: npx serve site
-```
+## Features
+- **Theme Toggle:** Supports Dark (default) and Light mode, persisting preference to `localStorage` under `os-site:theme` with zero flash of unstyled theme on initial load.
+- **Accessible & Responsive:** Semantic HTML (`main`, `header`, `section`, `article`, `figure`, `footer`), skip-to-content anchor, high-contrast focus rings, and responsive typography.
+- **SEO & Structured Data:** OpenGraph, Twitter card tags, and Schema.org `Person` JSON-LD data.
 
-## Deploy
-Upload the contents of `site/` as the web root on any static host (Cloudflare Pages, Netlify, Vercel, GitHub Pages or S3). There's no build command, and the output directory is `site`.
-
-## Behaviour
-- Theme: dark by default. The toggle sets `data-theme` on `<html>` and saves the choice to `localStorage` under the key `os-site:theme`. An inline script in `<head>` applies the saved theme before first paint.
-- Motion uses the design system's spring easing and is turned off under `prefers-reduced-motion`.
-- The page makes no network calls beyond its own files: icons are inline SVGs copied from Material Symbols paths, and the fonts are self-hosted.
-
-## Before launch
-- Point DNS for `olgasirenko.com` at the host and enable HTTPS.
-- Confirm that the `hello@olgasirenko.com` mailbox receives mail.
-- Optional: add a 1200×630 Open Graph image and reference it with `og:image`.
+## Scripts
+- `npm run dev`: Starts local Vite development server on port 3000.
+- `npm run build`: Type-checks with TypeScript and compiles production bundle to `dist/`.
+- `npm run preview`: Previews the production build locally.

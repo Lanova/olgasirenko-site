@@ -1,0 +1,8 @@
+{
+  "name": "Olga Sirenko Portfolio",
+  "description": "Product Design Leader and AI Systems Architect. Enterprise systems, AI workflow automation, and global team operations.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
