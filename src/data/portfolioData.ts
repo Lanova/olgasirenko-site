@@ -10,7 +10,7 @@ export const portfolioData: PortfolioData = {
   },
   lede: 'I am a Product Design Leader with a computer programming degree, 10+ years of enterprise SaaS experience, and an international footprint spanning three countries (US, Austria, Ukraine). I help businesses solve hard technical problems: building scalable design organizations, aligning distributed squads, and turning non-deterministic AI into reliable, automated workflows that drive adoption and revenue.',
   portrait: {
-    src: '/images/portrait-about.jpg',
+    src: './images/portrait-about.jpg',
     alt: 'Portrait of Olga Sirenko',
     width: 900,
     height: 900
