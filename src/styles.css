@@ -233,7 +233,7 @@ a {
   color: var(--violet);
 }
 
-/* ---------- Monogram ---------- */
+/* ---------- Monogram / Logo ---------- */
 .monogram {
   width: 36px;
   height: 36px;
@@ -245,20 +245,34 @@ a {
   border: 1px solid var(--line);
   background: color-mix(in srgb, var(--ink) 4%, transparent);
   color: var(--ink);
-  font: 600 12px/1 var(--font-sans);
-  letter-spacing: -.03em;
-  transition: border-color var(--dur-base) var(--ease-standard);
+  transition: border-color var(--dur-base) var(--ease-standard), color var(--dur-base) var(--ease-standard), background var(--dur-base) var(--ease-standard);
 }
 
 .monogram:hover {
   border-color: var(--cyan);
+  color: var(--cyan);
 }
 
 .monogram--square {
-  width: 28px;
-  height: 28px;
-  border-radius: 7.84px;
-  font-size: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.monogram__logo {
+  width: 20px;
+  height: auto;
+  display: block;
+  fill: currentColor;
+  transition: transform var(--dur-base) var(--ease-spring), fill var(--dur-base) var(--ease-standard);
+}
+
+.monogram:hover .monogram__logo {
+  transform: scale(1.08);
+}
+
+.monogram--square .monogram__logo {
+  width: 15px;
 }
 
 /* ---------- Header ---------- */
@@ -290,40 +304,46 @@ a {
 }
 
 .brand__name {
-  font: 600 15px/1 var(--font-sans);
+  font: 600 15px/1.1 var(--font-display);
   color: var(--ink);
-  letter-spacing: -.01em;
+  letter-spacing: -.015em;
+  transition: color var(--dur-base) var(--ease-standard);
 }
 
 .theme-toggle {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   margin-left: 8px;
+  flex-shrink: 0;
   border-radius: 50%;
   border: 1px solid var(--line);
-  background: transparent;
+  background: color-mix(in srgb, var(--ink) 4%, transparent);
   color: var(--ink);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  transition: border-color var(--dur-base) var(--ease-standard), color var(--dur-base) var(--ease-standard);
+  transition: border-color var(--dur-base) var(--ease-standard), color var(--dur-base) var(--ease-standard), background var(--dur-base) var(--ease-standard);
 }
 
 .theme-toggle:hover {
   border-color: var(--cyan);
+  color: var(--cyan);
 }
 
 .theme-toggle svg {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   fill: currentColor;
 }
 
-/* ---------- Glow wrapper (About + Contact share one background) ---------- */
+/* ---------- Glow wrapper (Continuous atmospheric background) ---------- */
 .glow-wrap {
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .glow-wrap__bg {
@@ -333,13 +353,20 @@ a {
   pointer-events: none;
   z-index: 0;
   background: radial-gradient(760px 620px at 100% 0%, rgba(150, 110, 235, .20), transparent 70%),
-              radial-gradient(760px 620px at 0% 100%, rgba(82, 248, 244, .20), transparent 70%);
+              radial-gradient(860px 720px at 0% 100%, rgba(82, 248, 244, .24), transparent 70%);
 }
 
+.glow-wrap > header,
+.glow-wrap > main,
+.glow-wrap > footer,
 .glow-wrap > section,
 .glow-wrap > article {
   position: relative;
   z-index: 1;
+}
+
+#main {
+  flex: 1 0 auto;
 }
 
 /* ---------- Card (DS Card: padding 28 + inner padding) ---------- */
@@ -505,7 +532,7 @@ a {
 /* ---------- Contact ---------- */
 .contact {
   padding-top: clamp(64px, 9vw, 128px);
-  padding-bottom: clamp(80px, 11vw, 160px);
+  padding-bottom: clamp(64px, 8vw, 120px);
 }
 
 .contact__body {
@@ -548,28 +575,20 @@ a {
 
 .contact__actions {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  margin-top: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
 }
 
-.contact__alt {
-  font: 400 15px/1.5 var(--font-sans);
-  color: var(--ink-2);
+.btn--advisory {
+  cursor: default;
 }
 
-.contact__alt a {
-  color: var(--violet);
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  text-underline-offset: 3px;
-  transition: text-decoration-color .3s;
-}
-
-.contact__alt a:hover {
-  text-decoration-color: currentColor;
+.btn--advisory:hover {
+  border-color: var(--cyan);
+  background: var(--paper-2);
+  transform: translateY(-2px);
 }
 
 /* ---------- Button (DS primary) ---------- */
@@ -585,9 +604,12 @@ a {
   font: 500 13px/1 var(--font-sans);
   white-space: nowrap;
   cursor: pointer;
-  transition: transform var(--dur-base) var(--ease-spring),
-              background var(--dur-base) var(--ease-standard),
-              box-shadow var(--dur-base) var(--ease-standard);
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              background 220ms cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 220ms cubic-bezier(0.4, 0, 0.2, 1),
+              color 220ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
 .btn svg {
@@ -595,7 +617,23 @@ a {
   height: 16px;
   flex-shrink: 0;
   fill: currentColor;
-  transition: transform var(--dur-base) var(--ease-spring);
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mail icon stays stationary on hover */
+.btn:hover .btn__icon-mail {
+  transform: none;
+}
+
+/* Horizontal arrow slides right smoothly */
+.btn:hover .btn__icon-arrow,
+.btn:hover svg:not(.btn__icon-mail):not(.btn__icon-diagonal) {
+  transform: translateX(3px);
+}
+
+/* Diagonal link arrow slides up-right smoothly */
+.btn:hover .btn__icon-diagonal {
+  transform: translate(2px, -2px);
 }
 
 .btn--primary {
@@ -607,26 +645,26 @@ a {
   background: var(--accent-action-hover);
   color: var(--text-on-accent);
   box-shadow: var(--shadow-glow);
-  transform: scale(var(--hover-scale));
-}
-
-.btn:hover svg {
-  transform: translateX(3px);
+  transform: translateY(-2px);
 }
 
 .btn:active {
-  transform: scale(var(--press-scale));
+  transform: translateY(0);
 }
 
 /* ---------- Footer ---------- */
 .footer {
-  border-top: 1px solid var(--line);
+  border-top: none;
+  background: transparent;
   margin-top: auto;
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(48px, 7vw, 96px);
 }
 
 .footer__inner {
-  padding-top: clamp(32px, 5vw, 56px);
-  padding-bottom: clamp(32px, 5vw, 56px);
+  padding-top: clamp(12px, 2vw, 16px);
+  padding-bottom: clamp(24px, 4vw, 40px);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -644,6 +682,31 @@ a {
 .footer__copy {
   font: 400 14px/1.5 var(--font-sans);
   color: var(--muted);
+}
+
+.footer__links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer__link {
+  font: 500 13px/1 var(--font-mono);
+  letter-spacing: .02em;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--violet) 35%, transparent);
+  text-underline-offset: 4px;
+  transition: color var(--dur-base) var(--ease-standard), text-decoration-color var(--dur-base) var(--ease-standard);
+}
+
+.footer__link:hover {
+  color: var(--ink);
+  text-decoration-color: var(--cyan);
 }
 
 /* ---------- Primary nav ---------- */
@@ -696,7 +759,8 @@ a {
 .btn--secondary:hover {
   background: var(--paper-2);
   color: var(--ink);
-  transform: scale(var(--hover-scale));
+  border-color: var(--cyan);
+  transform: translateY(-2px);
 }
 
 /* ---------- Writing list ---------- */
@@ -751,7 +815,7 @@ a {
 
 .article-list {
   padding-top: clamp(24px, 4vw, 48px);
-  padding-bottom: clamp(80px, 11vw, 160px);
+  padding-bottom: clamp(64px, 8vw, 120px);
   display: flex;
   flex-direction: column;
 }
@@ -764,7 +828,9 @@ a {
   padding: clamp(28px, 4vw, 44px) 0;
   border-bottom: 1px solid var(--line);
   color: inherit;
-  transition: padding var(--dur-base) var(--ease-spring);
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 200ms ease;
+  will-change: transform;
 }
 
 .article-row:last-child {
@@ -772,7 +838,7 @@ a {
 }
 
 .article-row:hover {
-  padding-left: 12px;
+  transform: translateX(6px);
   color: var(--ink);
 }
 
@@ -826,7 +892,7 @@ a {
 /* ---------- Article ---------- */
 .essay {
   padding-top: clamp(80px, 11vw, 152px);
-  padding-bottom: clamp(80px, 11vw, 160px);
+  padding-bottom: clamp(64px, 8vw, 120px);
   display: flex;
   flex-direction: column;
   gap: clamp(40px, 6vw, 64px);
@@ -1099,13 +1165,56 @@ a {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
 }
 
 .essay-img img {
   width: 100%;
   height: auto;
+  display: block;
   border-radius: var(--radius-lg);
   border: 1px solid var(--line);
+  background: #FBFAF8;
+  box-shadow: var(--shadow-1);
+}
+
+/* Dedicated hand-built figure cards: aligned with other article illustrations and kept light in dark mode */
+.essay-fig-card {
+  margin: 24px 0 !important;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: #FBFAF8 !important;
+  color: #2C3446 !important;
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+
+  /* Force light theme tokens inside the figure */
+  --card: #FFFFFF;
+  --paper: #FBFAF8;
+  --ink: #001A34;
+  --ink-2: #2C3446;
+  --muted: #64637A;
+  --line: #E4E2DC;
+  --violet: #542CB7;
+  --cyan: #0A6B84;
+}
+
+[data-theme="dark"] .essay-fig-card {
+  background: #FBFAF8 !important;
+  color: #2C3446 !important;
+  border-color: #2E4262;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .25), 0 4px 12px rgba(0, 0, 0, .15);
+
+  --card: #FFFFFF;
+  --paper: #FBFAF8;
+  --ink: #001A34;
+  --ink-2: #2C3446;
+  --muted: #64637A;
+  --line: #E4E2DC;
+  --violet: #542CB7;
+  --cyan: #0A6B84;
 }
 
 .essay-close {

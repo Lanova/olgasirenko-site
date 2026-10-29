@@ -55,53 +55,49 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ article, essay }) => {
   };
 
   return (
-    <div className="glow-wrap">
-      <div className="glow-wrap__bg" aria-hidden="true" />
-
-      <article ref={articleRef} className="container essay" aria-labelledby="essay-title">
-        <header className="essay-header">
-          <a className="essay-back" href={hrefFor({ page: 'writing' })} data-noprint>
-            ← All writing
-          </a>
-          <div className="essay-header__main">
-            <span className="essay-meta">
-              {article.date} · {article.read} read
-            </span>
-            <h1 id="essay-title" className="essay-title">
-              <span className="essay-title__main">
-                <span>{article.t1}</span>
-                {article.t2 && (
-                  <>
-                    <br />
-                    <span className="essay-title__accent">{article.t2}</span>
-                  </>
-                )}
-              </span>
-              {article.t3 && <span className="essay-title__sub">{article.t3}</span>}
-            </h1>
-            <p className="essay-dek">{article.dek}</p>
-            <div className="essay-actions" data-noprint>
-              <button type="button" className="essay-action" onClick={() => window.print()}>
-                Download PDF ↓
-              </button>
-            </div>
-          </div>
-        </header>
-
-        <EssayBlocks blocks={essay.blocks} />
-
-        <div className="essay-cta" data-noprint>
-          <a className="btn btn--secondary" href={portfolioData.contact.linkedinUrl} target="_blank" rel="noopener noreferrer">
-            Discuss on LinkedIn
-            <NorthEastIcon />
-          </a>
-        </div>
-
-        <a className="essay-next" href={nextHref} onClick={onNext} data-noprint>
-          <span className="essay-label essay-label--cyan">Next article →</span>
-          <span className="essay-next__title">{next.title}</span>
+    <article ref={articleRef} className="container essay" aria-labelledby="essay-title">
+      <header className="essay-header">
+        <a className="essay-back" href={hrefFor({ page: 'writing' })} data-noprint>
+          ← All writing
         </a>
-      </article>
-    </div>
+        <div className="essay-header__main">
+          <span className="essay-meta">
+            {article.date} · {article.read} read
+          </span>
+          <h1 id="essay-title" className="essay-title">
+            <span className="essay-title__main">
+              <span>{article.t1}</span>
+              {article.t2 && (
+                <>
+                  <br />
+                  <span className="essay-title__accent">{article.t2}</span>
+                </>
+              )}
+            </span>
+            {article.t3 && <span className="essay-title__sub">{article.t3}</span>}
+          </h1>
+          <p className="essay-dek">{article.dek}</p>
+          <div className="essay-actions" data-noprint>
+            <button type="button" className="essay-action" onClick={() => window.print()}>
+              Download PDF ↓
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <EssayBlocks blocks={essay.blocks} />
+
+      <div className="essay-cta" data-noprint>
+        <a className="btn btn--secondary" href={portfolioData.contact.linkedinUrl} target="_blank" rel="noopener noreferrer">
+          Discuss on LinkedIn
+          <NorthEastIcon />
+        </a>
+      </div>
+
+      <a className="essay-next" href={nextHref} onClick={onNext} data-noprint>
+        <span className="essay-label essay-label--cyan">Next article →</span>
+        <span className="essay-next__title">{next.title}</span>
+      </a>
+    </article>
   );
 };

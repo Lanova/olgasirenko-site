@@ -6,9 +6,7 @@ import { Career } from '../components/Career';
 import { Contact } from '../components/Contact';
 
 export const AboutPage: React.FC = () => (
-  <div className="glow-wrap">
-    <div className="glow-wrap__bg" aria-hidden="true" />
-
+  <>
     <section id="about" className="container about" aria-label="About">
       <Hero
         tagline={portfolioData.tagline}
@@ -29,5 +27,5 @@ export const AboutPage: React.FC = () => (
       emailSubject={portfolioData.contact.emailSubject}
       linkedinUrl={portfolioData.contact.linkedinUrl}
     />
-  </div>
+  </>
 );

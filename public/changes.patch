@@ -1,0 +1,1366 @@
+From 38ba5f3a687c0d8c2438d4a09283f1db1b19bf4b Mon Sep 17 00:00:00 2001
+From: Olga Sirenko <hello@olgasirenko.com>
+Date: Thu, 29 Oct 2026 04:31:02 +0000
+Subject: [PATCH] feat: complete design, career history, interactive buttons,
+ SEO, and favicon updates
+
+---
+ favicon.svg                        |  33 ++++-
+ images/logoOS.svg                  |  87 ++++++++++++
+ index.html                         |  15 +-
+ public/favicon.svg                 |  33 ++++-
+ public/images/logoOS.svg           |  87 ++++++++++++
+ src/App.tsx                        |  54 ++++++-
+ src/components/Contact.tsx         |  36 +++--
+ src/components/Footer.tsx          |  34 ++++-
+ src/components/Header.tsx          |   6 +-
+ src/components/Logo.tsx            |  46 ++++++
+ src/components/writing/Figures.tsx |  24 +---
+ src/components/writing/icons.tsx   |   8 +-
+ src/data/portfolioData.ts          |  10 +-
+ src/hooks/useTheme.ts              |  73 +++++++---
+ src/pages/AboutPage.tsx            |   6 +-
+ src/pages/ArticlePage.tsx          |  82 +++++------
+ src/pages/WritingPage.tsx          |   6 +-
+ src/styles.css                     | 219 +++++++++++++++++++++--------
+ 18 files changed, 683 insertions(+), 176 deletions(-)
+ create mode 100644 images/logoOS.svg
+ create mode 100644 public/images/logoOS.svg
+ create mode 100644 src/components/Logo.tsx
+
+diff --git a/favicon.svg b/favicon.svg
+index fb8c6fc..4e80973 100644
+--- a/favicon.svg
++++ b/favicon.svg
+@@ -1 +1,32 @@
+-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="28" fill="#0B1B30"/><text x="50" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="34" font-weight="600" fill="#52F8F4">OS</text></svg>
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
++  <circle cx="50" cy="50" r="50" fill="#000F24"/>
++  <g transform="translate(-0.87, 10.24) scale(0.60)">
++    <g transform="translate(-331.2222,-81.312965)">
++      <path
++        fill="#FFFFFF"
++        fill-rule="evenodd"
++        d="m 379.07424,111.94121 a 36.224086,35.937491 0 0 0 -31.88813,35.6322 36.224086,35.937491 0 0 0 31.91731,35.65519 16.573569,37.17671 0 0 1 -11.9167,-35.65519 16.573569,37.17671 0 0 1 11.88752,-35.6322 z m 9.58783,0.12067 a 16.573569,37.17671 0 0 1 11.67157,35.51153 16.573569,37.17671 0 0 1 -11.75522,35.53452 36.224086,35.937491 0 0 0 31.05735,-35.53452 36.224086,35.937491 0 0 0 -30.9737,-35.51153 z"
++      />
++      <g
++        transform="matrix(1.0077393,0,0,1.0040303,5.4423757,68.021054)"
++        fill="#FFFFFF"
++      >
++        <path
++          fill="#FFFFFF"
++          fill-rule="evenodd"
++          d="M 416.54737,91.206413 V 113.9182 h 30.33939 A 47.046396,34.340694 0 0 1 416.54737,91.206413 Z"
++        />
++        <path
++          fill="#FFFFFF"
++          fill-rule="evenodd"
++          d="m 450.18223,44.244213 c 0,0 1.92593,1.61995 2.48448,2.14745 1.09688,1.03588 1.61099,2.48486 1.80394,4.03669 0.17869,1.43724 -0.16544,3.54221 -0.36232,4.57169 -0.56051,1.15494 -0.85301,2.41488 -0.85692,3.69116 -1e-4,4.82408 4.03562,8.73479 9.01391,8.7347 4.9783,10e-5 8.66655,-5.20126 8.66645,-10.02534 -0.72545,-5.99013 -6.01483,-8.67709 -9.88376,-10.65408 -2.8531,-1.4069 -5.64534,-2.11583 -10.86578,-2.50227 z"
++        />
++        <path
++          fill="#FFFFFF"
++          fill-rule="evenodd"
++          d="m 416.64717,58.990033 c 0,0 -0.56161,4.63331 0.56161,8.84541 1.47424,4.0015 1.54444,5.54594 4.0015,8.84542 2.45706,3.29948 5.96714,6.80957 5.96714,6.80957 0,0 4.18008,4.14831 9.26662,6.38835 12.02826,5.2971 21.2054,9.19994 33.83723,13.899937 0,0 -1.75504,-9.758037 -2.17625,-11.934287 -0.42121,-2.17625 -2.03585,-5.40553 -3.65049,-8.2136 -4.97865,-6.75783 -14.30844,-11.66911 -21.06052,-13.19793 -10.88927,-2.9007 -18.29873,-5.43241 -26.74684,-11.44287 z"
++        />
++      </g>
++    </g>
++  </g>
++</svg>
+diff --git a/images/logoOS.svg b/images/logoOS.svg
+new file mode 100644
+index 0000000..c60c27a
+--- /dev/null
++++ b/images/logoOS.svg
+@@ -0,0 +1,87 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?>
++<!-- Created with Inkscape (http://www.inkscape.org/) -->
++
++<svg
++   xmlns:dc="http://purl.org/dc/elements/1.1/"
++   xmlns:cc="http://creativecommons.org/ns#"
++   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
++   xmlns:svg="http://www.w3.org/2000/svg"
++   xmlns="http://www.w3.org/2000/svg"
++   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
++   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
++   version="1.1"
++   id="svg1144"
++   width="169.60735"
++   height="122.43179"
++   viewBox="0 0 169.60734 122.43179"
++   sodipodi:docname="logoOS.svg"
++   inkscape:version="0.92.3 (2405546, 2018-03-11)">
++  <metadata
++     id="metadata1150">
++    <rdf:RDF>
++      <cc:Work
++         rdf:about="">
++        <dc:format>image/svg+xml</dc:format>
++        <dc:type
++           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
++        <dc:title></dc:title>
++      </cc:Work>
++    </rdf:RDF>
++  </metadata>
++  <defs
++     id="defs1148" />
++  <sodipodi:namedview
++     pagecolor="#ffffff"
++     bordercolor="#666666"
++     borderopacity="1"
++     objecttolerance="10"
++     gridtolerance="10"
++     guidetolerance="10"
++     inkscape:pageopacity="0"
++     inkscape:pageshadow="2"
++     inkscape:window-width="1851"
++     inkscape:window-height="1025"
++     id="namedview1146"
++     showgrid="false"
++     inkscape:zoom="1.7805833"
++     inkscape:cx="256.18049"
++     inkscape:cy="4.6008364"
++     inkscape:window-x="1018"
++     inkscape:window-y="2187"
++     inkscape:window-maximized="1"
++     inkscape:current-layer="layer1" />
++  <g
++     inkscape:groupmode="layer"
++     id="layer1"
++     inkscape:label="Layer 1"
++     style="display:inline"
++     transform="translate(-331.2222,-81.312965)">
++    <path
++       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:26.76140022;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
++       d="m 379.07424,111.94121 a 36.224086,35.937491 0 0 0 -31.88813,35.6322 36.224086,35.937491 0 0 0 31.91731,35.65519 16.573569,37.17671 0 0 1 -11.9167,-35.65519 16.573569,37.17671 0 0 1 11.88752,-35.6322 z m 9.58783,0.12067 a 16.573569,37.17671 0 0 1 11.67157,35.51153 16.573569,37.17671 0 0 1 -11.75522,35.53452 36.224086,35.937491 0 0 0 31.05735,-35.53452 36.224086,35.937491 0 0 0 -30.9737,-35.51153 z"
++       id="path1154"
++       inkscape:connector-curvature="0" />
++    <g
++       id="g1208"
++       style="fill:#000080"
++       transform="matrix(1.0077393,0,0,1.0040303,5.4423757,68.021054)">
++      <path
++         inkscape:connector-curvature="0"
++         id="rect1159"
++         d="M 416.54737,91.206413 V 113.9182 h 30.33939 A 47.046396,34.340694 0 0 1 416.54737,91.206413 Z"
++         style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:23.06118584;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
++      <path
++         sodipodi:nodetypes="ccccccccc"
++         inkscape:connector-curvature="0"
++         id="path1198"
++         d="m 450.18223,44.244213 c 0,0 1.92593,1.61995 2.48448,2.14745 1.09688,1.03588 1.61099,2.48486 1.80394,4.03669 0.17869,1.43724 -0.16544,3.54221 -0.36232,4.57169 -0.56051,1.15494 -0.85301,2.41488 -0.85692,3.69116 -1e-4,4.82408 4.03562,8.73479 9.01391,8.7347 4.9783,10e-5 8.66655,-5.20126 8.66645,-10.02534 -0.72545,-5.99013 -6.01483,-8.67709 -9.88376,-10.65408 -2.8531,-1.4069 -5.64534,-2.11583 -10.86578,-2.50227 z"
++         style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:20.08398056;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
++      <path
++         sodipodi:nodetypes="ccscscsccc"
++         inkscape:connector-curvature="0"
++         id="path1203"
++         d="m 416.64717,58.990033 c 0,0 -0.56161,4.63331 0.56161,8.84541 1.47424,4.0015 1.54444,5.54594 4.0015,8.84542 2.45706,3.29948 5.96714,6.80957 5.96714,6.80957 0,0 4.18008,4.14831 9.26662,6.38835 12.02826,5.2971 21.2054,9.19994 33.83723,13.899937 0,0 -1.75504,-9.758037 -2.17625,-11.934287 -0.42121,-2.17625 -2.03585,-5.40553 -3.65049,-8.2136 -4.97865,-6.75783 -14.30844,-11.66911 -21.06052,-13.19793 -10.88927,-2.9007 -18.29873,-5.43241 -26.74684,-11.44287 z"
++         style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
++    </g>
++  </g>
++</svg>
+diff --git a/index.html b/index.html
+index ce9f73a..5cc015d 100644
+--- a/index.html
++++ b/index.html
+@@ -14,9 +14,20 @@
+   <meta property="og:description" content="Enterprise systems, AI workflow automation, and global team operations.">
+   <meta name="twitter:card" content="summary">
+   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
++  <link rel="apple-touch-icon" href="/favicon.svg">
+   <script>
+-    // Apply the saved theme before first paint (default: dark).
+-    (function(){try{var t=localStorage.getItem('os-site:theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
++    // Apply the saved theme or system preference before first paint.
++    (function(){
++      try {
++        var t = localStorage.getItem('os-site:theme');
++        if (t === 'light' || t === 'dark') {
++          document.documentElement.setAttribute('data-theme', t);
++        } else {
++          var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
++          document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
++        }
++      } catch(e) {}
++    })();
+   </script>
+   <link rel="preload" href="/fonts/Fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
+   <link rel="preload" href="/fonts/IBMPlexSans-400.woff2" as="font" type="font/woff2" crossorigin>
+diff --git a/public/favicon.svg b/public/favicon.svg
+index fb8c6fc..4e80973 100644
+--- a/public/favicon.svg
++++ b/public/favicon.svg
+@@ -1 +1,32 @@
+-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="28" fill="#0B1B30"/><text x="50" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="34" font-weight="600" fill="#52F8F4">OS</text></svg>
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
++  <circle cx="50" cy="50" r="50" fill="#000F24"/>
++  <g transform="translate(-0.87, 10.24) scale(0.60)">
++    <g transform="translate(-331.2222,-81.312965)">
++      <path
++        fill="#FFFFFF"
++        fill-rule="evenodd"
++        d="m 379.07424,111.94121 a 36.224086,35.937491 0 0 0 -31.88813,35.6322 36.224086,35.937491 0 0 0 31.91731,35.65519 16.573569,37.17671 0 0 1 -11.9167,-35.65519 16.573569,37.17671 0 0 1 11.88752,-35.6322 z m 9.58783,0.12067 a 16.573569,37.17671 0 0 1 11.67157,35.51153 16.573569,37.17671 0 0 1 -11.75522,35.53452 36.224086,35.937491 0 0 0 31.05735,-35.53452 36.224086,35.937491 0 0 0 -30.9737,-35.51153 z"
++      />
++      <g
++        transform="matrix(1.0077393,0,0,1.0040303,5.4423757,68.021054)"
++        fill="#FFFFFF"
++      >
++        <path
++          fill="#FFFFFF"
++          fill-rule="evenodd"
++          d="M 416.54737,91.206413 V 113.9182 h 30.33939 A 47.046396,34.340694 0 0 1 416.54737,91.206413 Z"
++        />
++        <path
++          fill="#FFFFFF"
++          fill-rule="evenodd"
++          d="m 450.18223,44.244213 c 0,0 1.92593,1.61995 2.48448,2.14745 1.09688,1.03588 1.61099,2.48486 1.80394,4.03669 0.17869,1.43724 -0.16544,3.54221 -0.36232,4.57169 -0.56051,1.15494 -0.85301,2.41488 -0.85692,3.69116 -1e-4,4.82408 4.03562,8.73479 9.01391,8.7347 4.9783,10e-5 8.66655,-5.20126 8.66645,-10.02534 -0.72545,-5.99013 -6.01483,-8.67709 -9.88376,-10.65408 -2.8531,-1.4069 -5.64534,-2.11583 -10.86578,-2.50227 z"
++        />
++        <path
++          fill="#FFFFFF"
++          fill-rule="evenodd"
++          d="m 416.64717,58.990033 c 0,0 -0.56161,4.63331 0.56161,8.84541 1.47424,4.0015 1.54444,5.54594 4.0015,8.84542 2.45706,3.29948 5.96714,6.80957 5.96714,6.80957 0,0 4.18008,4.14831 9.26662,6.38835 12.02826,5.2971 21.2054,9.19994 33.83723,13.899937 0,0 -1.75504,-9.758037 -2.17625,-11.934287 -0.42121,-2.17625 -2.03585,-5.40553 -3.65049,-8.2136 -4.97865,-6.75783 -14.30844,-11.66911 -21.06052,-13.19793 -10.88927,-2.9007 -18.29873,-5.43241 -26.74684,-11.44287 z"
++        />
++      </g>
++    </g>
++  </g>
++</svg>
+diff --git a/public/images/logoOS.svg b/public/images/logoOS.svg
+new file mode 100644
+index 0000000..c60c27a
+--- /dev/null
++++ b/public/images/logoOS.svg
+@@ -0,0 +1,87 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?>
++<!-- Created with Inkscape (http://www.inkscape.org/) -->
++
++<svg
++   xmlns:dc="http://purl.org/dc/elements/1.1/"
++   xmlns:cc="http://creativecommons.org/ns#"
++   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
++   xmlns:svg="http://www.w3.org/2000/svg"
++   xmlns="http://www.w3.org/2000/svg"
++   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
++   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
++   version="1.1"
++   id="svg1144"
++   width="169.60735"
++   height="122.43179"
++   viewBox="0 0 169.60734 122.43179"
++   sodipodi:docname="logoOS.svg"
++   inkscape:version="0.92.3 (2405546, 2018-03-11)">
++  <metadata
++     id="metadata1150">
++    <rdf:RDF>
++      <cc:Work
++         rdf:about="">
++        <dc:format>image/svg+xml</dc:format>
++        <dc:type
++           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
++        <dc:title></dc:title>
++      </cc:Work>
++    </rdf:RDF>
++  </metadata>
++  <defs
++     id="defs1148" />
++  <sodipodi:namedview
++     pagecolor="#ffffff"
++     bordercolor="#666666"
++     borderopacity="1"
++     objecttolerance="10"
++     gridtolerance="10"
++     guidetolerance="10"
++     inkscape:pageopacity="0"
++     inkscape:pageshadow="2"
++     inkscape:window-width="1851"
++     inkscape:window-height="1025"
++     id="namedview1146"
++     showgrid="false"
++     inkscape:zoom="1.7805833"
++     inkscape:cx="256.18049"
++     inkscape:cy="4.6008364"
++     inkscape:window-x="1018"
++     inkscape:window-y="2187"
++     inkscape:window-maximized="1"
++     inkscape:current-layer="layer1" />
++  <g
++     inkscape:groupmode="layer"
++     id="layer1"
++     inkscape:label="Layer 1"
++     style="display:inline"
++     transform="translate(-331.2222,-81.312965)">
++    <path
++       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:26.76140022;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
++       d="m 379.07424,111.94121 a 36.224086,35.937491 0 0 0 -31.88813,35.6322 36.224086,35.937491 0 0 0 31.91731,35.65519 16.573569,37.17671 0 0 1 -11.9167,-35.65519 16.573569,37.17671 0 0 1 11.88752,-35.6322 z m 9.58783,0.12067 a 16.573569,37.17671 0 0 1 11.67157,35.51153 16.573569,37.17671 0 0 1 -11.75522,35.53452 36.224086,35.937491 0 0 0 31.05735,-35.53452 36.224086,35.937491 0 0 0 -30.9737,-35.51153 z"
++       id="path1154"
++       inkscape:connector-curvature="0" />
++    <g
++       id="g1208"
++       style="fill:#000080"
++       transform="matrix(1.0077393,0,0,1.0040303,5.4423757,68.021054)">
++      <path
++         inkscape:connector-curvature="0"
++         id="rect1159"
++         d="M 416.54737,91.206413 V 113.9182 h 30.33939 A 47.046396,34.340694 0 0 1 416.54737,91.206413 Z"
++         style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:23.06118584;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
++      <path
++         sodipodi:nodetypes="ccccccccc"
++         inkscape:connector-curvature="0"
++         id="path1198"
++         d="m 450.18223,44.244213 c 0,0 1.92593,1.61995 2.48448,2.14745 1.09688,1.03588 1.61099,2.48486 1.80394,4.03669 0.17869,1.43724 -0.16544,3.54221 -0.36232,4.57169 -0.56051,1.15494 -0.85301,2.41488 -0.85692,3.69116 -1e-4,4.82408 4.03562,8.73479 9.01391,8.7347 4.9783,10e-5 8.66655,-5.20126 8.66645,-10.02534 -0.72545,-5.99013 -6.01483,-8.67709 -9.88376,-10.65408 -2.8531,-1.4069 -5.64534,-2.11583 -10.86578,-2.50227 z"
++         style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:20.08398056;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
++      <path
++         sodipodi:nodetypes="ccscscsccc"
++         inkscape:connector-curvature="0"
++         id="path1203"
++         d="m 416.64717,58.990033 c 0,0 -0.56161,4.63331 0.56161,8.84541 1.47424,4.0015 1.54444,5.54594 4.0015,8.84542 2.45706,3.29948 5.96714,6.80957 5.96714,6.80957 0,0 4.18008,4.14831 9.26662,6.38835 12.02826,5.2971 21.2054,9.19994 33.83723,13.899937 0,0 -1.75504,-9.758037 -2.17625,-11.934287 -0.42121,-2.17625 -2.03585,-5.40553 -3.65049,-8.2136 -4.97865,-6.75783 -14.30844,-11.66911 -21.06052,-13.19793 -10.88927,-2.9007 -18.29873,-5.43241 -26.74684,-11.44287 z"
++         style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
++    </g>
++  </g>
++</svg>
+diff --git a/src/App.tsx b/src/App.tsx
+index 8de3587..44e70a2 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -10,6 +10,40 @@ import { WritingPage } from './pages/WritingPage';
+ import { ArticlePage } from './pages/ArticlePage';
+ 
+ const SITE_TITLE = 'Olga Sirenko · Product Design Leader & AI Systems Architect';
++const SITE_DESCRIPTION =
++  'Product Design Leader and AI Systems Architect. Enterprise systems, AI workflow automation, and global team operations.';
++const WRITING_TITLE = 'Writing · Olga Sirenko';
++const WRITING_DESCRIPTION =
++  'Notes on AI systems and business impact: exploring how thoughtful interface design simplifies complex workflows, reduces operational overhead, and drives user adoption.';
++
++function updateMeta(attributeName: 'name' | 'property', attributeValue: string, content: string) {
++  let element = document.querySelector(`meta[${attributeName}="${attributeValue}"]`) as HTMLMetaElement | null;
++  if (!element) {
++    element = document.createElement('meta');
++    element.setAttribute(attributeName, attributeValue);
++    document.head.appendChild(element);
++  }
++  element.setAttribute('content', content);
++}
++
++function updatePageMetadata(title: string, description: string, ogType: 'website' | 'profile' | 'article') {
++  document.title = title;
++
++  // Primary meta description
++  updateMeta('name', 'description', description);
++
++  // OpenGraph social tags
++  updateMeta('property', 'og:title', title);
++  updateMeta('property', 'og:description', description);
++  updateMeta('property', 'og:type', ogType);
++  if (typeof window !== 'undefined') {
++    updateMeta('property', 'og:url', window.location.href);
++  }
++
++  // Twitter / X card tags
++  updateMeta('name', 'twitter:title', title);
++  updateMeta('name', 'twitter:description', description);
++}
+ 
+ export function App() {
+   const { theme, toggleTheme } = useTheme();
+@@ -22,12 +56,20 @@ export function App() {
+   const page = shown.page;
+ 
+   useEffect(() => {
+-    if (page === 'about') document.title = SITE_TITLE;
+-    if (page === 'writing') document.title = 'Writing · Olga Sirenko';
+-  }, [page]);
++    if (page === 'about') {
++      updatePageMetadata(SITE_TITLE, SITE_DESCRIPTION, 'profile');
++    } else if (page === 'writing') {
++      updatePageMetadata(WRITING_TITLE, WRITING_DESCRIPTION, 'website');
++    } else if (page === 'article' && article) {
++      const articleTitle = `${article.title} · Olga Sirenko`;
++      updatePageMetadata(articleTitle, article.dek, 'article');
++    }
++  }, [page, article]);
+ 
+   return (
+-    <>
++    <div className="glow-wrap">
++      <div className="glow-wrap__bg" aria-hidden="true" />
++
+       <Header
+         name={portfolioData.name}
+         monogram={portfolioData.monogram}
+@@ -46,8 +88,10 @@ export function App() {
+         monogram={portfolioData.monogram}
+         copyright={portfolioData.footer.copyright}
+         location={portfolioData.footer.location}
++        email={portfolioData.contact.email}
++        linkedinUrl={portfolioData.contact.linkedinUrl}
+       />
+-    </>
++    </div>
+   );
+ }
+ 
+diff --git a/src/components/Contact.tsx b/src/components/Contact.tsx
+index 80051de..f48a210 100644
+--- a/src/components/Contact.tsx
++++ b/src/components/Contact.tsx
+@@ -32,18 +32,36 @@ export const Contact: React.FC<ContactProps> = ({
+             <p className="contact__sub">{subtitle}</p>
+           </div>
+           <div className="contact__actions">
+-            <a className="btn btn--primary" href={mailtoUrl}>
+-              Start a Conversation
+-              <svg viewBox="0 -960 960 960" aria-hidden="true">
++            <a className="btn btn--primary" href={mailtoUrl} aria-label={`Email ${email}`}>
++              <svg className="btn__icon-mail" viewBox="0 -960 960 960" aria-hidden="true">
++                <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
++              </svg>
++              <span>Email: {email}</span>
++            </a>
++
++            <button
++              type="button"
++              className="btn btn--secondary btn--advisory"
++              title="Advisory details coming soon"
++            >
++              <span>Explore Advisory</span>
++              <svg className="btn__icon-arrow" viewBox="0 -960 960 960" aria-hidden="true">
+                 <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+               </svg>
++            </button>
++
++            <a
++              className="btn btn--secondary"
++              href={linkedinUrl}
++              target="_blank"
++              rel="noopener noreferrer"
++              aria-label="Connect with Olga Sirenko on LinkedIn"
++            >
++              <span>LinkedIn</span>
++              <svg className="btn__icon-diagonal" viewBox="0 -960 960 960" aria-hidden="true">
++                <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z" />
++              </svg>
+             </a>
+-            <p className="contact__alt">
+-              Prefer a direct intro?{' '}
+-              <a href={linkedinUrl} target="_blank" rel="noopener noreferrer">
+-                Connect on LinkedIn ↗
+-              </a>
+-            </p>
+           </div>
+         </div>
+       </div>
+diff --git a/src/components/Footer.tsx b/src/components/Footer.tsx
+index 9e2b2f5..4cccc4a 100644
+--- a/src/components/Footer.tsx
++++ b/src/components/Footer.tsx
+@@ -1,27 +1,53 @@
+ import React from 'react';
++import { Logo } from './Logo';
+ 
+ interface FooterProps {
+-  monogram: string;
++  monogram?: string;
+   copyright: string;
+   location: string;
++  email?: string;
++  linkedinUrl?: string;
+ }
+ 
+ export const Footer: React.FC<FooterProps> = ({
+-  monogram,
+   copyright,
+   location,
++  email,
++  linkedinUrl,
+ }) => {
+   return (
+     <footer className="footer">
+       <div className="container footer__inner">
+         <div className="footer__brand">
+-          <span className="monogram monogram--square" aria-hidden="true">
+-            {monogram}
++          <span className="monogram" aria-hidden="true">
++            <Logo className="monogram__logo" />
+           </span>
+           <span className="footer__copy">
+             {copyright} · {location}
+           </span>
+         </div>
++        <div className="footer__links">
++          {email && (
++            <a
++              href={`mailto:${email}`}
++              className="footer__link"
++              aria-label={`Email Olga Sirenko at ${email}`}
++            >
++              {email}
++            </a>
++          )}
++          {linkedinUrl && (
++            <a
++              href={linkedinUrl}
++              target="_blank"
++              rel="noopener noreferrer"
++              className="footer__link"
++              aria-label="Connect with Olga Sirenko on LinkedIn"
++            >
++              LinkedIn ↗
++            </a>
++          )}
++        </div>
+       </div>
+     </footer>
+   );
+diff --git a/src/components/Header.tsx b/src/components/Header.tsx
+index a2e3d22..55b926a 100644
+--- a/src/components/Header.tsx
++++ b/src/components/Header.tsx
+@@ -1,10 +1,11 @@
+ import React, { useEffect, useRef } from 'react';
+ import { Theme } from '../hooks/useTheme';
+ import { Route, hrefFor } from '../hooks/useRoute';
++import { Logo } from './Logo';
+ 
+ interface HeaderProps {
+   name: string;
+-  monogram: string;
++  monogram?: string;
+   theme: Theme;
+   onToggleTheme: () => void;
+   route: Route;
+@@ -50,7 +51,6 @@ const ReadingProgress: React.FC = () => {
+ 
+ export const Header: React.FC<HeaderProps> = ({
+   name,
+-  monogram,
+   theme,
+   onToggleTheme,
+   route,
+@@ -75,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({
+         <div className="container header__inner">
+           <a className="brand" href={hrefFor({ page: 'about' })} onClick={onBrandClick} aria-label={`${name}, home`}>
+             <span className="monogram" aria-hidden="true">
+-              {monogram}
++              <Logo className="monogram__logo" />
+             </span>
+             <span className="brand__name">{name}</span>
+           </a>
+diff --git a/src/components/Logo.tsx b/src/components/Logo.tsx
+new file mode 100644
+index 0000000..c5dad74
+--- /dev/null
++++ b/src/components/Logo.tsx
+@@ -0,0 +1,46 @@
++import React from 'react';
++
++interface LogoProps extends React.SVGProps<SVGSVGElement> {
++  className?: string;
++}
++
++export const Logo: React.FC<LogoProps> = ({ className, ...props }) => {
++  return (
++    <svg
++      xmlns="http://www.w3.org/2000/svg"
++      viewBox="0 0 169.60734 122.43179"
++      fill="currentColor"
++      aria-hidden="true"
++      className={className}
++      {...props}
++    >
++      <g transform="translate(-331.2222,-81.312965)">
++        <path
++          fill="currentColor"
++          fillRule="evenodd"
++          d="m 379.07424,111.94121 a 36.224086,35.937491 0 0 0 -31.88813,35.6322 36.224086,35.937491 0 0 0 31.91731,35.65519 16.573569,37.17671 0 0 1 -11.9167,-35.65519 16.573569,37.17671 0 0 1 11.88752,-35.6322 z m 9.58783,0.12067 a 16.573569,37.17671 0 0 1 11.67157,35.51153 16.573569,37.17671 0 0 1 -11.75522,35.53452 36.224086,35.937491 0 0 0 31.05735,-35.53452 36.224086,35.937491 0 0 0 -30.9737,-35.51153 z"
++        />
++        <g
++          transform="matrix(1.0077393,0,0,1.0040303,5.4423757,68.021054)"
++          fill="currentColor"
++        >
++          <path
++            fill="currentColor"
++            fillRule="evenodd"
++            d="M 416.54737,91.206413 V 113.9182 h 30.33939 A 47.046396,34.340694 0 0 1 416.54737,91.206413 Z"
++          />
++          <path
++            fill="currentColor"
++            fillRule="evenodd"
++            d="m 450.18223,44.244213 c 0,0 1.92593,1.61995 2.48448,2.14745 1.09688,1.03588 1.61099,2.48486 1.80394,4.03669 0.17869,1.43724 -0.16544,3.54221 -0.36232,4.57169 -0.56051,1.15494 -0.85301,2.41488 -0.85692,3.69116 -1e-4,4.82408 4.03562,8.73479 9.01391,8.7347 4.9783,10e-5 8.66655,-5.20126 8.66645,-10.02534 -0.72545,-5.99013 -6.01483,-8.67709 -9.88376,-10.65408 -2.8531,-1.4069 -5.64534,-2.11583 -10.86578,-2.50227 z"
++          />
++          <path
++            fill="currentColor"
++            fillRule="evenodd"
++            d="m 416.64717,58.990033 c 0,0 -0.56161,4.63331 0.56161,8.84541 1.47424,4.0015 1.54444,5.54594 4.0015,8.84542 2.45706,3.29948 5.96714,6.80957 5.96714,6.80957 0,0 4.18008,4.14831 9.26662,6.38835 12.02826,5.2971 21.2054,9.19994 33.83723,13.899937 0,0 -1.75504,-9.758037 -2.17625,-11.934287 -0.42121,-2.17625 -2.03585,-5.40553 -3.65049,-8.2136 -4.97865,-6.75783 -14.30844,-11.66911 -21.06052,-13.19793 -10.88927,-2.9007 -18.29873,-5.43241 -26.74684,-11.44287 z"
++          />
++        </g>
++      </g>
++    </svg>
++  );
++};
+diff --git a/src/components/writing/Figures.tsx b/src/components/writing/Figures.tsx
+index 12d27dc..662684e 100644
+--- a/src/components/writing/Figures.tsx
++++ b/src/components/writing/Figures.tsx
+@@ -5,11 +5,9 @@ import type { FigureId } from '../../types';
+ 
+ export const FigureIntentHero = () => (
+   <figure
++    className="essay-fig-card"
+     style={{
+-      margin: '8px 0 16px',
+       padding: 'clamp(20px,4vw,36px)',
+-      borderRadius: 'var(--radius-lg)',
+-      background: 'var(--card)',
+       display: 'flex',
+       flexDirection: 'column',
+       gap: 'clamp(24px,4vw,36px)',
+@@ -332,11 +330,9 @@ export const FigureIntentHero = () => (
+ 
+ export const FigureFlow = () => (
+   <figure
++    className="essay-fig-card"
+     style={{
+-      margin: '24px 0',
+       padding: 'clamp(20px,4vw,36px)',
+-      borderRadius: 'var(--radius-lg)',
+-      background: 'var(--card)',
+       display: 'flex',
+       flexDirection: 'column',
+       gap: 'clamp(24px,4vw,32px)',
+@@ -527,11 +523,9 @@ export const FigureFlow = () => (
+ 
+ export const FigureParadigms = () => (
+   <figure
++    className="essay-fig-card"
+     style={{
+-      margin: '24px 0',
+       padding: 'clamp(20px,4vw,36px)',
+-      borderRadius: 'var(--radius-lg)',
+-      background: 'var(--card)',
+       display: 'flex',
+       flexDirection: 'column',
+       gap: 'clamp(24px,4vw,32px)',
+@@ -664,11 +658,9 @@ export const FigureParadigms = () => (
+ 
+ export const FigureCanvas = () => (
+   <figure
++    className="essay-fig-card"
+     style={{
+-      margin: '24px 0',
+       padding: 'clamp(20px,4vw,36px)',
+-      borderRadius: 'var(--radius-lg)',
+-      background: 'var(--card)',
+       display: 'flex',
+       flexDirection: 'column',
+       gap: 'clamp(24px,4vw,32px)',
+@@ -926,11 +918,9 @@ export const FigureCanvas = () => (
+ 
+ export const FigurePatterns = () => (
+   <figure
++    className="essay-fig-card"
+     style={{
+-      margin: '24px 0',
+       padding: 'clamp(20px,4vw,36px)',
+-      borderRadius: 'var(--radius-lg)',
+-      background: 'var(--card)',
+       display: 'flex',
+       flexDirection: 'column',
+       gap: 'clamp(24px,4vw,32px)',
+@@ -1290,11 +1280,9 @@ export const FigurePatterns = () => (
+ 
+ export const FigureQuadrant = () => (
+   <figure
++    className="essay-fig-card"
+     style={{
+-      margin: '24px 0',
+       padding: 'clamp(20px,4vw,36px)',
+-      borderRadius: 'var(--radius-lg)',
+-      background: 'var(--card)',
+       display: 'flex',
+       flexDirection: 'column',
+       gap: 'clamp(24px,4vw,32px)',
+diff --git a/src/components/writing/icons.tsx b/src/components/writing/icons.tsx
+index 1a677da..0ed5121 100644
+--- a/src/components/writing/icons.tsx
++++ b/src/components/writing/icons.tsx
+@@ -1,12 +1,12 @@
+ // Material Symbols Outlined paths, inlined so no icon font is needed.
+-export const ArrowForwardIcon = () => (
+-  <svg viewBox="0 -960 960 960" aria-hidden="true">
++export const ArrowForwardIcon: React.FC<{ className?: string }> = ({ className = 'btn__icon-arrow' }) => (
++  <svg className={className} viewBox="0 -960 960 960" aria-hidden="true">
+     <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+   </svg>
+ );
+ 
+-export const NorthEastIcon = () => (
+-  <svg viewBox="0 -960 960 960" aria-hidden="true">
++export const NorthEastIcon: React.FC<{ className?: string }> = ({ className = 'btn__icon-diagonal' }) => (
++  <svg className={className} viewBox="0 -960 960 960" aria-hidden="true">
+     <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z" />
+   </svg>
+ );
+diff --git a/src/data/portfolioData.ts b/src/data/portfolioData.ts
+index f952b9e..2a4b59b 100644
+--- a/src/data/portfolioData.ts
++++ b/src/data/portfolioData.ts
+@@ -48,21 +48,21 @@ export const portfolioData: PortfolioData = {
+   career: [
+     {
+       id: 'vividly-advisory',
+-      meta: '2021 — Present · Vividly & Advisory',
++      meta: '2025 — Present · Vividly & Advisory',
+       title: 'AI Dashboard Synthesis & Human-in-the-Loop Architecture',
+       body: 'Leading product design for next-generation AI dashboard overviews, translating complex automated models into real-time executive decision flows. Operating a 5-year advisory practice helping growing SaaS platforms implement human-in-the-loop workflows, modern design operations, and scalable UX architectures.'
+     },
+     {
+       id: 'quantum-metric',
+       meta: '2020 — 2025 · Quantum Metric',
+-      title: 'Real-Time Observability & AI Trust Architecture',
+-      body: 'Progressed from Senior to Staff Product Designer, designing Visible (real-time analytics, overlays, and heatmaps) alongside enterprise automated PII privacy controls. Led design strategy for Experience AI, creating interaction models and guardrails that enable enterprise operators to inspect, audit, and trust machine-learning anomaly detection.'
++      title: 'Enterprise Platform Architecture, AI Governance & Observability',
++      body: 'Partnered directly with the CEO and CTO on high-complexity technical initiatives, using a computer programming background to bridge engineering constraints and product strategy. Architected foundational system setups, workspace administrative permissions, and platform-wide AI governance controls. Shipped Visible (real-time web analytics, session overlays, and heatmaps) alongside automated PII masking engines, and designed the inspection workflows and audit logs that made Experience AI anomaly detection transparent and trustworthy for enterprise clients.'
+     },
+     {
+       id: 'equinix',
+       meta: '2019 — 2020 · Equinix',
+-      title: 'Enterprise Cloud & Mission-Critical Infrastructure',
+-      body: 'Architected unified platform interfaces for distributed edge computing and bare-metal networking platforms (Edge Precision Time, Packet Portal), solving for microsecond-level precision. Accelerated time-to-market and secured executive project funding by prototyping and validating complex, high-risk systems in 3-week sprint cycles.'
++      title: 'Distributed Cloud, Bare-Metal & Edge Infrastructure',
++      body: 'Led 0-to-1 product design for three foundational infrastructure products from the ground up: Edge Metal, Millennium DB, and Edge Precision Time, while architecting their consolidation into a single enterprise Edge Platform portal. Directed end-to-end information architecture, user testing, and visual design systems, contributing directly to frontend code where needed. Worked hand-in-hand with engineering architects and key business stakeholders to resolve complex systems constraints and win executive investment.'
+     },
+     {
+       id: 'vienna-press-bureau',
+diff --git a/src/hooks/useTheme.ts b/src/hooks/useTheme.ts
+index cbd8685..9c3a3d8 100644
+--- a/src/hooks/useTheme.ts
++++ b/src/hooks/useTheme.ts
+@@ -4,32 +4,69 @@ export type Theme = 'light' | 'dark';
+ 
+ const STORAGE_KEY = 'os-site:theme';
+ 
+-export function useTheme() {
+-  const [theme, setTheme] = useState<Theme>(() => {
+-    if (typeof window === 'undefined') return 'dark';
+-    try {
+-      const saved = localStorage.getItem(STORAGE_KEY);
+-      if (saved === 'light' || saved === 'dark') {
+-        return saved;
+-      }
+-    } catch {
+-      // Ignore localStorage errors
++function getSystemTheme(): Theme {
++  if (typeof window !== 'undefined' && window.matchMedia) {
++    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
++  }
++  return 'dark';
++}
++
++function getInitialTheme(): Theme {
++  if (typeof window === 'undefined') return 'dark';
++  try {
++    const saved = localStorage.getItem(STORAGE_KEY);
++    if (saved === 'light' || saved === 'dark') {
++      return saved;
+     }
+-    return 'dark';
+-  });
++  } catch {
++    // Ignore localStorage errors
++  }
++  return getSystemTheme();
++}
+ 
++export function useTheme() {
++  const [theme, setTheme] = useState<Theme>(getInitialTheme);
++
++  // Synchronize document attribute with theme state
+   useEffect(() => {
+     document.documentElement.setAttribute('data-theme', theme);
+-    try {
+-      localStorage.setItem(STORAGE_KEY, theme);
+-    } catch {
+-      // Ignore localStorage errors
+-    }
+   }, [theme]);
+ 
++  // Listen to OS system preference changes if no manual override is saved
++  useEffect(() => {
++    if (typeof window === 'undefined' || !window.matchMedia) return;
++
++    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
++
++    const handleChange = (e: MediaQueryListEvent) => {
++      try {
++        const saved = localStorage.getItem(STORAGE_KEY);
++        // Only adapt to system preference if user hasn't explicitly set a preference
++        if (!saved) {
++          const newSystemTheme: Theme = e.matches ? 'dark' : 'light';
++          setTheme(newSystemTheme);
++        }
++      } catch {
++        setTheme(e.matches ? 'dark' : 'light');
++      }
++    };
++
++    mediaQuery.addEventListener('change', handleChange);
++    return () => mediaQuery.removeEventListener('change', handleChange);
++  }, []);
++
+   const toggleTheme = useCallback(() => {
+-    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
++    setTheme(prev => {
++      const next: Theme = prev === 'dark' ? 'light' : 'dark';
++      try {
++        localStorage.setItem(STORAGE_KEY, next);
++      } catch {
++        // Ignore localStorage errors
++      }
++      return next;
++    });
+   }, []);
+ 
+   return { theme, toggleTheme };
+ }
++
+diff --git a/src/pages/AboutPage.tsx b/src/pages/AboutPage.tsx
+index 21ce3f7..40464c8 100644
+--- a/src/pages/AboutPage.tsx
++++ b/src/pages/AboutPage.tsx
+@@ -6,9 +6,7 @@ import { Career } from '../components/Career';
+ import { Contact } from '../components/Contact';
+ 
+ export const AboutPage: React.FC = () => (
+-  <div className="glow-wrap">
+-    <div className="glow-wrap__bg" aria-hidden="true" />
+-
++  <>
+     <section id="about" className="container about" aria-label="About">
+       <Hero
+         tagline={portfolioData.tagline}
+@@ -29,5 +27,5 @@ export const AboutPage: React.FC = () => (
+       emailSubject={portfolioData.contact.emailSubject}
+       linkedinUrl={portfolioData.contact.linkedinUrl}
+     />
+-  </div>
++  </>
+ );
+diff --git a/src/pages/ArticlePage.tsx b/src/pages/ArticlePage.tsx
+index 99b5003..5a4f909 100644
+--- a/src/pages/ArticlePage.tsx
++++ b/src/pages/ArticlePage.tsx
+@@ -55,53 +55,49 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ article, essay }) => {
+   };
+ 
+   return (
+-    <div className="glow-wrap">
+-      <div className="glow-wrap__bg" aria-hidden="true" />
+-
+-      <article ref={articleRef} className="container essay" aria-labelledby="essay-title">
+-        <header className="essay-header">
+-          <a className="essay-back" href={hrefFor({ page: 'writing' })} data-noprint>
+-            ← All writing
+-          </a>
+-          <div className="essay-header__main">
+-            <span className="essay-meta">
+-              {article.date} · {article.read} read
++    <article ref={articleRef} className="container essay" aria-labelledby="essay-title">
++      <header className="essay-header">
++        <a className="essay-back" href={hrefFor({ page: 'writing' })} data-noprint>
++          ← All writing
++        </a>
++        <div className="essay-header__main">
++          <span className="essay-meta">
++            {article.date} · {article.read} read
++          </span>
++          <h1 id="essay-title" className="essay-title">
++            <span className="essay-title__main">
++              <span>{article.t1}</span>
++              {article.t2 && (
++                <>
++                  <br />
++                  <span className="essay-title__accent">{article.t2}</span>
++                </>
++              )}
+             </span>
+-            <h1 id="essay-title" className="essay-title">
+-              <span className="essay-title__main">
+-                <span>{article.t1}</span>
+-                {article.t2 && (
+-                  <>
+-                    <br />
+-                    <span className="essay-title__accent">{article.t2}</span>
+-                  </>
+-                )}
+-              </span>
+-              {article.t3 && <span className="essay-title__sub">{article.t3}</span>}
+-            </h1>
+-            <p className="essay-dek">{article.dek}</p>
+-            <div className="essay-actions" data-noprint>
+-              <button type="button" className="essay-action" onClick={() => window.print()}>
+-                Download PDF ↓
+-              </button>
+-            </div>
++            {article.t3 && <span className="essay-title__sub">{article.t3}</span>}
++          </h1>
++          <p className="essay-dek">{article.dek}</p>
++          <div className="essay-actions" data-noprint>
++            <button type="button" className="essay-action" onClick={() => window.print()}>
++              Download PDF ↓
++            </button>
+           </div>
+-        </header>
+-
+-        <EssayBlocks blocks={essay.blocks} />
+-
+-        <div className="essay-cta" data-noprint>
+-          <a className="btn btn--secondary" href={portfolioData.contact.linkedinUrl} target="_blank" rel="noopener noreferrer">
+-            Discuss on LinkedIn
+-            <NorthEastIcon />
+-          </a>
+         </div>
++      </header>
++
++      <EssayBlocks blocks={essay.blocks} />
+ 
+-        <a className="essay-next" href={nextHref} onClick={onNext} data-noprint>
+-          <span className="essay-label essay-label--cyan">Next article →</span>
+-          <span className="essay-next__title">{next.title}</span>
++      <div className="essay-cta" data-noprint>
++        <a className="btn btn--secondary" href={portfolioData.contact.linkedinUrl} target="_blank" rel="noopener noreferrer">
++          Discuss on LinkedIn
++          <NorthEastIcon />
+         </a>
+-      </article>
+-    </div>
++      </div>
++
++      <a className="essay-next" href={nextHref} onClick={onNext} data-noprint>
++        <span className="essay-label essay-label--cyan">Next article →</span>
++        <span className="essay-next__title">{next.title}</span>
++      </a>
++    </article>
+   );
+ };
+diff --git a/src/pages/WritingPage.tsx b/src/pages/WritingPage.tsx
+index 32fdf4d..1f55b07 100644
+--- a/src/pages/WritingPage.tsx
++++ b/src/pages/WritingPage.tsx
+@@ -4,9 +4,7 @@ import { hrefFor } from '../hooks/useRoute';
+ import { ArrowForwardIcon } from '../components/writing/icons';
+ 
+ export const WritingPage: React.FC = () => (
+-  <div className="glow-wrap">
+-    <div className="glow-wrap__bg" aria-hidden="true" />
+-
++  <>
+     <section className="writing-intro" aria-labelledby="writing-title">
+       <div className="container writing-intro__inner">
+         <span className="kicker">
+@@ -43,5 +41,5 @@ export const WritingPage: React.FC = () => (
+         ))}
+       </div>
+     </section>
+-  </div>
++  </>
+ );
+diff --git a/src/styles.css b/src/styles.css
+index b0559da..67763a8 100644
+--- a/src/styles.css
++++ b/src/styles.css
+@@ -233,7 +233,7 @@ a {
+   color: var(--violet);
+ }
+ 
+-/* ---------- Monogram ---------- */
++/* ---------- Monogram / Logo ---------- */
+ .monogram {
+   width: 36px;
+   height: 36px;
+@@ -245,20 +245,34 @@ a {
+   border: 1px solid var(--line);
+   background: color-mix(in srgb, var(--ink) 4%, transparent);
+   color: var(--ink);
+-  font: 600 12px/1 var(--font-sans);
+-  letter-spacing: -.03em;
+-  transition: border-color var(--dur-base) var(--ease-standard);
++  transition: border-color var(--dur-base) var(--ease-standard), color var(--dur-base) var(--ease-standard), background var(--dur-base) var(--ease-standard);
+ }
+ 
+ .monogram:hover {
+   border-color: var(--cyan);
++  color: var(--cyan);
+ }
+ 
+ .monogram--square {
+-  width: 28px;
+-  height: 28px;
+-  border-radius: 7.84px;
+-  font-size: 10px;
++  width: 36px;
++  height: 36px;
++  border-radius: 50%;
++}
++
++.monogram__logo {
++  width: 20px;
++  height: auto;
++  display: block;
++  fill: currentColor;
++  transition: transform var(--dur-base) var(--ease-spring), fill var(--dur-base) var(--ease-standard);
++}
++
++.monogram:hover .monogram__logo {
++  transform: scale(1.08);
++}
++
++.monogram--square .monogram__logo {
++  width: 15px;
+ }
+ 
+ /* ---------- Header ---------- */
+@@ -290,40 +304,46 @@ a {
+ }
+ 
+ .brand__name {
+-  font: 600 15px/1 var(--font-sans);
++  font: 600 15px/1.1 var(--font-display);
+   color: var(--ink);
+-  letter-spacing: -.01em;
++  letter-spacing: -.015em;
++  transition: color var(--dur-base) var(--ease-standard);
+ }
+ 
+ .theme-toggle {
+-  width: 40px;
+-  height: 40px;
++  width: 36px;
++  height: 36px;
+   margin-left: 8px;
++  flex-shrink: 0;
+   border-radius: 50%;
+   border: 1px solid var(--line);
+-  background: transparent;
++  background: color-mix(in srgb, var(--ink) 4%, transparent);
+   color: var(--ink);
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 0;
+-  transition: border-color var(--dur-base) var(--ease-standard), color var(--dur-base) var(--ease-standard);
++  transition: border-color var(--dur-base) var(--ease-standard), color var(--dur-base) var(--ease-standard), background var(--dur-base) var(--ease-standard);
+ }
+ 
+ .theme-toggle:hover {
+   border-color: var(--cyan);
++  color: var(--cyan);
+ }
+ 
+ .theme-toggle svg {
+-  width: 24px;
+-  height: 24px;
++  width: 20px;
++  height: 20px;
+   fill: currentColor;
+ }
+ 
+-/* ---------- Glow wrapper (About + Contact share one background) ---------- */
++/* ---------- Glow wrapper (Continuous atmospheric background) ---------- */
+ .glow-wrap {
+   position: relative;
++  min-height: 100vh;
++  display: flex;
++  flex-direction: column;
+ }
+ 
+ .glow-wrap__bg {
+@@ -333,15 +353,22 @@ a {
+   pointer-events: none;
+   z-index: 0;
+   background: radial-gradient(760px 620px at 100% 0%, rgba(150, 110, 235, .20), transparent 70%),
+-              radial-gradient(760px 620px at 0% 100%, rgba(82, 248, 244, .20), transparent 70%);
++              radial-gradient(860px 720px at 0% 100%, rgba(82, 248, 244, .24), transparent 70%);
+ }
+ 
++.glow-wrap > header,
++.glow-wrap > main,
++.glow-wrap > footer,
+ .glow-wrap > section,
+ .glow-wrap > article {
+   position: relative;
+   z-index: 1;
+ }
+ 
++#main {
++  flex: 1 0 auto;
++}
++
+ /* ---------- Card (DS Card: padding 28 + inner padding) ---------- */
+ .card {
+   background: var(--card);
+@@ -505,7 +532,7 @@ a {
+ /* ---------- Contact ---------- */
+ .contact {
+   padding-top: clamp(64px, 9vw, 128px);
+-  padding-bottom: clamp(80px, 11vw, 160px);
++  padding-bottom: clamp(64px, 8vw, 120px);
+ }
+ 
+ .contact__body {
+@@ -548,28 +575,20 @@ a {
+ 
+ .contact__actions {
+   display: flex;
+-  flex-direction: column;
+-  align-items: flex-start;
+-  gap: 16px;
+-  margin-top: 8px;
+-}
+-
+-.contact__alt {
+-  font: 400 15px/1.5 var(--font-sans);
+-  color: var(--ink-2);
++  flex-wrap: wrap;
++  align-items: center;
++  gap: 12px;
++  margin-top: 12px;
+ }
+ 
+-.contact__alt a {
+-  color: var(--violet);
+-  font-weight: 600;
+-  text-decoration: underline;
+-  text-decoration-color: transparent;
+-  text-underline-offset: 3px;
+-  transition: text-decoration-color .3s;
++.btn--advisory {
++  cursor: default;
+ }
+ 
+-.contact__alt a:hover {
+-  text-decoration-color: currentColor;
++.btn--advisory:hover {
++  border-color: var(--cyan);
++  background: var(--paper-2);
++  transform: translateY(-2px);
+ }
+ 
+ /* ---------- Button (DS primary) ---------- */
+@@ -585,9 +604,12 @@ a {
+   font: 500 13px/1 var(--font-sans);
+   white-space: nowrap;
+   cursor: pointer;
+-  transition: transform var(--dur-base) var(--ease-spring),
+-              background var(--dur-base) var(--ease-standard),
+-              box-shadow var(--dur-base) var(--ease-standard);
++  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
++              background 220ms cubic-bezier(0.4, 0, 0.2, 1),
++              border-color 220ms cubic-bezier(0.4, 0, 0.2, 1),
++              color 220ms cubic-bezier(0.4, 0, 0.2, 1),
++              box-shadow 220ms cubic-bezier(0.4, 0, 0.2, 1);
++  will-change: transform;
+ }
+ 
+ .btn svg {
+@@ -595,7 +617,23 @@ a {
+   height: 16px;
+   flex-shrink: 0;
+   fill: currentColor;
+-  transition: transform var(--dur-base) var(--ease-spring);
++  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
++}
++
++/* Mail icon stays stationary on hover */
++.btn:hover .btn__icon-mail {
++  transform: none;
++}
++
++/* Horizontal arrow slides right smoothly */
++.btn:hover .btn__icon-arrow,
++.btn:hover svg:not(.btn__icon-mail):not(.btn__icon-diagonal) {
++  transform: translateX(3px);
++}
++
++/* Diagonal link arrow slides up-right smoothly */
++.btn:hover .btn__icon-diagonal {
++  transform: translate(2px, -2px);
+ }
+ 
+ .btn--primary {
+@@ -607,26 +645,26 @@ a {
+   background: var(--accent-action-hover);
+   color: var(--text-on-accent);
+   box-shadow: var(--shadow-glow);
+-  transform: scale(var(--hover-scale));
+-}
+-
+-.btn:hover svg {
+-  transform: translateX(3px);
++  transform: translateY(-2px);
+ }
+ 
+ .btn:active {
+-  transform: scale(var(--press-scale));
++  transform: translateY(0);
+ }
+ 
+ /* ---------- Footer ---------- */
+ .footer {
+-  border-top: 1px solid var(--line);
++  border-top: none;
++  background: transparent;
+   margin-top: auto;
++  position: relative;
++  z-index: 1;
++  padding-top: clamp(48px, 7vw, 96px);
+ }
+ 
+ .footer__inner {
+-  padding-top: clamp(32px, 5vw, 56px);
+-  padding-bottom: clamp(32px, 5vw, 56px);
++  padding-top: clamp(12px, 2vw, 16px);
++  padding-bottom: clamp(24px, 4vw, 40px);
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+@@ -646,6 +684,31 @@ a {
+   color: var(--muted);
+ }
+ 
++.footer__links {
++  display: flex;
++  align-items: center;
++  gap: 20px;
++  flex-wrap: wrap;
++}
++
++.footer__link {
++  font: 500 13px/1 var(--font-mono);
++  letter-spacing: .02em;
++  color: var(--muted);
++  display: inline-flex;
++  align-items: center;
++  gap: 4px;
++  text-decoration: underline;
++  text-decoration-color: color-mix(in srgb, var(--violet) 35%, transparent);
++  text-underline-offset: 4px;
++  transition: color var(--dur-base) var(--ease-standard), text-decoration-color var(--dur-base) var(--ease-standard);
++}
++
++.footer__link:hover {
++  color: var(--ink);
++  text-decoration-color: var(--cyan);
++}
++
+ /* ---------- Primary nav ---------- */
+ .nav {
+   display: flex;
+@@ -696,7 +759,8 @@ a {
+ .btn--secondary:hover {
+   background: var(--paper-2);
+   color: var(--ink);
+-  transform: scale(var(--hover-scale));
++  border-color: var(--cyan);
++  transform: translateY(-2px);
+ }
+ 
+ /* ---------- Writing list ---------- */
+@@ -751,7 +815,7 @@ a {
+ 
+ .article-list {
+   padding-top: clamp(24px, 4vw, 48px);
+-  padding-bottom: clamp(80px, 11vw, 160px);
++  padding-bottom: clamp(64px, 8vw, 120px);
+   display: flex;
+   flex-direction: column;
+ }
+@@ -764,7 +828,9 @@ a {
+   padding: clamp(28px, 4vw, 44px) 0;
+   border-bottom: 1px solid var(--line);
+   color: inherit;
+-  transition: padding var(--dur-base) var(--ease-spring);
++  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
++              color 200ms ease;
++  will-change: transform;
+ }
+ 
+ .article-row:last-child {
+@@ -772,7 +838,7 @@ a {
+ }
+ 
+ .article-row:hover {
+-  padding-left: 12px;
++  transform: translateX(6px);
+   color: var(--ink);
+ }
+ 
+@@ -826,7 +892,7 @@ a {
+ /* ---------- Article ---------- */
+ .essay {
+   padding-top: clamp(80px, 11vw, 152px);
+-  padding-bottom: clamp(80px, 11vw, 160px);
++  padding-bottom: clamp(64px, 8vw, 120px);
+   display: flex;
+   flex-direction: column;
+   gap: clamp(40px, 6vw, 64px);
+@@ -1099,13 +1165,56 @@ a {
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
++  width: 100%;
+ }
+ 
+ .essay-img img {
+   width: 100%;
+   height: auto;
++  display: block;
+   border-radius: var(--radius-lg);
+   border: 1px solid var(--line);
++  background: #FBFAF8;
++  box-shadow: var(--shadow-1);
++}
++
++/* Dedicated hand-built figure cards: aligned with other article illustrations and kept light in dark mode */
++.essay-fig-card {
++  margin: 24px 0 !important;
++  width: 100%;
++  box-sizing: border-box;
++  border-radius: var(--radius-lg);
++  border: 1px solid var(--line);
++  background: #FBFAF8 !important;
++  color: #2C3446 !important;
++  box-shadow: var(--shadow-1);
++  overflow: hidden;
++
++  /* Force light theme tokens inside the figure */
++  --card: #FFFFFF;
++  --paper: #FBFAF8;
++  --ink: #001A34;
++  --ink-2: #2C3446;
++  --muted: #64637A;
++  --line: #E4E2DC;
++  --violet: #542CB7;
++  --cyan: #0A6B84;
++}
++
++[data-theme="dark"] .essay-fig-card {
++  background: #FBFAF8 !important;
++  color: #2C3446 !important;
++  border-color: #2E4262;
++  box-shadow: 0 1px 3px rgba(0, 0, 0, .25), 0 4px 12px rgba(0, 0, 0, .15);
++
++  --card: #FFFFFF;
++  --paper: #FBFAF8;
++  --ink: #001A34;
++  --ink-2: #2C3446;
++  --muted: #64637A;
++  --line: #E4E2DC;
++  --violet: #542CB7;
++  --cyan: #0A6B84;
+ }
+ 
+ .essay-close {
+-- 
+2.34.1
+

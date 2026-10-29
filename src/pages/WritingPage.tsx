@@ -4,9 +4,7 @@ import { hrefFor } from '../hooks/useRoute';
 import { ArrowForwardIcon } from '../components/writing/icons';
 
 export const WritingPage: React.FC = () => (
-  <div className="glow-wrap">
-    <div className="glow-wrap__bg" aria-hidden="true" />
-
+  <>
     <section className="writing-intro" aria-labelledby="writing-title">
       <div className="container writing-intro__inner">
         <span className="kicker">
@@ -43,5 +41,5 @@ export const WritingPage: React.FC = () => (
         ))}
       </div>
     </section>
-  </div>
+  </>
 );

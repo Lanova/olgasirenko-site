@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { Theme } from '../hooks/useTheme';
 import { Route, hrefFor } from '../hooks/useRoute';
+import { Logo } from './Logo';
 
 interface HeaderProps {
   name: string;
-  monogram: string;
+  monogram?: string;
   theme: Theme;
   onToggleTheme: () => void;
   route: Route;
@@ -50,7 +51,6 @@ const ReadingProgress: React.FC = () => {
 
 export const Header: React.FC<HeaderProps> = ({
   name,
-  monogram,
   theme,
   onToggleTheme,
   route,
@@ -75,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="container header__inner">
           <a className="brand" href={hrefFor({ page: 'about' })} onClick={onBrandClick} aria-label={`${name}, home`}>
             <span className="monogram" aria-hidden="true">
-              {monogram}
+              <Logo className="monogram__logo" />
             </span>
             <span className="brand__name">{name}</span>
           </a>

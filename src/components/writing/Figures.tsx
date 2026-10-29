@@ -5,11 +5,9 @@ import type { FigureId } from '../../types';
 
 export const FigureIntentHero = () => (
   <figure
+    className="essay-fig-card"
     style={{
-      margin: '8px 0 16px',
       padding: 'clamp(20px,4vw,36px)',
-      borderRadius: 'var(--radius-lg)',
-      background: 'var(--card)',
       display: 'flex',
       flexDirection: 'column',
       gap: 'clamp(24px,4vw,36px)',
@@ -332,11 +330,9 @@ export const FigureIntentHero = () => (
 
 export const FigureFlow = () => (
   <figure
+    className="essay-fig-card"
     style={{
-      margin: '24px 0',
       padding: 'clamp(20px,4vw,36px)',
-      borderRadius: 'var(--radius-lg)',
-      background: 'var(--card)',
       display: 'flex',
       flexDirection: 'column',
       gap: 'clamp(24px,4vw,32px)',
@@ -527,11 +523,9 @@ export const FigureFlow = () => (
 
 export const FigureParadigms = () => (
   <figure
+    className="essay-fig-card"
     style={{
-      margin: '24px 0',
       padding: 'clamp(20px,4vw,36px)',
-      borderRadius: 'var(--radius-lg)',
-      background: 'var(--card)',
       display: 'flex',
       flexDirection: 'column',
       gap: 'clamp(24px,4vw,32px)',
@@ -664,11 +658,9 @@ export const FigureParadigms = () => (
 
 export const FigureCanvas = () => (
   <figure
+    className="essay-fig-card"
     style={{
-      margin: '24px 0',
       padding: 'clamp(20px,4vw,36px)',
-      borderRadius: 'var(--radius-lg)',
-      background: 'var(--card)',
       display: 'flex',
       flexDirection: 'column',
       gap: 'clamp(24px,4vw,32px)',
@@ -926,11 +918,9 @@ export const FigureCanvas = () => (
 
 export const FigurePatterns = () => (
   <figure
+    className="essay-fig-card"
     style={{
-      margin: '24px 0',
       padding: 'clamp(20px,4vw,36px)',
-      borderRadius: 'var(--radius-lg)',
-      background: 'var(--card)',
       display: 'flex',
       flexDirection: 'column',
       gap: 'clamp(24px,4vw,32px)',
@@ -1290,11 +1280,9 @@ export const FigurePatterns = () => (
 
 export const FigureQuadrant = () => (
   <figure
+    className="essay-fig-card"
     style={{
-      margin: '24px 0',
       padding: 'clamp(20px,4vw,36px)',
-      borderRadius: 'var(--radius-lg)',
-      background: 'var(--card)',
       display: 'flex',
       flexDirection: 'column',
       gap: 'clamp(24px,4vw,32px)',

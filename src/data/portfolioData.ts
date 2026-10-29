@@ -48,21 +48,21 @@ export const portfolioData: PortfolioData = {
   career: [
     {
       id: 'vividly-advisory',
-      meta: '2021 — Present · Vividly & Advisory',
+      meta: '2025 — Present · Vividly & Advisory',
       title: 'AI Dashboard Synthesis & Human-in-the-Loop Architecture',
       body: 'Leading product design for next-generation AI dashboard overviews, translating complex automated models into real-time executive decision flows. Operating a 5-year advisory practice helping growing SaaS platforms implement human-in-the-loop workflows, modern design operations, and scalable UX architectures.'
     },
     {
       id: 'quantum-metric',
       meta: '2020 — 2025 · Quantum Metric',
-      title: 'Real-Time Observability & AI Trust Architecture',
-      body: 'Progressed from Senior to Staff Product Designer, designing Visible (real-time analytics, overlays, and heatmaps) alongside enterprise automated PII privacy controls. Led design strategy for Experience AI, creating interaction models and guardrails that enable enterprise operators to inspect, audit, and trust machine-learning anomaly detection.'
+      title: 'Enterprise Platform Architecture, AI Governance & Observability',
+      body: 'Partnered directly with the CEO and CTO on high-complexity technical initiatives, using a computer programming background to bridge engineering constraints and product strategy. Architected foundational system setups, workspace administrative permissions, and platform-wide AI governance controls. Shipped Visible (real-time web analytics, session overlays, and heatmaps) alongside automated PII masking engines, and designed the inspection workflows and audit logs that made Experience AI anomaly detection transparent and trustworthy for enterprise clients.'
     },
     {
       id: 'equinix',
       meta: '2019 — 2020 · Equinix',
-      title: 'Enterprise Cloud & Mission-Critical Infrastructure',
-      body: 'Architected unified platform interfaces for distributed edge computing and bare-metal networking platforms (Edge Precision Time, Packet Portal), solving for microsecond-level precision. Accelerated time-to-market and secured executive project funding by prototyping and validating complex, high-risk systems in 3-week sprint cycles.'
+      title: 'Distributed Cloud, Bare-Metal & Edge Infrastructure',
+      body: 'Led 0-to-1 product design for three foundational infrastructure products from the ground up: Edge Metal, Millennium DB, and Edge Precision Time, while architecting their consolidation into a single enterprise Edge Platform portal. Directed end-to-end information architecture, user testing, and visual design systems, contributing directly to frontend code where needed. Worked hand-in-hand with engineering architects and key business stakeholders to resolve complex systems constraints and win executive investment.'
     },
     {
       id: 'vienna-press-bureau',
