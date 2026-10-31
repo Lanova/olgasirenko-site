@@ -3,6 +3,7 @@ import { portfolioData } from '../data/portfolioData';
 import { Hero } from '../components/Hero';
 import { Principles } from '../components/Principles';
 import { Career } from '../components/Career';
+import { Foundations } from '../components/Foundations';
 import { Contact } from '../components/Contact';
 
 export const AboutPage: React.FC = () => (
@@ -18,6 +19,8 @@ export const AboutPage: React.FC = () => (
       <Principles principles={portfolioData.principles} />
 
       <Career entries={portfolioData.career} />
+
+      <Foundations />
     </section>
 
     <Contact

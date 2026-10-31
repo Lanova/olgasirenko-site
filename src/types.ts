@@ -10,6 +10,10 @@ export interface CareerEntry {
   meta: string;
   title: string;
   body: string;
+  link?: {
+    text: string;
+    url: string;
+  };
 }
 
 export interface PortfolioData {

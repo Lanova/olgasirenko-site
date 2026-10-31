@@ -27,6 +27,14 @@ export const Footer: React.FC<FooterProps> = ({
           </span>
         </div>
         <div className="footer__links">
+          <a
+            href="/olga-sirenko-portfolio.pdf"
+            download="Olga-Sirenko-Portfolio.pdf"
+            className="footer__link"
+            aria-label="Download PDF of portfolio"
+          >
+            PDF ↓
+          </a>
           {email && (
             <a
               href={`mailto:${email}`}

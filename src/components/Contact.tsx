@@ -24,7 +24,6 @@ export const Contact: React.FC<ContactProps> = ({
     <section className="container contact" aria-labelledby="contact-title">
       <div className="card">
         <div className="contact__body">
-          <span className="contact__kicker">Contact</span>
           <div className="contact__head">
             <h2 id="contact-title">
               {title.lead} <em>{title.italic}</em>
@@ -39,16 +38,16 @@ export const Contact: React.FC<ContactProps> = ({
               <span>Email: {email}</span>
             </a>
 
-            <button
-              type="button"
-              className="btn btn--secondary btn--advisory"
-              title="Advisory details coming soon"
+            <a
+              className="btn btn--secondary"
+              href="#advisory"
+              aria-label="Explore Advisory Services"
             >
               <span>Explore Advisory</span>
               <svg className="btn__icon-arrow" viewBox="0 -960 960 960" aria-hidden="true">
                 <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
               </svg>
-            </button>
+            </a>
 
             <a
               className="btn btn--secondary"

@@ -47,10 +47,20 @@ export const portfolioData: PortfolioData = {
   ],
   career: [
     {
-      id: 'vividly-advisory',
-      meta: '2025 — Present · Vividly & Advisory',
+      id: 'advisory',
+      meta: '3+ Years · Advisory Practice',
+      title: 'Streamlining Operations Through AI & Workflow Automation',
+      body: 'Optimizing and automating business processes has been a long-standing passion of mine, well before modern AI caught up. Over the last three years, I’ve helped growing companies pinpoint high-friction, repetitive routines and convert them into automated workflows. By applying targeted AI workflow optimization, we don’t just compress turnaround times—we elevate client satisfaction, unlock operational capacity, and drive steady new client acquisition.',
+      link: {
+        text: 'View advisory practice →',
+        url: 'mailto:hello@olgasirenko.com?subject=Advisory%20Practice%20Inquiry'
+      }
+    },
+    {
+      id: 'vividly',
+      meta: '2025 — Present · Vividly',
       title: 'AI Dashboard Synthesis & Human-in-the-Loop Architecture',
-      body: 'Leading product design for next-generation AI dashboard overviews, translating complex automated models into real-time executive decision flows. Operating a 5-year advisory practice helping growing SaaS platforms implement human-in-the-loop workflows, modern design operations, and scalable UX architectures.'
+      body: 'Leading product design for the next-generation AI-agent-powered Vividly Hub, enabling operators to analyze complex retail data and generate new promotional and pricing datasets through autonomous agent workflows. Automated internal design team operations by introducing AI systems for automated feedback comments, design handoff submissions, and accelerated prototyping and usability testing.'
     },
     {
       id: 'quantum-metric',
