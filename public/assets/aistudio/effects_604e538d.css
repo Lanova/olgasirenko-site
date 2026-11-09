@@ -1,0 +1,51 @@
+:root{
+  /* elevation */
+  --shadow-1:0 1px 2px rgba(0,26,52,.04),0 4px 12px rgba(0,26,52,.02);
+  --shadow-2:0 2px 6px rgba(0,26,52,.05),0 12px 32px rgba(0,26,52,.06);
+  --shadow-lift:0 20px 40px -15px rgba(0,26,52,.18),0 4px 16px rgba(84,44,183,.10);
+  --shadow-glow:0 4px 16px rgba(84,44,183,.14);
+  --blur-glass:blur(16px) saturate(180%); /* @kind other */
+  
+  --blur-header:blur(24px) saturate(180%); /* @kind other */
+  
+  --hover-border:rgba(84,44,183,.30); /* @kind color */
+  
+
+  /* motion — spring-out easing borrowed from Apple/Clay feel */
+  --ease-spring:cubic-bezier(0.16,1,0.3,1); /* @kind other */
+  
+  --ease-standard:cubic-bezier(0.4,0,0.2,1); /* @kind other */
+  
+  --ease-in-out:cubic-bezier(0.65,0,0.35,1); /* @kind other */
+  
+  --dur-fast:150ms; /* @kind other */
+  --dur-base:300ms; /* @kind other */
+  --dur-slow:450ms; /* @kind other */
+  --dur-reveal:800ms; /* @kind other */
+  --dur-image:700ms; /* @kind other */
+  
+  --stagger:90ms; /* @kind other */
+  
+  --lift:-5px; /* @kind spacing */
+  --press-scale:.97; /* @kind other */
+  --hover-scale:1.015; /* @kind other */
+  --image-zoom:1.05; /* @kind other */
+  
+}
+[data-theme="dark"]{
+  --shadow-1:0 1px 3px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);
+  --shadow-2:0 8px 24px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06);
+  --shadow-lift:0 20px 40px -15px rgba(0,0,0,.6),0 0 30px -5px rgba(82,248,244,.12);
+  --shadow-glow:0 0 24px rgba(82,248,244,.18);
+  --hover-border:rgba(82,248,244,.35); /* @kind color */
+  
+}
+@keyframes os-reveal-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes os-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes os-ping{75%,100%{transform:scale(2.2);opacity:0}}
+@media (prefers-reduced-motion:reduce){:root{--dur-base:0ms; /* @kind other */
+  --dur-slow:0ms; /* @kind other */
+  --dur-reveal:0ms; /* @kind other */
+  --dur-image:0ms; /* @kind other */
+  --lift:0px; /* @kind spacing */
+  --image-zoom:1; /* @kind other */}}

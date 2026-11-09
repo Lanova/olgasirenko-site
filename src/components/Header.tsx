@@ -14,6 +14,7 @@ interface HeaderProps {
 const NAV: { label: string; route: Route }[] = [
   { label: 'About', route: { page: 'about' } },
   { label: 'Writing', route: { page: 'writing' } },
+  { label: 'Advisory', route: { page: 'advisory' } },
 ];
 
 /** Thin cyan bar under the header that fills as an article is read. */

@@ -40,7 +40,7 @@ export const Contact: React.FC<ContactProps> = ({
 
             <a
               className="btn btn--secondary"
-              href="#advisory"
+              href="#/advisory"
               aria-label="Explore Advisory Services"
             >
               <span>Explore Advisory</span>

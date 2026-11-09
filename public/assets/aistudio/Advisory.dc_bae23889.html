@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/olga-sirenko-design-system-720a226a-11df-408e-849f-87380d08d693/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/olga-sirenko-design-system-720a226a-11df-408e-849f-87380d08d693/tokens/colors.css">
+<link rel="stylesheet" href="_ds/olga-sirenko-design-system-720a226a-11df-408e-849f-87380d08d693/tokens/typography.css">
+<link rel="stylesheet" href="_ds/olga-sirenko-design-system-720a226a-11df-408e-849f-87380d08d693/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/olga-sirenko-design-system-720a226a-11df-408e-849f-87380d08d693/tokens/effects.css">
+<link rel="stylesheet" href="_ds/olga-sirenko-design-system-720a226a-11df-408e-849f-87380d08d693/tokens/base.css">
+<link rel="stylesheet" href="_ds/olga-sirenko-design-system-720a226a-11df-408e-849f-87380d08d693/styles.css">
+<script src="_ds/olga-sirenko-design-system-720a226a-11df-408e-849f-87380d08d693/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Olga Sirenko","url":"https://olga.sirenko.org","jobTitle":"Product Design Leader | Enterprise Systems, AI Architecture & Team Operations","worksFor":{"@type":"Organization","name":"Vividly"},"address":{"@type":"PostalAddress","addressLocality":"Camas","addressRegion":"WA","addressCountry":"US"},"knowsAbout":["Enterprise AI Systems","Agentic UX Architecture","Product Design Leadership","Complex Data Visualization","Design Systems","B2B SaaS Strategy","Front-End Engineering","Pacific Northwest Tech Consulting"],"sameAs":["https://www.linkedin.com/in/olga-sirenko-840b08176/"]}</script>
+<style>
+body{margin:0;background:#02101F}
+[data-theme="dark"]{--paper:var(--night-deep);--card:var(--night);--paper-2:var(--card);--control-border:var(--muted);--violet-2:var(--violet);--violet-action:var(--violet);--cyan-text:var(--cyan);--cyan-dim:var(--cyan);--cyan-wash-line:var(--line);--slate:var(--muted);--slate-wash:var(--line);--success-wash:color-mix(in srgb,var(--success) 12%,transparent);--error-wash:color-mix(in srgb,var(--error) 12%,transparent);--surface-page:var(--paper);--surface-panel:var(--card);--surface-card:var(--card);--surface-glass:color-mix(in srgb,var(--paper) 80%,transparent);--surface-wash:var(--violet-wash);--text-strong:var(--ink);--text-body:var(--ink-2);--text-muted:var(--muted);--text-accent:var(--violet);--text-accent-2:var(--cyan);--border-hairline:var(--line);--accent-primary:var(--violet);--accent-action:var(--violet);--accent-secondary:var(--cyan);--accent-signal:var(--cyan);--chip-bg:var(--cyan-wash);--chip-fg:var(--cyan);--focus-ring:var(--cyan);--focus-bleed:color-mix(in srgb,var(--cyan) 18%,transparent);--selection-bg:var(--violet)}
+a{color:var(--violet);text-decoration:none}
+a:hover{color:var(--ink)}
+[data-chip-wrap] *{white-space:normal!important;min-width:0;overflow-wrap:anywhere}
+</style>
+</helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;background:var(--paper);color:var(--ink-2);font:var(--type-body);transition:background var(--dur-base) ease">
+
+<header style="position:sticky;top:0;z-index:50;background:var(--surface-glass);backdrop-filter:var(--blur-header);-webkit-backdrop-filter:var(--blur-header);border-bottom:1px solid var(--line)">
+  <div style="max-width:var(--container);margin:0 auto;padding:0 clamp(20px,5vw,48px);min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <a href="#" onClick="{{ goHome }}" aria-label="Olga Sirenko, home" style="display:flex;align-items:center;gap:12px;flex-wrap:nowrap;flex:none">
+      <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Monogram" size="{{ 36 }}" hint-size="36px,36px"></x-import>
+      <span style="font:600 15px/1 var(--font-sans);color:var(--ink);letter-spacing:-.01em">Olga Sirenko</span>
+    </a>
+    <nav aria-label="Primary" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="2">
+        <a href="#" onClick="{{ n.onClick }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 clamp(8px,1.6vw,14px);border-radius:var(--radius-full);font:500 13px/1 var(--font-mono);color:{{ n.color }};background:{{ n.bg }};transition:all var(--dur-base) var(--ease-spring)" style-hover="color:var(--ink)">{{ n.label }}</a>
+      </sc-for>
+      <a href="resume.pdf" download="" style="display:flex;align-items:center;gap:6px;height:40px;padding:0 clamp(8px,1.6vw,14px);border-radius:var(--radius-full);font:500 13px/1 var(--font-mono);color:var(--muted)" style-hover="color:var(--ink)">Resume<x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Icon" name="download" size="14" hint-size="14px,14px"></x-import></a>
+      <button onClick="{{ toggleTheme }}" aria-label="Toggle theme" style="width:40px;height:40px;margin-left:8px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center">
+        <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Icon" name="{{ themeIcon }}" size="18" hint-size="18px,18px"></x-import>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+
+
+
+
+
+
+
+<sc-if value="{{ isAdvisory }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Advisory" style="border-bottom:1px solid var(--line)">
+    <div style="max-width:var(--container);margin:0 auto;padding:clamp(88px,12vw,168px) clamp(20px,5vw,48px) clamp(80px,10vw,144px);display:flex;flex-direction:column;gap:24px">
+      <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Kicker" dot="{{ true }}" hint-size="auto,16px">48-Hour Asynchronous Advisory for Seed &amp; Series-A Founders</x-import>
+      <h1 style="margin:0;max-width:880px;font:600 clamp(2.2rem,4.4vw,3.1rem)/1.08 var(--font-display);letter-spacing:-.02em;color:var(--ink);text-wrap:balance">Your AI product isn't losing users because the model failed. It's losing users during <em style="font-weight:400;color:var(--cyan-text)">latency and state transitions.</em></h1>
+      <p style="margin:0;max-width:660px;font:400 17px/1.6 var(--font-sans);color:var(--muted);text-wrap:pretty">Most venture-backed AI interfaces treat LLMs like standard synchronous APIs. When responses take 3+ seconds to stream or resolve non-deterministically, users lose trust and churn. I run rapid, forensic architectural audits to eliminate cognitive drop-off, design resilient state machines, and protect retention.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;padding-top:8px">
+        <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Button" variant="primary" mono="{{ true }}" icon="arrow_downward" onClick="{{ goIntake }}" hint-size="200px,44px">Request an Audit</x-import>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Advisory problem" style="border-bottom:1px solid var(--line)">
+    <div style="max-width:var(--container);margin:0 auto;padding:clamp(80px,11vw,160px) clamp(20px,5vw,48px);display:flex;flex-wrap:wrap;gap:40px clamp(40px,6vw,80px)">
+      <div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:12px">
+        <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Kicker" hint-size="auto,16px">The Architectural Gap</x-import>
+        <h2 style="margin:0;font:var(--type-h1);letter-spacing:-.02em;color:var(--ink);text-wrap:balance">Cosmetics Won't Fix Non-Deterministic State Failures.</h2>
+      </div>
+      <div style="flex:1.4 1 420px;min-width:0;display:flex;flex-direction:column;gap:24px">
+        <p style="margin:0;font:400 17px/1.6 var(--font-sans);color:var(--ink-2);text-wrap:pretty">Most design audits focus on aesthetics: fixing padding, swapping hex codes, or restyling chat bubbles. But in AI-native products, churn rarely happens because of typography.</p>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="font:var(--type-kicker);letter-spacing:var(--ls-kicker);text-transform:uppercase;color:var(--muted)">Churn happens when</span>
+          <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column">
+            <sc-for list="{{ churn }}" as="c" hint-placeholder-count="4">
+              <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:center;padding:16px 0;border-top:{{ c.border }}">
+                <span style="font:500 15px/1 var(--font-mono);font-variant-numeric:tabular-nums;color:var(--violet)">{{ c.no }}</span>
+                <span style="font:400 17px/1.5 var(--font-sans);color:var(--ink);text-wrap:pretty">{{ c.t }}</span>
+              </li>
+            </sc-for>
+          </ol>
+        </div>
+        <p style="margin:0;font:400 17px/1.6 var(--font-sans);color:var(--muted);text-wrap:pretty">Because my background combines computer programming with enterprise platform architecture (Equinix, Quantum Metric, Vividly), I evaluate your application through the lens of data schemas, latency budgets, and resilient state machines.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:1px solid var(--line)">
+    <div style="max-width:var(--container);margin:0 auto;padding:clamp(80px,11vw,160px) clamp(20px,5vw,48px);display:flex;flex-direction:column;gap:clamp(40px,6vw,72px)">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Kicker" hint-size="auto,16px">Deliverables</x-import>
+        <h2 style="margin:0;max-width:760px;font:var(--type-h1);letter-spacing:-.02em;color:var(--ink);text-wrap:balance">The Three Deliverables in 48 Hours</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(20px,3vw,32px)">
+        <sc-for list="{{ deliverables }}" as="d" hint-placeholder-count="3">
+          <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Card" hint-size="100%,280px">
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <span style="font:400 italic 40px/1 var(--font-display);color:var(--violet)">{{ d.no }}</span>
+              <h3 style="margin:0;font:var(--type-h3);color:var(--ink)">{{ d.title }}</h3>
+              <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px">
+                <sc-for list="{{ d.points }}" as="p" hint-placeholder-count="2">
+                  <li style="display:grid;grid-template-columns:12px minmax(0,1fr);gap:10px;align-items:baseline;color:var(--muted);text-wrap:pretty"><span style="width:5px;height:5px;border-radius:50%;background:var(--cyan-text);transform:translateY(-3px)"></span>{{ p }}</li>
+                </sc-for>
+              </ul>
+            </div>
+          </x-import>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:1px solid var(--line)">
+    <div style="max-width:var(--container);margin:0 auto;padding:clamp(80px,11vw,160px) clamp(20px,5vw,48px);display:flex;flex-direction:column;gap:clamp(40px,6vw,72px)">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Kicker" hint-size="auto,16px">What We Evaluate</x-import>
+        <h2 style="margin:0;max-width:760px;font:var(--type-h1);letter-spacing:-.02em;color:var(--ink);text-wrap:balance">Four layers where AI products lose trust</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px clamp(24px,3vw,40px)">
+        <sc-for list="{{ evaluate }}" as="e" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;gap:12px;padding-top:20px;border-top:1px solid var(--line)">
+            <h3 style="margin:0;font:600 18px/1.35 var(--font-sans);color:var(--ink);text-wrap:balance">{{ e.t }}</h3>
+            <p style="margin:0;color:var(--muted);text-wrap:pretty">{{ e.b }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="intake" style="border-bottom:1px solid var(--line)">
+    <div style="max-width:var(--container);margin:0 auto;padding:clamp(80px,11vw,160px) clamp(20px,5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px;align-items:stretch">
+      <sc-for list="{{ tracks }}" as="tr" hint-placeholder-count="2">
+        <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Card" padding="{{ 36 }}" style="{{ cardFill }}" hint-size="100%,440px">
+          <div style="height:100%;display:flex;flex-direction:column;gap:24px;color:var(--ink)">
+            <span style="font:var(--type-kicker);letter-spacing:var(--ls-kicker);text-transform:uppercase;color:var(--cyan-text)">{{ tr.kicker }}</span>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <h3 style="margin:0;font:var(--type-h2);letter-spacing:-.01em;color:var(--ink);text-wrap:balance">{{ tr.title }}</h3>
+              <span style="font:400 14px/1.4 var(--font-mono);color:var(--muted)">{{ tr.sub }}</span>
+            </div>
+            <div style="display:flex;flex-direction:column;border-top:1px solid var(--line)">
+              <sc-for list="{{ tr.points }}" as="t" hint-placeholder-count="3">
+                <div style="display:grid;grid-template-columns:18px minmax(0,1fr);gap:12px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)">
+                  <span style="transform:translateY(3px)"><x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Icon" name="check" size="18" color="var(--cyan-text)" hint-size="18px,18px"></x-import></span>
+                  <span style="font:400 15px/1.4 var(--font-sans);color:var(--ink)">{{ t }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:auto;display:flex;padding-top:8px">
+              <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Button" variant="{{ tr.variant }}" mono="{{ true }}" icon="{{ tr.icon }}" onClick="{{ tr.act }}" hint-size="240px,44px">{{ tr.cta }}</x-import>
+            </div>
+          </div>
+        </x-import>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="border-bottom:1px solid var(--line)">
+    <div style="max-width:var(--container);margin:0 auto;padding:clamp(80px,11vw,160px) clamp(20px,5vw,48px);display:flex;flex-direction:column;gap:clamp(40px,6vw,72px)">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Kicker" hint-size="auto,16px">How It Works</x-import>
+        <h2 style="margin:0;max-width:760px;font:var(--type-h1);letter-spacing:-.02em;color:var(--ink);text-wrap:balance">The 3-Step Protocol</h2>
+      </div>
+      <ol style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:40px clamp(24px,3vw,40px)">
+        <sc-for list="{{ steps }}" as="p" hint-placeholder-count="3">
+          <li style="display:flex;flex-direction:column;gap:12px;padding-top:20px;border-top:1px solid var(--line)">
+            <span style="display:flex;align-items:baseline;gap:12px;font:500 13px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)"><span style="font:400 italic 32px/1 var(--font-display);letter-spacing:0;color:var(--violet)">{{ p.no }}</span>{{ p.when }}</span>
+            <h3 style="margin:0;font:600 18px/1.35 var(--font-sans);color:var(--ink)">{{ p.t }}</h3>
+            <p style="margin:0;color:var(--muted);text-wrap:pretty">{{ p.b }}</p>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <section style="border-bottom:1px solid var(--line)">
+    <div style="max-width:var(--container);margin:0 auto;padding:clamp(80px,11vw,160px) clamp(20px,5vw,48px);display:flex;flex-wrap:wrap;gap:40px">
+      <div style="flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:12px">
+        <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Kicker" hint-size="auto,16px">Founder FAQ</x-import>
+        <h2 style="margin:0;font:var(--type-h1);letter-spacing:-.02em;color:var(--ink)">Before you book</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;border-top:1px solid var(--line);flex:2 1 420px;min-width:0">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+          <div style="border-bottom:1px solid var(--line)">
+            <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;background:none;border:0;cursor:pointer;text-align:left;font:500 17px/1.4 var(--font-sans);color:var(--ink)">
+              {{ q.q }}
+              <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Icon" name="{{ q.icon }}" size="20" color="var(--muted)" hint-size="20px,20px"></x-import>
+            </button>
+            <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0;padding:0 40px 24px 0;color:var(--muted);text-wrap:pretty">{{ q.a }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div style="max-width:var(--container);margin:0 auto;padding:clamp(80px,11vw,160px) clamp(20px,5vw,48px)">
+      <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Card" padding="{{ 56 }}" hint-size="100%,300px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+          <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Kicker" hint-size="auto,16px">Have Questions First?</x-import>
+          <h2 style="margin:0;max-width:640px;font:var(--type-h1);letter-spacing:-.02em;color:var(--ink);text-wrap:balance">Not sure if your product is ready for an audit?</h2>
+          <p style="margin:0;max-width:560px;color:var(--muted);text-wrap:pretty">Send a direct note with your product link, and I will let you know within 24 hours if this engagement makes sense for your current stage.</p>
+          <a href="mailto:hello@olgasirenko.com?subject=Advisory%20Question" style="margin-top:8px;font:500 14px/1.4 var(--font-mono);color:var(--violet);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--violet) 35%,transparent);text-underline-offset:5px;transition:text-decoration-color .3s var(--ease-spring,ease)" style-hover="text-decoration-color:var(--violet)">Email: hello@olgasirenko.com →</a>
+        </div>
+      </x-import>
+    </div>
+  </section>
+
+  <sc-if value="{{ intakeModal }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeIntake }}" style="position:fixed;inset:0;z-index:90;background:color-mix(in srgb,var(--night,#0B1B30) 45%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,32px);overflow-y:auto">
+      <div ref="{{ modalRef }}" role="dialog" aria-modal="true" aria-labelledby="intake-title" onClick="{{ stop }}" style="position:relative;width:100%;max-width:600px;max-height:calc(100vh - 32px);overflow-y:auto;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-2);padding:clamp(24px,4vw,40px)">
+        <button onClick="{{ closeIntake }}" aria-label="Close" style="position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color .3s,border-color .3s" style-hover="color:var(--ink);border-color:var(--muted)">
+          <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Icon" name="close" size="20" hint-size="20px,20px"></x-import>
+        </button>
+        <sc-if value="{{ intakeOpen }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submitIntake }}" style="display:flex;flex-direction:column;gap:20px">
+            <div style="display:flex;flex-direction:column;gap:8px;padding-right:48px">
+              <h3 id="intake-title" style="margin:0;font:var(--type-h2);color:var(--ink);text-wrap:balance">Request 48-Hour Architecture Audit</h3>
+              <p style="margin:0;color:var(--muted);text-wrap:pretty">$1,500 flat investment · Reviewed within 24 hours. No payment required today.</p>
+            </div>
+            <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Input" label="Work email" placeholder="founder@company.ai" value="{{ f.name }}" onChange="{{ onName }}" hint-size="100%,64px"></x-import>
+            <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Input" label="Product name &amp; live / staging URL" placeholder="acme.ai or staging.acme.ai" value="{{ f.product }}" onChange="{{ onProduct }}" hint-size="100%,64px"></x-import>
+            <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Input" label="Primary bottleneck / drop-off point" placeholder="Where do users stall or churn?" value="{{ f.drop }}" onChange="{{ onDrop }}" error="{{ intakeErr }}" hint-size="100%,64px"></x-import>
+            <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Checkbox" checked="{{ f.nda }}" onChange="{{ onNda }}" label="Send a mutual NDA before requesting test environment access." hint-size="100%,24px"></x-import>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Button" type="submit" variant="primary" mono="{{ true }}" full-width="{{ true }}" icon="arrow_forward" hint-size="100%,44px">Submit Audit Request</x-import>
+              <span style="font:400 12px/1.5 var(--font-mono);color:var(--muted);text-wrap:pretty">I review technical fit within 24 hours. Upon confirmation, you receive a countersigned NDA and corporate invoice (Card/ACH/Wire).</span>
+            </div>
+          </form>
+        </sc-if>
+        <sc-if value="{{ intakeSent }}" hint-placeholder-val="{{ false }}">
+          <div aria-live="polite" style="display:flex;flex-direction:column;gap:16px;align-items:flex-start;padding:8px 0">
+            <span style="width:48px;height:48px;border-radius:50%;background:var(--cyan-wash);border:1px solid var(--cyan-wash-line);color:var(--cyan-text);display:flex;align-items:center;justify-content:center">
+              <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Icon" name="check" size="22" hint-size="22px,22px"></x-import>
+            </span>
+            <h3 style="margin:0;font:var(--type-h2);color:var(--ink)">Request received.</h3>
+            <p style="margin:0;color:var(--muted);text-wrap:pretty">I'll review technical fit within 24 hours and reply to {{ f.name }} with a countersigned NDA and corporate invoice.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:12px">
+              <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Button" variant="primary" mono="{{ true }}" onClick="{{ closeIntake }}" hint-size="120px,44px">Done</x-import>
+              <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Button" variant="secondary" mono="{{ true }}" onClick="{{ resetIntake }}" hint-size="160px,44px">Edit request</x-import>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ callModal }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeCall }}" style="position:fixed;inset:0;z-index:90;background:color-mix(in srgb,var(--night,#0B1B30) 45%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,32px)">
+      <div ref="{{ callRef }}" role="dialog" aria-modal="true" aria-labelledby="call-title" onClick="{{ stop }}" style="position:relative;width:100%;max-width:880px;height:min(760px,calc(100vh - 32px));box-sizing:border-box;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-2);overflow:hidden">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:clamp(20px,3vw,28px) clamp(20px,3vw,28px) 20px;border-bottom:1px solid var(--line)">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <h3 id="call-title" style="margin:0;font:var(--type-h2);color:var(--ink);text-wrap:balance">30-Min Architecture &amp; Advisory Consultation</h3>
+            <p style="margin:0;color:var(--muted)">Ongoing Advisory · Fractional Leadership</p>
+          </div>
+          <button onClick="{{ closeCall }}" aria-label="Close" style="flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color .3s,border-color .3s" style-hover="color:var(--ink);border-color:var(--muted)">
+            <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Icon" name="close" size="20" hint-size="20px,20px"></x-import>
+          </button>
+        </div>
+        <sc-if value="{{ hasCal }}" hint-placeholder-val="{{ false }}">
+          <iframe src="{{ calSrc }}" title="Book a 30-minute discovery call" style="flex:1;width:100%;border:0;background:#fff"></iframe>
+        </sc-if>
+        <sc-if value="{{ noCal }}" hint-placeholder-val="{{ true }}">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:32px;text-align:center;background:var(--paper)">
+            <span style="font:var(--type-kicker);letter-spacing:var(--ls-kicker);text-transform:uppercase;color:var(--muted)">Google Calendar booking page</span>
+            <p style="margin:0;max-width:420px;color:var(--muted);text-wrap:pretty">Add your appointment schedule link in Tweaks → Advisory → calLink to embed it here.</p>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+</sc-if>
+
+
+</main>
+
+<footer style="border-top:1px solid var(--line)">
+  <div style="max-width:var(--container);margin:0 auto;padding:clamp(32px,5vw,56px) clamp(20px,5vw,48px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Monogram" size="{{ 28 }}" shape="square" hint-size="28px,28px"></x-import>
+      <span style="font:400 13px/1.5 var(--font-sans);color:var(--muted)">© 2026 Olga Sirenko. Architected for scale and resilience.</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:20px;font:500 13px/1 var(--font-mono)">
+      <a href="https://www.linkedin.com/in/olga-sirenko-840b08176/" target="_blank" rel="noopener">LinkedIn →</a>
+      <a href="mailto:hello@olgasirenko.com">hello@olgasirenko.com</a>
+    </div>
+  </div>
+</footer>
+
+<div style="position:fixed;right:24px;bottom:24px;z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:12px;max-width:calc(100vw - 48px)">
+  <sc-if value="{{ chatOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-label="Ask about Olga" style="width:380px;max-width:100%;height:min(560px,calc(100vh - 140px));display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-2);overflow:hidden">
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)">
+        <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Monogram" size="{{ 32 }}" hint-size="32px,32px"></x-import>
+        <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+          <span style="font:600 14px/1.2 var(--font-sans);color:var(--ink)">Ask about Olga</span>
+          <span style="display:flex;align-items:center;gap:6px;font:400 11px/1.2 var(--font-mono);color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent-signal)"></span>Assistant · {{ chatTopic }}</span>
+        </div>
+        <button onClick="{{ closeChat }}" aria-label="Close chat" style="width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center">
+          <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Icon" name="close" size="16" hint-size="16px,16px"></x-import>
+        </button>
+      </div>
+      <div ref="{{ chatScroll }}" aria-live="polite" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ chatMsgs }}" as="m" hint-placeholder-count="1">
+          <div style="align-self:{{ m.align }};max-width:86%;padding:10px 14px;border-radius:var(--radius);background:{{ m.bg }};color:{{ m.color }};border:1px solid {{ m.border }};font:400 14px/1.55 var(--font-sans);white-space:pre-wrap;text-wrap:pretty">{{ m.text }}</div>
+        </sc-for>
+        <sc-if value="{{ chatBusy }}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:flex-start;padding:10px 14px;border-radius:var(--radius);background:var(--paper-2);font:400 12px/1.4 var(--font-mono);color:var(--muted)">Thinking…</div>
+        </sc-if>
+        <sc-if value="{{ showChips }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;padding-top:4px">
+            <sc-for list="{{ chatChips }}" as="c" hint-placeholder-count="3">
+              <button onClick="{{ c.ask }}" style="padding:7px 12px;border-radius:var(--radius-full);border:1px solid var(--line);background:transparent;color:var(--ink);font:500 12px/1.3 var(--font-mono);cursor:pointer;text-align:left" style-hover="border-color:var(--hover-border);background:var(--paper-2)">{{ c.label }}</button>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+      <form onSubmit="{{ sendChat }}" style="display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)">
+        <input value="{{ chatInput }}" onChange="{{ onChatInput }}" placeholder="Ask about projects, Olga, or the audit" aria-label="Message" style="flex:1;min-width:0;height:44px;padding:0 14px;border-radius:var(--radius-full);border:1px solid var(--control-border);background:var(--paper);color:var(--ink);font:400 14px var(--font-sans);outline:none"></input>
+        <button type="submit" aria-label="Send" style="width:44px;height:44px;flex:none;border-radius:50%;border:0;background:var(--violet-2);color:var(--text-on-accent);cursor:pointer;display:flex;align-items:center;justify-content:center">
+          <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Icon" name="arrow_upward" size="18" hint-size="18px,18px"></x-import>
+        </button>
+      </form>
+    </div>
+  </sc-if>
+  <sc-if value="{{ chatClosed }}" hint-placeholder-val="{{ true }}">
+    <button onClick="{{ openChat }}" aria-label="Open assistant" style="height:48px;padding:0 18px 0 8px;display:flex;align-items:center;gap:10px;border-radius:var(--radius-full);border:1px solid var(--line);background:var(--card);color:var(--ink);box-shadow:var(--shadow-2);cursor:pointer;font:500 13px/1 var(--font-mono)" style-hover="border-color:var(--hover-border)">
+      <x-import component-from-global-scope="OlgaSirenkoDesignSystem_720a22.Monogram" size="{{ 32 }}" hint-size="32px,32px"></x-import>Ask about Olga
+    </button>
+  </sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;A&quot;,&quot;B&quot;],&quot;default&quot;:&quot;B&quot;,&quot;tsType&quot;:&quot;'A'|'B'&quot;,&quot;section&quot;:&quot;Homepage&quot;},&quot;showIntro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Homepage&quot;},&quot;markPlaceholders&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Homepage&quot;},&quot;chatDelay&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:2,&quot;max&quot;:60,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;default&quot;:8,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Assistant&quot;},&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;'dark'|'light'&quot;},&quot;passcode&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ACCESS2026&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;calLink&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Advisory&quot;}}">
+const CASES = [
+  { slug: 'enterprise-platform-governance', name: 'Multi-Tenant Governance', hook: 'Rebuilding enterprise permissions to cut design-to-engineering handoff cycles by 35%.', tags: ['ENTERPRISE SAAS', 'DATA PLATFORMS', 'SYSTEMS ARCHITECTURE'], img: 'assets/telemetry.jpg', hudL: 'RFC-04 · RBAC GOVERNANCE', hudR: '−35% HANDOFF',
+    title: 'Unifying Fragmented Enterprise Workflows Across Multi-Tenant Cloud Environments',
+    summary: 'An architectural overhaul of enterprise permissions, role-based access control (RBAC), and cross-squad token governance. Reduced design-to-engineering handoff cycles by 35% while resolving high-value churn across tier-1 client deployments.',
+    memo: {
+      rfc: 'RFC-04', title: 'Multi-Tenant Enterprise Permissions & System Governance',
+      meta: [{ k: 'Author', v: 'Olga Sirenko, Principal Product Designer' }, { k: 'Scope', v: '6 Squads, 24 Engineers' }, { k: 'Timeline', v: 'Q1–Q3' }],
+      metrics: [{ value: '$4.2M', label: 'Enterprise ARR unblocked' }, { value: '−28%', label: 'Post-onboarding support tickets' }, { value: '+35%', label: 'Handoff velocity' }],
+      sections: [
+        { num: '1.0', short: 'Summary', title: 'Executive Summary & Business Impact', bullets: [{ k: 'Context', v: 'Legacy permission models were causing enterprise deal drop-off in the late sales cycle.' }, { k: 'Primary impact', v: '$4.2M enterprise ARR unblocked; support ticket volume down 28% in post-onboarding.' }] },
+        { num: '2.0', short: 'Constraints', title: 'Technical & Data Constraints', bullets: [{ k: 'API boundaries', v: 'Permission validation calls had a strict 150ms latency ceiling across distributed regions.' }, { k: 'Legacy schemas', v: 'Backward compatibility required for 120,000 legacy tenant organizations without downtime.' }] },
+        { num: '3.0', short: 'Trade-offs', title: 'Architectural Options & Trade-Off Matrix', table: [
+          { model: 'Option A: Granular ACL Matrix', load: 'Extreme (High Churn)', cost: 'Low (2 Sprints)', risk: 'High config errors', decision: 'REJECTED', accepted: false },
+          { model: 'Option B: Inherited Role Hierarchy', load: 'Minimal (High Trust)', cost: 'Moderate (4 Sprints)', risk: 'Clean fallback states', decision: 'ACCEPTED', accepted: true }] },
+        { num: '4.0', short: 'State diagrams', title: 'Interface State Diagrams & Error Recovery', placeholder: '[ Embedded architectural diagrams, state machine flows, and edge-case handling specs ]' },
+        { num: '5.0', short: 'Verification', title: 'Verification & Post-Rollout Metrics', placeholder: '[ Amplitude retention graphs and engineering velocity retrospective ]' }
+      ]
+    } },
+  { slug: 'agentic-oversight', name: 'Agent Oversight', hook: 'Designing human-in-the-loop controls that lowered agent query retry errors by 42%.', tags: ['AGENTIC WORKFLOWS', 'STATE MACHINES', 'LATENCY UX'], img: 'assets/console.jpg', hudL: 'AGENT OVERSIGHT · HITL', hudR: '−42% RETRIES',
+    title: 'Designing Human-in-the-Loop Oversight for Asynchronous Autonomous Agents',
+    summary: 'Architecting progressive disclosure, dynamic confidence scoring, and fail-safe recovery states for background AI operations with variable latency. Lowered query retry errors by 42% and restored user trust in non-deterministic model outputs.',
+    memo: {
+      rfc: 'RFC · Agentic Orchestration', title: 'Designing Human-in-the-Loop Oversight for Asynchronous Autonomous Agents',
+      meta: [{ k: 'Author', v: 'Olga Sirenko, Principal Product Designer' }],
+      metrics: [{ value: '−42%', label: 'Query retry errors' }],
+      sections: [
+        { num: '1.0', short: 'Summary', title: 'Executive Summary & Business Impact', bullets: [{ k: 'Scope', v: 'Progressive disclosure, dynamic confidence scoring, and fail-safe recovery states for background AI operations with variable latency.' }, { k: 'Primary impact', v: 'Lowered query retry errors by 42% and restored user trust in non-deterministic model outputs.' }] },
+        { num: '2.0', short: 'Constraints', title: 'Technical & Data Constraints', placeholder: '[ Section in draft ]' },
+        { num: '3.0', short: 'Trade-offs', title: 'Architectural Options & Trade-Off Matrix', placeholder: '[ Section in draft ]' },
+        { num: '4.0', short: 'State diagrams', title: 'Interface State Diagrams & Error Recovery', placeholder: '[ Embedded architectural diagrams, state machine flows, and edge-case handling specs ]' },
+        { num: '5.0', short: 'Verification', title: 'Verification & Post-Rollout Metrics', placeholder: '[ Retention graphs and engineering velocity retrospective ]' }
+      ]
+    } }
+];
+const METRICS = [
+  { value: '$4.2M+', label: 'Enterprise pipeline influenced by unblocking multi-tenant workflow friction' },
+  { value: '6 Squads', label: 'Cross-functional alignment across product, data engineering, and design tokens' },
+  { value: '<800ms', label: 'Perceived latency reduction via asynchronous state machines & progressive disclosure' }
+];
+const ARTICLES = [
+  { slug: 'chatbots-fail-enterprise', title: 'Why Chatbots Fail for Complex Enterprise Software (And What Replaces Them)', format: 'Essay', date: 'Oct 2026', read: '8 min', tags: ['AI & AUTOMATION', 'ENTERPRISE SAAS'] },
+  { slug: 'latency-budgets', title: 'State Management in Generative Interfaces: Handling 1.2s+ Latency Budgets', format: 'LinkedIn carousel', date: 'Sep 2026', read: '8 slides', tags: ['STATE DESIGN', 'LATENCY UX'] },
+  { slug: 'tokens-as-code', title: 'Design Tokens as Code: Bridging Figma Variables to Production CSS & Swift', format: 'LinkedIn carousel', date: 'Aug 2026', read: '8 slides', tags: ['DESIGN SYSTEMS'] }
+];
+const ARTICLE_TEMPLATE = [
+  { type: 'p', text: '[ Opening paragraph: the problem in one or two sentences. ]' },
+  { type: 'h', text: '[ Section heading ]' },
+  { type: 'p', text: '[ Body paragraph. ]' },
+  { type: 'img', text: 'Drop diagram or carousel slide' },
+  { type: 'q', text: '[ Pull quote or key takeaway ]' },
+  { type: 'h', text: '[ Section heading ]' },
+  { type: 'p', text: '[ Body paragraph. ]' }
+];
+const NOTES = [
+  'Why Chatbots Fail for Complex Enterprise Software (And What Replaces Them)',
+  'State Management in Generative Interfaces: Handling 1.2s+ Latency Budgets',
+  'Design Tokens as Code: Bridging Figma Variables to Production CSS & Swift'
+];
+const DELIVERABLES = [
+  { no: '01', title: '25-Min Forensic Teardown', points: ['Screen-by-screen video breakdown of your live web app or staging environment.', 'Pinpoints exact cognitive drop-off points: latency dead zones, unclear agent execution states, and friction in human approval loops.'] },
+  { no: '02', title: 'Priority Matrix', points: ['Categorized roadmap formatted directly for your sprint backlog: immediate UI fixes vs. core state refactors.', 'Prioritizes updates by business impact: activation, retention, and engineering complexity.'] },
+  { no: '03', title: 'State Architecture Specs', points: ['Production-ready wireframe patterns for token streaming states, optimistic UI updates, and non-deterministic error recovery.', 'Explicit human-in-the-loop verification gates and audit trail layouts.'] }
+];
+const CHURN = ['The UI freezes silently while an agent runs background tool calls.', 'Streaming text jitter causes layout reflows that break user reading flow.', 'Hallucinations occur without a clear diff view or verification checkpoint.', 'Model timeouts dump users back to empty input fields with zero state recovery.'];
+const EVALUATE = [
+  { t: 'Agentic Workflows & Tool Calling', b: 'How your UI communicates background processing, autonomous sub-tasks, and error states.' },
+  { t: 'Streaming Latency & Perceived Speed', b: 'Implementing optimistic updates, skeleton progress bars, and token streaming without layout shifts.' },
+  { t: 'Human-in-the-Loop (HITL) Controls', b: 'Designing diff viewers, editable intermediate outputs, and role-based approval thresholds.' },
+  { t: 'Dirty Data Ingestion & Recovery', b: 'Error handling for unstructured uploads (CSVs, PDFs, API payloads) that prevents silent data corruption.' }
+];
+const TERMS = [
+  { t: '$1,500 Flat Corporate Investment' },
+  { t: '48-Hour Turnaround', note: 'Starts once environment access is confirmed' },
+  { t: '100% Asynchronous', note: 'Zero scheduling friction or meeting drag' },
+  { t: 'Mutual NDA Signed Upfront' },
+  { t: 'Payment via Corporate Credit Card, ACH, or Wire' }
+];
+const STEPS = [
+  { no: '1', when: 'Hour 0–24', t: 'Request & NDA', b: 'Submit your intake. Within 24 hours, I confirm fit and send a countersigned mutual NDA.' },
+  { no: '2', when: 'Onboarding', t: 'Access & Invoice', b: 'Access is shared via secure vault; payment processed via corporate invoice (Card/Wire).' },
+  { no: '3', when: '48 hours', t: '48-Hour Delivery', b: 'Receive your video teardown, FigJam priority backlog, and state architecture specs.' }
+];
+const FAQS = [
+  { q: 'Why is this 100% asynchronous?', a: 'Synchronous Zoom meetings waste leadership and engineering time. By working asynchronously, I spend those hours performing forensic, undisturbed testing in your environment. You receive dense, unedited analysis and an actionable FigJam backlog that your engineering and product teams can implement immediately.' },
+  { q: 'Do you sign NDAs?', a: 'Yes. Protecting your intellectual property and unreleased features is non-negotiable. Once you submit an inquiry, I provide a standard, founder-friendly mutual NDA alongside confirmation within 24 hours. No credentials or staging links are shared until that agreement is executed.' },
+  { q: 'How does payment work?', a: 'Payment is handled via standard corporate invoicing (powered by Stripe Invoicing). Your finance team can pay using any corporate credit card (Brex, Ramp, Amex), ACH transfer, or wire transfer. Payment is finalized when the NDA is signed and before the 48-hour audit window begins.' },
+  { q: 'What tech stacks and products do you evaluate?', a: 'Enterprise SaaS, vertical AI tools, agentic workflows, and complex data-intensive platforms. Whether your product runs on custom LLM orchestration, LangChain, multi-tenant databases, or high-frequency telemetry, the audit evaluates state machines, latency handling, and interface feedback.' },
+  { q: 'Can we engage you for ongoing advisory after the audit?', a: 'Yes. Many teams use the 48-hour audit as a diagnostic sprint before moving into a monthly strategic advisory retainer (supporting bi-weekly architectural reviews, PRD audits, and DesignOps velocity). Retainer engagements are strictly capped at two companies at a time.' }
+];
+const STORY = [
+  { no: '01', title: 'From Information Architecture to Enterprise Scale', body: 'My foundation began at the intersection of human behavioral patterns, investigative journalism, and computer programming. That multi-disciplinary background shaped a core operating principle: great enterprise software must simultaneously respect human psychology, satisfy rigid technical constraints, and drive measurable unit economics. Over the past 12+ years, I have applied this holistic lens across international markets\u2014from founding and directing a European media and design agency in Vienna to architecting mission-critical platforms in Silicon Valley and the Pacific Northwest.' },
+  { no: '02', title: 'Designing for Dual-Agent Ecosystems', body: 'Today, enterprise software is no longer built solely for human operators; it requires co-adaptation with autonomous AI agents. My recent work focuses on solving the systemic friction inherent in advanced technologies\u2014spearheading enterprise AI security frameworks, real-time behavioral analytics architectures (such as Quantum Metric\u2019s Visible widget), and automated compliance engines like Auto-PII detection. Because I understand the code underlying the interface, I eliminate the costly translation gap between design vision, product roadmaps, and full-stack engineering execution.' },
+  { no: '03', title: 'Strategic Advisory & Commercial Integration', body: 'Beyond tactical product craft, I operate as an executive design partner for businesses navigating digital transformation and AI integration. I help leadership teams audit fragmented legacy workflows, establish scalable multi-platform design systems, and design user trust, governance, and auditability directly into autonomous workflows. My focus is simple: turning complex technical capabilities into defensible market advantages.' }
+];
+const SKILLS = [
+  { title: 'Enterprise AI & Complex Systems', items: ['Agentic Interaction Architecture', 'Dual-User AI Interfaces (Human + Agent)', 'Anomaly Detection UX', 'Real-Time Data Visualization', 'Compliance & PII Security Governance'] },
+  { title: 'Business Strategy & Product Scale', items: ['Design Systems Leadership', 'Cross-Functional Alignment (Eng / PM / Exec)', 'Time-to-Market Acceleration', 'Workflow Automation & Operational Efficiency', 'Multi-Channel Brand Positioning'] },
+  { title: 'Technical Fluency & UX Engineering', items: ['Material Design Architecture', 'WCAG Accessibility (AAA/AA Standards)', 'Front-End Performance', 'HTML5/CSS3/JavaScript', 'Angular', 'React', 'TypeScript', 'Python', 'REST/JSON'] },
+  { title: 'Research & Usability', items: ['Quantitative Analytics Synthesis', 'Usability Testing Protocols', 'Information Architecture (IA)', 'Behavioral Pattern Mapping'] }
+];
+const IMPACT = [
+  { title: 'Enterprise Modernization at Scale', tag: 'EQUINIX \u00b7 3 WKS', body: 'Directed platform-level architectural redesigns across distributed cloud computing solutions at Equinix, delivering high-fidelity functional prototypes in 3 weeks to secure executive funding and accelerate market release.' },
+  { title: 'AI Security & Privacy Automation', tag: 'QUANTUM METRIC', body: 'Architected and launched real-time Auto PII detection engines and granular administrative privacy controls at Quantum Metric, protecting sensitive enterprise data streams while maintaining user trust and compliance.' },
+  { title: 'Operational Optimization', tag: '\u221240% PROCESSING', body: 'Engineered automated digital workflows and enrollment portals at San Jose City College, reducing administrative overhead and processing time by 40%.' },
+  { title: 'Team & Studio Management', tag: 'VIENNA', body: 'Founded and scaled a creative agency, recruiting and leading a cross-disciplinary team of designers, editors, photographers, and marketers under strict delivery SLAs.' }
+];
+const CULTURE = [
+  { title: 'Multilingual Perspective', body: 'Fluent in 4 languages (English, German, Ukrainian, Russian), providing a distinct cross-cultural framework for global localized product rollouts and international stakeholder alignment.' },
+  { title: 'Continuous Engineering Craft', body: 'Active practitioner in modern software toolchains, constantly building and testing experimental applications in Angular, exploring generative frameworks, and maintaining 20+ specialized technical certifications.' }
+];
+const STORIES = {
+  'enterprise-platform-governance': {
+    acts: [
+      { label: 'The Challenge', draft: true, headline: 'How might a permission model scale to 120,000 legacy tenants without slowing enterprise deals?', accent: 'Inherit, don\u2019t configure.',
+        chapters: [
+          { title: 'Why deals stalled', bullets: [{ k: 'Context', v: 'Legacy permission models were causing enterprise deal drop-off in the late sales cycle.' }] },
+          { title: 'Technical & data constraints', bullets: [{ k: 'API boundaries', v: 'Permission validation calls had a strict 150ms latency ceiling across distributed regions.' }, { k: 'Legacy schemas', v: 'Backward compatibility required for 120,000 legacy tenant organizations without downtime.' }] }
+        ] },
+      { label: 'The Approach', draft: true, headline: 'Two architectures, one decision matrix.', intro: '[ One paragraph on how the work was run: squads involved, research inputs, iteration cadence. ]',
+        chapters: [
+          { title: 'Architectural options & trade-offs', table: [
+            { model: 'Option A: Granular ACL Matrix', load: 'Extreme (High Churn)', cost: 'Low (2 Sprints)', risk: 'High config errors', decision: 'REJECTED', accepted: false },
+            { model: 'Option B: Inherited Role Hierarchy', load: 'Minimal (High Trust)', cost: 'Moderate (4 Sprints)', risk: 'Clean fallback states', decision: 'ACCEPTED', accepted: true }] },
+          { title: 'Interface state diagrams & error recovery', placeholder: '[ Short description of the state machine and edge-case handling. ]', slotId: 'memo-enterprise-platform-governance-4', slotText: 'Drop state machine flows & edge-case specs' }
+        ] }
+    ],
+    impact: { headline: '$4.2M enterprise ARR unblocked; support ticket volume down 28% in post-onboarding.', slotId: 'memo-enterprise-platform-governance-5', slotText: 'Drop Amplitude retention graphs / velocity retrospective' }
+  },
+  'agentic-oversight': {
+    acts: [
+      { label: 'The Challenge', draft: true, headline: 'How might operators trust agents whose outputs arrive late, or not at all?', accent: 'Show the work, not the wait.',
+        chapters: [
+          { title: 'Scope', body: 'Progressive disclosure, dynamic confidence scoring, and fail-safe recovery states for background AI operations with variable latency.' },
+          { title: 'Technical & data constraints', placeholder: '[ Section in draft ]' }
+        ] },
+      { label: 'The Approach', draft: true, headline: '[ One-line approach statement ]',
+        chapters: [
+          { title: 'Architectural options & trade-offs', placeholder: '[ Section in draft ]' },
+          { title: 'Interface state diagrams & error recovery', placeholder: '[ Short description of the agent state machine and recovery paths. ]', slotId: 'memo-agentic-oversight-4', slotText: 'Drop agent state diagrams & recovery flows' }
+        ] }
+    ],
+    impact: { headline: 'Lowered query retry errors by 42% and restored user trust in non-deterministic model outputs.', slotId: 'memo-agentic-oversight-5', slotText: 'Drop retention graphs / velocity retrospective' }
+  }
+};
+const ROLES = {
+  'enterprise-platform-governance': [
+    { k: 'Systems Architecture', items: ['RBAC model', 'Role inheritance', 'Token governance'] },
+    { k: 'Design', items: ['UX/UI', 'State diagrams', 'Prototyping'] },
+    { k: 'Leadership', items: ['6-squad alignment', 'Design reviews', 'Engineering handoff'] },
+    { k: 'Research', items: ['Enterprise admin interviews', 'Churn analysis'] }
+  ],
+  'agentic-oversight': [
+    { k: 'Systems Architecture', items: ['Agent state machines', 'Confidence scoring', 'Fallback states'] },
+    { k: 'Design', items: ['Progressive disclosure', 'Latency UX', 'Prototyping'] },
+    { k: 'Leadership', items: ['Cross-team alignment', 'Design reviews'] },
+    { k: 'Research', items: ['Retry & trust analysis', 'Usability testing'] }
+  ]
+};
+const LS = 'os-site:';
+const get = (k, d) => { try { return localStorage.getItem(LS + k) ?? d; } catch (e) { return d; } };
+const put = (k, v) => { try { localStorage.setItem(LS + k, v); } catch (e) {} };
+
+const OPENERS = {
+  home: { topic: 'Overview', text: 'Hi, I\u2019m Olga\u2019s assistant. Are you hiring for a senior design leadership role, or looking for help with an AI product? I can walk you through her work.',
+    chips: ['What does Olga specialize in?', 'Summarize her case studies', 'What roles is she open to?'] },
+  advisory: { topic: '48-Hour AI Audit', text: 'Looking at the 48-Hour AI Architecture Audit? I can explain what you get for the $1,500, how the async process works, or whether it fits your product.',
+    chips: ['What are the 3 deliverables?', 'How does the 48-hour process work?', 'Is my product a good fit?'] },
+  about: { topic: 'About Olga', text: 'Want the short version of Olga\u2019s background? I can cover her career path, core competencies, or the impact she\u2019s had at Equinix and Quantum Metric.',
+    chips: ['Summarize her career', 'What are her core competencies?', 'What roles is she open to?'] },
+  notes: { topic: 'Writing', text: 'Browsing Olga\u2019s writing? I can point you to the piece most relevant to what you\u2019re working on.',
+    chips: ['What does Olga write about?', 'Which piece covers latency?', 'Where can I follow her?'] },
+  article: { topic: 'Article', text: 'Want the key takeaways from this piece, or related work from Olga\u2019s case studies?',
+    chips: ['Summarize the key points', 'Show related case studies', 'Book the AI audit'] },
+  case: { topic: 'Case study', text: 'You\u2019re on one of Olga\u2019s case studies. Want a quick summary of the problem, the trade-offs she made, or the outcome?',
+    chips: ['Summarize this case study', 'What was Olga\u2019s role?', 'How do I get the passcode?'] }
+};
+function siteKnowledge() {
+  const L = [];
+  L.push('PERSON: Olga Sirenko. Product Design Leader | Enterprise Systems, AI Architecture & Team Operations. Currently leads the product design team at Vividly (enterprise SaaS, trade promotion platform): directs the team, established DesignOps (critique rituals, Figma component libraries, eng handoff specs), partners with VP of Product and Engineering on quarterly roadmaps. Previously Staff Product Designer at Quantum Metric, where she led cross-team critique and scaled shared patterns across squads. Founded and ran a creative agency in Vienna. Open to Principal (IC) and Director (management) roles. 10+ years (12+ in About copy). Pacific Northwest, Portland\u2013Seattle metro. Email hello@olgasirenko.com. LinkedIn https://www.linkedin.com/in/olga-sirenko-840b08176/. Resume PDF on site. Fluent in English, German, Ukrainian, Russian.');
+  L.push('HERO: Architecting resilient enterprise SaaS platforms, complex data systems, and agentic AI interfaces. 10+ years driving cross-squad UX governance, data-dense workflows, and non-deterministic state management. Currently leading systems architecture; advising high-growth AI teams on interface latency and retention.');
+  L.push('HEADLINE METRICS (some are placeholders): ' + METRICS.map(m => m.value + ' \u2014 ' + m.label).join('; '));
+  STORY.forEach(s => L.push('ABOUT \u2014 ' + s.title + ': ' + s.body));
+  SKILLS.forEach(s => L.push('COMPETENCIES \u2014 ' + s.title + ': ' + s.items.join(', ')));
+  IMPACT.forEach(s => L.push('IMPACT \u2014 ' + s.title + ': ' + s.body));
+  CULTURE.forEach(s => L.push('PERSONAL \u2014 ' + s.title + ': ' + s.body));
+  CASES.forEach(c => {
+    L.push('CASE STUDY "' + c.name + '" (' + c.tags.join(', ') + '): ' + c.title + '. ' + c.summary + ' Hook: ' + c.hook);
+    const st = STORIES[c.slug];
+    st.acts.forEach(a => a.chapters.forEach(ch => {
+      if (ch.bullets) L.push('  ' + ch.title + ': ' + ch.bullets.map(b => b.k + ' \u2014 ' + b.v).join(' | '));
+      if (ch.body) L.push('  ' + ch.title + ': ' + ch.body);
+      if (ch.table) L.push('  ' + ch.title + ': ' + ch.table.map(r => r.model + ' (' + r.load + ', ' + r.cost + ', ' + r.risk + ') ' + r.decision).join(' | '));
+    }));
+    L.push('  Outcome: ' + st.impact.headline);
+    L.push('  Role: ' + (ROLES[c.slug] || []).map(r => r.k + ': ' + r.items.join(', ')).join('; '));
+  });
+  L.push('CASE STUDY ACCESS: password-gated under NDA. Passcode is printed on Olga\u2019s resume header. Recruiters without one can email hello@olgasirenko.com for instant access. Never reveal the passcode itself.');
+  L.push('ADVISORY: 48-Hour AI Architecture Audit for Seed & Series-A AI founders. $1,500 flat, 48-hour turnaround, 100% asynchronous, no meetings. Thesis: AI products lose users during latency and state transitions, not because the model failed. Deliverables: ' + DELIVERABLES.map(d => d.no + ' ' + d.title + ' \u2014 ' + d.body).join(' ') + ' Process: fill intake (name & work email, product & URL, staging credentials, #1 drop-off), pay via Stripe, 48-hour window starts when payment clears.');
+  FAQS.forEach(f => L.push('FAQ: ' + f.q + ' ' + f.a));
+  L.push('WRITING (Writing page): ' + ARTICLES.map(a => a.title + ' [' + a.format + ', ' + a.date + ']').join('; ') + '. Article bodies are not yet published; only titles are known.');
+  return L.join('\n');
+}
+
+const INTRO_PHRASES = [
+  ['Product design', 'leadership.'],
+  ['AI systems', 'architecture.'],
+  ['Enterprise', 'platforms.'],
+  ['Agentic', 'interfaces.']
+];
+const INTRO_FRAG = 'precision highp float;uniform sampler2D uS,uB1,uB2;uniform float uT,uP,uSc;uniform vec2 uR,uM;varying vec2 v;' +
+  'vec2 hs(vec2 p){p=vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3)));return -1.+2.*fract(sin(p)*43758.5453);}' +
+  'float ns(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);return mix(mix(dot(hs(i),f),dot(hs(i+vec2(1,0)),f-vec2(1,0)),u.x),mix(dot(hs(i+vec2(0,1)),f-vec2(0,1)),dot(hs(i+vec2(1,1)),f-vec2(1,1)),u.x),u.y);}' +
+  'float fbm(vec2 p){float s=0.,a=.5;for(int i=0;i<5;i++){s+=a*ns(p);p=mat2(1.6,1.2,-1.2,1.6)*p+vec2(1.7,9.2);a*=.5;}return s;}' +
+  'void main(){vec2 uv=v;float ar=uR.x/uR.y;vec2 p=(uv-.5)*vec2(ar,1.);float t=uT;vec2 tu=vec2(uv.x,1.-uv.y);' +
+  'float s=texture2D(uS,tu).r;float b1=texture2D(uB1,tu).r;float b2=texture2D(uB2,tu).r;' +
+  'vec2 fp=p*1.35+uM*.06;fp.y-=t*.045;' +
+  'vec2 q=vec2(fbm(fp+vec2(0.,t*.03)),fbm(fp+vec2(5.2,1.3)-t*.02));' +
+  'vec2 r=vec2(fbm(fp+3.2*q+vec2(1.7,9.2)+t*.06),fbm(fp+3.2*q+vec2(8.3,2.8)-t*.05));' +
+  'float d=fbm(fp+3.6*r+b2*.8);float smoke=smoothstep(-.12,.75,d);' +
+  'float dens=smoke*(.22+1.1*b2+.55*smoothstep(.55,-.5,p.y))*(1.+uSc*1.4);' +
+  'float n=fbm(p*2.4+vec2(0.,-t*.08))*.5+.5;float x=uP*1.5-.25;float rv=smoothstep(n-.18,n+.18,x);float fr=rv*(1.-rv)*4.;' +
+  'vec2 px=2./uR;float bx=texture2D(uB1,tu+vec2(px.x,0.)).r-texture2D(uB1,tu-vec2(px.x,0.)).r;float by=texture2D(uB1,tu-vec2(0.,px.y)).r-texture2D(uB1,tu+vec2(0.,px.y)).r;' +
+  'vec3 N=normalize(vec3(-bx*7.,-by*7.,1.));vec3 L=normalize(vec3(uM.x*.9+.35,uM.y*.7+.55,.8));' +
+  'float df=max(dot(N,L),0.);float sp=pow(max(dot(reflect(-L,N),vec3(0.,0.,1.)),0.),32.);float edge=clamp(length(vec2(bx,by))*9.,0.,1.);' +
+  'float sw=exp(-pow((p.x*.9+p.y*.45)-(mod(t*.09,3.4)-1.7),2.)*14.);' +
+  'vec3 mint=vec3(.498,.914,.894);vec3 vio=vec3(.33,.17,.72);vec3 bg=vec3(.004,.030,.060);' +
+  'vec3 col=bg+vio*.10*smoothstep(.9,-.2,length(p-vec2(-.5,.45)));' +
+  'col+=mix(vio*.55,mint*.85,smoothstep(.15,.85,r.y+.2*q.x))*dens*.30;' +
+  'vec3 face=vec3(.020,.026,.036)+vec3(.045,.055,.065)*df;face+=mint*sp*.75+vec3(1.)*sp*.25;face+=mint*sw*.22*(.35+df);face+=mint*edge*(.18+.5*sp+.25*sw);' +
+  'float ts=s*rv;col=mix(col,face,ts*(1.-clamp(dens,0.,1.)*.18));' +
+  'col+=mint*fr*s*.55+mint*fr*b1*.25;col+=mint*b2*.05*rv*(.6+.4*sin(t*.6));' +
+  'col+=mint*pow(smoke,4.)*.07*(1.-ts*.5);' +
+  'col*=1.-.55*pow(length((uv-.5)*vec2(1.,.9))*1.25,2.2);col*=1.-uSc*.55;' +
+  'col+=(fract(sin(dot(gl_FragCoord.xy+t,vec2(12.9898,78.233)))*43758.5453)-.5)*.012;gl_FragColor=vec4(max(col,0.),1.);}';
+function OSIntro() {
+  const h = React.createElement;
+  const panel = React.useRef(null), cv = React.useRef(null), cap = React.useRef(null), phr = React.useRef(null);
+  const [idx, setIdx] = React.useState(0);
+  const [ready, setReady] = React.useState(false);
+  const [capOn, setCapOn] = React.useState(false);
+  const reduced = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  React.useEffect(() => {
+    let dead = false, cleanup = () => {};
+    (async () => {
+      const fam = (getComputedStyle(document.documentElement).getPropertyValue('--font-display') || '').trim() || 'Fraunces, Georgia, serif';
+      try { await document.fonts.load('600 200px ' + fam); } catch (e) {}
+      if (dead || !cv.current) return;
+      const c = cv.current, p = panel.current;
+      const gl = c.getContext('webgl', { antialias: false, alpha: false });
+      if (!gl) return;
+      const sh = (type, code) => { const s = gl.createShader(type); gl.shaderSource(s, code); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; };
+      const prog = gl.createProgram();
+      try {
+        gl.attachShader(prog, sh(gl.VERTEX_SHADER, 'attribute vec2 a;varying vec2 v;void main(){v=a*.5+.5;gl_Position=vec4(a,0.,1.);}'));
+        gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, INTRO_FRAG));
+        gl.linkProgram(prog);
+      } catch (e) { console.warn('OS intro shader', e); return; }
+      gl.useProgram(prog);
+      const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+      const al = gl.getAttribLocation(prog, 'a'); gl.enableVertexAttribArray(al); gl.vertexAttribPointer(al, 2, gl.FLOAT, false, 0, 0);
+      const U = {}; ['uS', 'uB1', 'uB2', 'uT', 'uP', 'uSc', 'uR', 'uM'].forEach((k) => (U[k] = gl.getUniformLocation(prog, k)));
+      const texs = [0, 1, 2].map((i) => { const t = gl.createTexture(); gl.activeTexture(gl.TEXTURE0 + i); gl.bindTexture(gl.TEXTURE_2D, t);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE); return t; });
+      gl.uniform1i(U.uS, 0); gl.uniform1i(U.uB1, 1); gl.uniform1i(U.uB2, 2);
+      const off = document.createElement('canvas'), oc = off.getContext('2d');
+      let W = 1, H = 1;
+      const layout = () => {
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5), cw = c.clientWidth || 1, ch = c.clientHeight || 1;
+        W = Math.round(cw * dpr); H = Math.round(ch * dpr); c.width = W; c.height = H; off.width = W; off.height = H; gl.viewport(0, 0, W, H);
+        let fs = H * .56; oc.font = '600 ' + fs + 'px ' + fam;
+        const mw = oc.measureText('OS').width; fs = Math.min(fs, fs * (W * (cw < 700 ? .74 : .44)) / mw);
+        const cy = H * .45;
+        [0, 7 * dpr, 46 * dpr].forEach((bl, i) => {
+          oc.filter = 'none'; oc.fillStyle = '#000'; oc.fillRect(0, 0, W, H);
+          oc.filter = bl ? 'blur(' + bl + 'px)' : 'none'; oc.fillStyle = '#fff'; oc.font = '600 ' + fs + 'px ' + fam;
+          if ('letterSpacing' in oc) oc.letterSpacing = (-.04 * fs) + 'px';
+          oc.textAlign = 'center'; oc.textBaseline = 'middle'; oc.fillText('OS', W / 2, cy);
+          gl.activeTexture(gl.TEXTURE0 + i); gl.bindTexture(gl.TEXTURE_2D, texs[i]);
+          gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, off);
+        });
+        if (cap.current) cap.current.style.top = ((cy + fs * .42) / dpr + Math.max(18, ch * .035)) + 'px';
+        gl.uniform2f(U.uR, W, H);
+      };
+      const ro = new ResizeObserver(() => { layout(); if (reduced) render(); }); ro.observe(c); layout();
+      const m = { x: 0, y: 0, tx: 0, ty: 0 };
+      const onMove = (e) => { const r = p.getBoundingClientRect(); m.tx = ((e.clientX - r.left) / r.width - .5) * 2; m.ty = -((e.clientY - r.top) / r.height - .5) * 2; };
+      const onLeave = () => { m.tx = 0; m.ty = 0; };
+      p.addEventListener('pointermove', onMove); p.addEventListener('pointerleave', onLeave);
+      let visible = true; const io = new IntersectionObserver(([en]) => { visible = en.isIntersecting; }); io.observe(p);
+      let raf, last = performance.now(), clock = 0;
+      const ease = (x) => x >= 1 ? 1 : x <= 0 ? 0 : 1 - Math.pow(1 - x, 3);
+      const render = () => {
+        const s = Math.min(1, Math.max(0, window.scrollY / (p.offsetHeight * .85)));
+        gl.uniform1f(U.uT, clock + 12); gl.uniform1f(U.uP, reduced ? 1 : ease((clock - .4) / 4.2));
+        gl.uniform1f(U.uSc, s); gl.uniform2f(U.uM, m.x, m.y);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        p.style.transform = 'scale(' + (1 - s * .05) + ')'; p.style.borderRadius = (20 + s * 12) + 'px';
+      };
+      const frame = (now) => {
+        raf = requestAnimationFrame(frame);
+        const dt = Math.min(.05, (now - last) / 1000); last = now;
+        if (!visible) return;
+        clock += dt; const k = dt * 60;
+        m.x += (m.tx - m.x) * .035 * k; m.y += (m.ty - m.y) * .035 * k;
+        render();
+      };
+      if (reduced) { render(); window.addEventListener('scroll', render, { passive: true }); }
+      else raf = requestAnimationFrame(frame);
+      setReady(true);
+      const capT = setTimeout(() => !dead && setCapOn(true), reduced ? 0 : 3400);
+      cleanup = () => { cancelAnimationFrame(raf); clearTimeout(capT); ro.disconnect(); io.disconnect(); window.removeEventListener('scroll', render);
+        p.removeEventListener('pointermove', onMove); p.removeEventListener('pointerleave', onLeave);
+        texs.forEach((t) => gl.deleteTexture(t)); gl.deleteBuffer(buf); gl.deleteProgram(prog); };
+    })();
+    return () => { dead = true; cleanup(); };
+  }, []);
+  React.useEffect(() => {
+    if (!capOn || reduced || !phr.current) return;
+    const sp = 'cubic-bezier(0.16,1,0.3,1)';
+    const ws = Array.from(phr.current.querySelectorAll('[data-w]'));
+    ws.forEach((w, i) => w.animate([{ opacity: 0, transform: 'translateY(14px)', filter: 'blur(10px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }], { duration: 1400, delay: i * 110, easing: sp, fill: 'both' }));
+    const out = setTimeout(() => ws.forEach((w, i) => w.animate([{ opacity: 1, transform: 'none', filter: 'blur(0)' }, { opacity: 0, transform: 'translateY(-8px)', filter: 'blur(8px)' }], { duration: 700, delay: i * 60, easing: 'cubic-bezier(0.7,0,0.84,0)', fill: 'forwards' })), 4300);
+    const nxt = setTimeout(() => setIdx((i) => (i + 1) % INTRO_PHRASES.length), 5100);
+    return () => { clearTimeout(out); clearTimeout(nxt); };
+  }, [idx, capOn]);
+  const ph = INTRO_PHRASES[idx];
+  const words = [];
+  ph[0].split(' ').forEach((w, i) => words.push(h('span', { key: 'a' + i, 'data-w': 1, style: { display: 'inline-block' } }, w)));
+  words.push(h('span', { key: 'b', 'data-w': 1, style: { display: 'inline-block', fontStyle: 'italic', fontWeight: 400, color: '#7FE9E4' } }, ph[1]));
+  const mono = { font: '500 11px/1 var(--font-mono)', letterSpacing: '.24em', textTransform: 'uppercase', color: 'rgba(232,240,245,.82)' };
+  return h('div', { ref: panel, style: { position: 'relative', height: 'min(calc(100vh - 92px), 920px)', minHeight: 560, borderRadius: 20, overflow: 'hidden', transformOrigin: '50% 0', isolation: 'isolate', background: '#02101F', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,.04)' } },
+    h('canvas', { ref: cv, 'aria-hidden': true, style: { position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block', opacity: ready ? 1 : 0, transition: 'opacity 1.8s cubic-bezier(0.16,1,0.3,1)' } }),
+    h('h1', { style: { position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)', margin: 0 } }, 'Olga Sirenko — product design leadership and AI systems architecture'),
+    h('div', { ref: cap, 'aria-hidden': true, style: { position: 'absolute', left: 0, right: 0, top: '72%', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, textAlign: 'center', pointerEvents: 'none', padding: '0 20px', opacity: capOn ? 1 : 0, transition: 'opacity 1.6s cubic-bezier(0.16,1,0.3,1)' } },
+      h('span', { style: mono }, 'Olga Sirenko'),
+      h('div', { ref: phr, key: idx, style: { display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0 .28em', font: '500 clamp(22px,2.6vw,36px)/1.15 var(--font-display)', letterSpacing: '-.015em', color: '#EEF3F6' } }, words)),
+    h('div', { 'aria-hidden': true, style: { position: 'absolute', left: '50%', bottom: 'clamp(18px,3vw,30px)', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, pointerEvents: 'none', opacity: capOn ? 1 : 0, transition: 'opacity 1.6s ease .4s' } },
+      h('span', { style: Object.assign({}, mono, { fontSize: 10, color: 'rgba(232,240,245,.7)' }) }, 'Scroll'),
+      h('span', { style: { width: 1, height: 36, background: 'linear-gradient(to bottom, rgba(127,233,228,.9), rgba(127,233,228,0))' } })));
+}
+class Component extends DCLogic {
+  chatScroll = React.createRef();
+  modalRef = React.createRef();
+  callRef = React.createRef();
+  openCall() {
+    this._ret = document.activeElement;
+    this.setState({ call: true }, () => {
+      document.body.style.overflow = 'hidden';
+      const el = this.callRef.current; if (!el) return;
+      if (el.animate && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) el.animate([{ opacity: 0, transform: 'translateY(16px) scale(.98)' }, { opacity: 1, transform: 'none' }], { duration: 450, easing: 'cubic-bezier(0.16,1,0.3,1)' });
+      const b = el.querySelector('button'); b && b.focus();
+    });
+  }
+  closeCall() {
+    document.body.style.overflow = '';
+    this.setState({ call: false }, () => { this._ret && this._ret.focus && this._ret.focus(); });
+  }
+  openIntake() {
+    this._ret = document.activeElement;
+    this.setState({ modal: true }, () => {
+      document.body.style.overflow = 'hidden';
+      const el = this.modalRef.current; if (!el) return;
+      if (el.animate && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) el.animate([{ opacity: 0, transform: 'translateY(16px) scale(.98)' }, { opacity: 1, transform: 'none' }], { duration: 450, easing: 'cubic-bezier(0.16,1,0.3,1)' });
+      const inp = el.querySelector('input'); inp && inp.focus();
+    });
+  }
+  closeIntake() {
+    document.body.style.overflow = '';
+    this.setState({ modal: false }, () => { this._ret && this._ret.focus && this._ret.focus(); });
+  }
+  onKey = e => { if (e.key !== 'Escape') return; if (this.state.modal) this.closeIntake(); if (this.state.call) this.closeCall(); };
+  componentWillUnmount() { window.removeEventListener('keydown', this.onKey); document.body.style.overflow = ''; }
+  componentDidMount() { this._lastRoute = this.state.route; this.armChat(); window.addEventListener('keydown', this.onKey); }
+  componentDidUpdate() {
+    const st = this.state;
+    if (this._lastRoute === undefined) this._lastRoute = st.route;
+    if (this._lastRoute !== st.route) {
+      this._lastRoute = st.route;
+      if (st.chatOpen && st.chatRoute !== st.route) this.openChat(true);
+      else this.armChat();
+    }
+    const el = this.chatScroll.current;
+    if (el && (this._lastMsgs !== st.chatMsgs || this._lastBusy !== st.chatBusy)) {
+      this._lastMsgs = st.chatMsgs; this._lastBusy = st.chatBusy;
+      el.scrollTop = el.scrollHeight;
+    }
+  }
+  componentWillUnmount() { clearTimeout(this.chatTimer); }
+  armChat() {
+    clearTimeout(this.chatTimer);
+    if (this.state.chatOpen || this.state.chatDismissed) return;
+    const delay = (this.props.chatDelay ?? 8) * 1000;
+    this.chatTimer = setTimeout(() => this.openChat(true), delay);
+  }
+  openChat = (auto) => {
+    const route = this.state.route;
+    if (this.state.chatRoute !== route || !this.state.chatMsgs.length) {
+      const o = OPENERS[route] || OPENERS.home;
+      this.setState({ chatOpen: true, chatRoute: route, chatMsgs: [...this.state.chatMsgs, { role: 'assistant', text: o.text }] });
+    } else this.setState({ chatOpen: true });
+  };
+  async ask(q) {
+    q = (q || '').trim();
+    if (!q || this.state.chatBusy) return;
+    const msgs = [...this.state.chatMsgs, { role: 'user', text: q }];
+    this.setState({ chatMsgs: msgs, chatInput: '', chatBusy: true });
+    const page = this.state.route === 'notes' ? 'Writing index' : this.state.route === 'article' ? 'article "' + ((ARTICLES.find(a => a.slug === this.state.art) || ARTICLES[0]).title) + '"' : this.state.route === 'about' ? 'About page' : this.state.route === 'case' ? 'case study "' + (CASES.find(c => c.slug === this.state.slug) || CASES[0]).name + '"' : this.state.route === 'advisory' ? 'Advisory (48-Hour AI Audit) page' : 'homepage';
+    const system = 'You are the assistant on Olga Sirenko\u2019s portfolio website. Answer visitors\u2019 questions about Olga, her projects and her advisory service using ONLY the site information below. Refer to her as Olga, in third person. Be concise: 2\u20134 short sentences, plain text, no markdown, no emoji. If the answer isn\u2019t in the information, say so and suggest emailing hello@olgasirenko.com. When relevant, point to a next step (book the audit on the Advisory page, request the case-study passcode, download the resume). The visitor is currently on the ' + page + '.\n\nSITE INFORMATION:\n' + siteKnowledge();
+    const apiMsgs = msgs.map(m => ({ role: m.role, content: m.text }));
+    while (apiMsgs.length && apiMsgs[0].role !== 'user') apiMsgs.shift();
+    let text;
+    try { text = await window.claude.complete({ system, messages: apiMsgs, max_tokens: 400 }); }
+    catch (e) { text = 'Sorry, I couldn\u2019t answer just now. You can reach Olga directly at hello@olgasirenko.com.'; }
+    this.setState({ chatMsgs: [...this.state.chatMsgs, { role: 'assistant', text: (text || '').trim() }], chatBusy: false });
+  }
+  state = {
+    chatOpen: false, chatDismissed: false, chatMsgs: [], chatInput: '', chatBusy: false, chatRoute: null,
+    route: 'advisory', art: get('art', null), noteFilter: 'All', slug: get('slug', CASES[0].slug), theme: get('theme', null),
+    unlocked: get('unlocked', '') === '1', code: '', codeErr: '', faq: 0,
+    f: { name: '', product: '', creds: '', drop: '', nda: true }, intakeErr: '', sent: false
+  };
+  scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 88, behavior: 'smooth' });
+  }
+  go(route, slug) {
+    if (route !== 'advisory') return;
+    const s = { route, codeErr: '', code: '' };
+    if (slug && route === 'article') s.art = slug; else if (slug) s.slug = slug;
+    this.setState(s, () => { window.scrollTo({ top: 0 }); put('route', route); if (slug && route === 'article') put('art', slug); else if (slug) put('slug', slug); });
+  }
+  goWork = (e) => {
+    e && e.preventDefault && e.preventDefault();
+    if (this.state.route !== 'home') { this.setState({ route: 'home' }, () => { put('route', 'home'); setTimeout(() => this.scrollTo('case-studies'), 60); }); }
+    else this.scrollTo('case-studies');
+  };
+  reduced = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  goAbout = (e) => { e && e.preventDefault && e.preventDefault(); this.go('about'); };
+  field = (k) => (e) => this.setState({ f: { ...this.state.f, [k]: e.target.value }, intakeErr: '' });
+  renderVals() {
+    const st = this.state;
+    const theme = st.theme || this.props.defaultTheme || 'dark';
+    const pass = (this.props.passcode || 'ACCESS2026').trim().toUpperCase();
+    const pre = (fn) => (e) => { e && e.preventDefault && e.preventDefault(); fn(); };
+    const caseIdx = Math.max(0, CASES.findIndex(c => c.slug === st.slug));
+    const cur = CASES[caseIdx];
+    const next = CASES[(caseIdx + 1) % CASES.length];
+    const memo = { ...cur.memo, sections: cur.memo.sections.map((s, i) => {
+      const id = 'sec-' + (i + 1);
+      const diagram = s.placeholder && s.placeholder.startsWith('[ Embedded') || s.placeholder && /graphs/.test(s.placeholder);
+      return { ...s, id, bullets: s.bullets || null, placeholder: diagram ? null : (s.placeholder || null),
+        slotId: diagram ? 'memo-' + cur.slug + '-' + (i + 1) : null, slotText: diagram ? s.placeholder.replace(/^\[ | \]$/g, '') : '',
+        table: s.table ? s.table.map(r => ({ ...r, tone: r.accepted ? 'cyan' : 'neutral', bg: r.accepted ? 'var(--cyan-wash)' : 'transparent' })) : null,
+        jump: pre(() => this.scrollTo(id)) };
+    }) };
+    const navItem = (label, active, onClick) => ({ label, onClick, color: active ? 'var(--ink)' : 'var(--muted)', bg: active ? 'var(--paper-2)' : 'transparent' });
+    return {
+      theme, themeIcon: theme === 'dark' ? 'light_mode' : 'dark_mode',
+      toggleTheme: () => { const t = theme === 'dark' ? 'light' : 'dark'; this.setState({ theme: t }); put('theme', t); },
+      isHome: st.route === 'home', isAdvisory: st.route === 'advisory', isCase: st.route === 'case', isAbout: st.route === 'about', isNotes: st.route === 'notes', isArticle: st.route === 'article',
+      nav: [navItem('Work', st.route === 'home' || st.route === 'case', this.goWork), navItem('About', st.route === 'about', this.goAbout), navItem('Writing', st.route === 'notes' || st.route === 'article', pre(() => this.go('notes'))), navItem('Advisory', st.route === 'advisory', pre(() => this.go('advisory')))],
+      goHome: pre(() => this.go('home')), goAdvisory: () => this.go('advisory'), goWork: this.goWork, goAbout: this.goAbout,
+      goIntake: () => this.openIntake(),
+      intakeModal: !!st.modal, callModal: !!st.call, closeCall: () => this.closeCall(), callRef: this.callRef,
+      ...(() => { const raw = (this.props.calLink || '').trim(); const calSrc = raw ? raw + (/[?&]gv=true/.test(raw) ? '' : (raw.includes('?') ? '&' : '?') + 'gv=true') : ''; return { hasCal: !!calSrc, noCal: !calSrc, calSrc }; })(), closeIntake: () => this.closeIntake(), stop: e => e.stopPropagation(), modalRef: this.modalRef,
+      tracks: [
+        { kicker: 'Track A: Fixed Sprint', title: '48-Hour Architecture Audit', sub: '$1,500 Flat Investment', points: ['25-Min Forensic Video Teardown', 'Priority Backlog (Sprint-Ready)', 'State Architecture Specs & Fallback Wireframes'], cta: 'Request 48-Hr Audit', icon: 'arrow_forward', variant: 'primary', act: () => this.openIntake() },
+        { kicker: 'Track B: Ongoing & Fractional', title: 'Strategic Advisory & Retainers', sub: 'Ongoing Advisory · Fractional Leadership', points: ['Bi-weekly executive strategy syncs', 'Direct PRD, state schema & UX reviews', 'Team retooling & DesignOps AI automation'], cta: 'Book 30-Min Discovery Call', icon: 'arrow_forward', variant: 'secondary', act: () => this.openCall() }
+      ],
+      chatOpen: st.chatOpen, chatClosed: !st.chatOpen, chatBusy: st.chatBusy, chatInput: st.chatInput, chatScroll: this.chatScroll,
+      chatTopic: (OPENERS[st.chatRoute || st.route] || OPENERS.home).topic,
+      chatMsgs: st.chatMsgs.map(m => m.role === 'user'
+        ? { text: m.text, align: 'flex-end', bg: 'var(--violet-2)', color: 'var(--text-on-accent)', border: 'transparent' }
+        : { text: m.text, align: 'flex-start', bg: 'var(--paper-2)', color: 'var(--ink)', border: 'var(--line)' }),
+      showChips: !st.chatBusy && !st.chatMsgs.some(m => m.role === 'user'),
+      chatChips: (OPENERS[st.chatRoute || st.route] || OPENERS.home).chips.map(label => ({ label, ask: () => this.ask(label) })),
+      openChat: () => { clearTimeout(this.chatTimer); this.openChat(false); },
+      closeChat: () => { clearTimeout(this.chatTimer); this.setState({ chatOpen: false, chatDismissed: true }); },
+      onChatInput: (e) => this.setState({ chatInput: e.target.value }),
+      sendChat: pre(() => this.ask(st.chatInput)),
+      metrics: METRICS, story: STORY, skills: SKILLS, impact: IMPACT, culture: CULTURE,
+      heroA: (this.props.heroVariant ?? 'A') !== 'B', heroB: this.props.heroVariant === 'B',
+      markPh: this.props.markPlaceholders ?? true,
+      showIntro: this.props.showIntro ?? true,
+      introStage: React.createElement(OSIntro),
+      stop: (e) => e.stopPropagation(),
+      leave: () => this.setState({ hov: null }),
+      caseCardStyle: { borderColor: 'var(--line)' },
+      cases: CASES.map(c => ({ ...c, slotId: 'case-' + c.slug,
+        enter: () => this.setState({ hov: c.slug }),
+        ov: st.hov === c.slug ? 1 : 0, ovY: st.hov === c.slug ? '0' : '8px',
+        beam: React.createElement('span', { key: 'beam', 'aria-hidden': true, style: {
+          position: 'absolute', inset: -1, zIndex: 2, pointerEvents: 'none', borderRadius: 21,
+          WebkitMaskImage: 'linear-gradient(to top left, #000 42%, transparent 58%)', maskImage: 'linear-gradient(to top left, #000 42%, transparent 58%)',
+          WebkitMaskSize: '300% 300%', maskSize: '300% 300%', WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat',
+          WebkitMaskPosition: st.hov === c.slug ? '100% 100%' : '0% 0%', maskPosition: st.hov === c.slug ? '100% 100%' : '0% 0%',
+          transform: st.hov === c.slug ? 'translateY(var(--lift))' : 'none',
+          transition: this.reduced ? 'transform var(--dur-slow) var(--ease-spring)' : (st.hov === c.slug ? 'mask-position 1100ms cubic-bezier(0.65,0,0.35,1), -webkit-mask-position 1100ms cubic-bezier(0.65,0,0.35,1), transform var(--dur-slow) var(--ease-spring)' : 'mask-position 500ms ease-in, -webkit-mask-position 500ms ease-in, transform var(--dur-slow) var(--ease-spring)'),
+          filter: 'drop-shadow(0 0 8px rgba(82,248,244,.6))' } }, React.createElement('span', { style: {
+          position: 'absolute', inset: 0, borderRadius: 21, padding: 2, boxSizing: 'border-box',
+          background: 'var(--accent-signal)',
+          WebkitMask: 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)', WebkitMaskComposite: 'xor',
+          mask: 'linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0)' } })), open: () => this.go('case', c.slug),
+        lockLabel: st.unlocked ? '✓ UNLOCKED' : 'PASSWORD GATED', lockTone: st.unlocked ? 'cyan' : 'violet',
+        cta: st.unlocked ? 'Read RFC Memo' : 'Enter Passcode to Read RFC Memo' })),
+      notes: ARTICLES.slice(0, 3).map((a, i) => ({ title: a.title, format: a.format, no: '0' + (i + 1), open: pre(() => this.go('article', a.slug)) })),
+      goNotes: pre(() => this.go('notes')),
+      noteFilters: ['All', 'Essays', 'Carousels'].map(label => { const on = (st.noteFilter || 'All') === label; return { label, on, pick: () => this.setState({ noteFilter: label }),
+        bg: on ? 'var(--ink)' : 'transparent', color: on ? 'var(--paper)' : 'var(--muted)', border: on ? 'var(--ink)' : 'var(--line)' }; }),
+      articleList: ARTICLES.filter(a => { const f = st.noteFilter || 'All'; return f === 'All' || (f === 'Essays' ? a.format === 'Essay' : a.format !== 'Essay'); })
+        .map(a => ({ ...a, dek: a.dek || '[ One-sentence summary of the article ]', open: pre(() => this.go('article', a.slug)) })),
+      art: (() => { const a = ARTICLES.find(x => x.slug === st.art) || ARTICLES[0]; return { ...a, dek: a.dek || '[ One-sentence summary of the article ]', slotId: 'article-' + a.slug,
+        blocks: (a.blocks || ARTICLE_TEMPLATE).map((b, i) => ({ text: b.text, isH: b.type === 'h', isP: b.type === 'p', isQ: b.type === 'q', isImg: b.type === 'img', slotId: 'article-' + a.slug + '-' + i })) }; })(),
+      nextArt: (() => { const i = Math.max(0, ARTICLES.findIndex(x => x.slug === st.art)); const n = ARTICLES[(i + 1) % ARTICLES.length]; return { title: n.title, open: pre(() => this.go('article', n.slug)) }; })(),
+      chipWrap: { whiteSpace: 'normal', maxWidth: '100%', textAlign: 'left', height: 'auto', minHeight: 24, paddingTop: 4, paddingBottom: 4, lineHeight: 1.35 },
+      cardFill: { width: '100%', height: '100%', boxSizing: 'border-box' },
+      deliverables: DELIVERABLES,
+      terms: TERMS.map(t => ({ ...t, note: t.note || '', hasNote: !!t.note })),
+      churn: CHURN.map((t, i) => ({ t, no: String(i + 1).padStart(2, '0'), border: i ? '1px solid var(--line)' : 'none' })),
+      evaluate: EVALUATE, steps: STEPS,
+      onNda: v => this.setState(s => ({ f: { ...s.f, nda: v } })),
+      faqs: FAQS.map((q, i) => ({ ...q, open: st.faq === i, icon: st.faq === i ? 'remove' : 'add', toggle: () => this.setState({ faq: st.faq === i ? -1 : i }) })),
+      f: st.f, intakeErr: st.intakeErr, intakeOpen: !st.sent, intakeSent: st.sent,
+      onName: this.field('name'), onProduct: this.field('product'), onCreds: this.field('creds'), onDrop: this.field('drop'),
+      submitIntake: pre(() => {
+        const f = st.f;
+        if (!f.name.trim() || !f.product.trim() || !f.drop.trim()) return this.setState({ intakeErr: 'Work email, product URL and bottleneck are required.' });
+        this.setState({ sent: true });
+      }),
+      resetIntake: () => this.setState({ sent: false }),
+      memo, nextCase: { title: next.title, name: next.name, hook: next.hook, slotId: 'case-' + next.slug, open: pre(() => this.go('case', next.slug)) },
+      acts: STORIES[cur.slug].acts.map(a => ({ ...a, accent: a.accent || null, intro: a.intro || null, showDraft: (this.props.markPlaceholders ?? true) && !!a.draft,
+        chapters: a.chapters.map(c => ({ ...c, bullets: c.bullets || null, body: c.body || null, placeholder: c.placeholder || null, slotId: c.slotId || null,
+          table: c.table ? c.table.map(r => ({ ...r, tone: r.accepted ? 'cyan' : 'neutral', bg: r.accepted ? 'var(--cyan-wash)' : 'transparent' })) : null })) })),
+      caseImpact: STORIES[cur.slug].impact,
+      caseTags: cur.tags, caseLead: cur.summary, caseSlot: 'case-' + cur.slug, caseRoles: ROLES[cur.slug] || [],
+      tableHead: ['Architectural Model', 'UX Cognitive Load', 'Engineering Sprint Cost', 'Failure Risk', 'Decision'],
+      locked: !st.unlocked, unlocked: st.unlocked,
+      code: st.code, codeErr: st.codeErr,
+      onCode: (e) => this.setState({ code: e.target.value, codeErr: '' }),
+      submitCode: pre(() => {
+        if (st.code.trim().toUpperCase() === pass) { this.setState({ unlocked: true }); put('unlocked', '1'); }
+        else this.setState({ codeErr: 'That code doesn\u2019t match. Check your resume header.' });
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

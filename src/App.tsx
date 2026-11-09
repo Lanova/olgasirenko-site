@@ -6,12 +6,16 @@ import { articles, essays } from './data/essays';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { AboutPage } from './pages/AboutPage';
+import { AdvisoryPage } from './pages/AdvisoryPage';
 import { WritingPage } from './pages/WritingPage';
 import { ArticlePage } from './pages/ArticlePage';
 
 const SITE_TITLE = 'Olga Sirenko · Product Design Leader & AI Systems Architect';
 const SITE_DESCRIPTION =
   'Product Design Leader and AI Systems Architect. Enterprise systems, AI workflow automation, and global team operations.';
+const ADVISORY_TITLE = 'Advisory · Olga Sirenko · 48-Hour AI Architecture Audit';
+const ADVISORY_DESCRIPTION =
+  'Forensic AI architecture audits for Seed & Series-A founders: eliminating cognitive drop-off, designing resilient state machines, and protecting retention.';
 const WRITING_TITLE = 'Writing · Olga Sirenko';
 const WRITING_DESCRIPTION =
   'Notes on AI systems and business impact: exploring how thoughtful interface design simplifies complex workflows, reduces operational overhead, and drives user adoption.';
@@ -58,6 +62,8 @@ export function App() {
   useEffect(() => {
     if (page === 'about') {
       updatePageMetadata(SITE_TITLE, SITE_DESCRIPTION, 'profile');
+    } else if (page === 'advisory') {
+      updatePageMetadata(ADVISORY_TITLE, ADVISORY_DESCRIPTION, 'website');
     } else if (page === 'writing') {
       updatePageMetadata(WRITING_TITLE, WRITING_DESCRIPTION, 'website');
     } else if (page === 'article' && article) {
@@ -80,6 +86,7 @@ export function App() {
 
       <main id="main">
         {page === 'about' && <AboutPage />}
+        {page === 'advisory' && <AdvisoryPage />}
         {page === 'writing' && <WritingPage />}
         {page === 'article' && article && essay && <ArticlePage article={article} essay={essay} />}
       </main>

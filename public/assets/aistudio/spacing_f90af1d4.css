@@ -1,0 +1,7 @@
+:root{
+  --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.5rem;--space-6:2.5rem;--space-7:4rem;--space-8:5rem;
+  --gutter:1.5rem;--gutter-m:1rem;--margin:3rem;--margin-m:1.25rem;
+  --container:72rem;--container-wide:80rem;--measure:36rem;
+  --header-h:4.5rem;
+  --radius:12px;--radius-lg:20px;--radius-full:9999px; /* three radii only: controls · surfaces · pills */
+}

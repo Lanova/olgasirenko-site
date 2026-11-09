@@ -53,7 +53,7 @@ export const portfolioData: PortfolioData = {
       body: 'Optimizing and automating business processes has been a long-standing passion of mine, well before modern AI caught up. Over the last three years, I’ve helped growing companies pinpoint high-friction, repetitive routines and convert them into automated workflows. By applying targeted AI workflow optimization, we don’t just compress turnaround times—we elevate client satisfaction, unlock operational capacity, and drive steady new client acquisition.',
       link: {
         text: 'View advisory practice →',
-        url: 'mailto:hello@olgasirenko.com?subject=Advisory%20Practice%20Inquiry'
+        url: '#/advisory'
       }
     },
     {
