@@ -1,0 +1,53 @@
+/* Calm Editorial — 12 colours per theme. Violet leads, cyan supports.
+   Core: canvas · card · line · ink · body · muted · violet · violet-wash · cyan · cyan-wash · success · error.
+   Everything else below is an alias of those. */
+:root{
+  color-scheme:light;
+  --paper:#FBFAF8;--card:#FFFFFF;--line:#E4E2DC;
+  --ink:#001A34;--ink-2:#2C3446;--muted:#64637A;
+  --violet:#542CB7;--violet-wash:#F1ECFC;
+  --cyan:#0A6B84;--cyan-wash:#E4F5F5;
+  --success:#0F7A55;--error:#BA1A1A;
+  --text-on-accent:#FFFFFF;
+
+  /* code (always-dark surface, both themes) */
+  --codebg:#001A34;--code-fg:#DDE4F2;--code-tag:#52F8F4;--code-hl:#9CFBF8;--code-var:#C3B0F5;--code-comment:#8A93AC;
+  --night:#0B1B30;--night-deep:#02101F;
+
+  /* aliases — kept for component compatibility, no new values */
+  --paper-2:var(--card);
+  --control-border:var(--muted);
+  --violet-2:var(--violet);--violet-action:var(--violet);
+  --cyan-text:var(--cyan);--cyan-dim:var(--cyan);--cyan-wash-line:var(--line);
+  --slate:var(--muted);--slate-wash:var(--line);
+  --success-wash:color-mix(in srgb,var(--success) 12%,transparent);
+  --error-wash:color-mix(in srgb,var(--error) 12%,transparent);
+
+  /* semantic */
+  --surface-page:var(--paper);--surface-panel:var(--card);--surface-card:var(--card);
+  --surface-glass:color-mix(in srgb,var(--paper) 82%,transparent);
+  --surface-wash:var(--violet-wash);--surface-code:var(--codebg);
+  --text-strong:var(--ink);--text-body:var(--ink-2);--text-muted:var(--muted);
+  --text-accent:var(--violet);--text-accent-2:var(--cyan);
+  --border-hairline:var(--line);
+  --accent-primary:var(--violet);--accent-action:var(--violet);
+  --accent-action-hover:color-mix(in srgb,var(--violet) 88%,var(--ink));
+  --accent-secondary:var(--cyan);--accent-signal:var(--cyan);
+  --chip-bg:var(--violet-wash);--chip-fg:var(--violet);
+  --focus-ring:var(--violet);--focus-bleed:color-mix(in srgb,var(--violet) 18%,transparent);
+  --selection-bg:var(--violet);
+}
+[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0B1B30;--card:#182B4A;--line:#2E4262;
+  --ink:#EEF2F9;--ink-2:#C3CCDD;--muted:#949CB2;
+  --violet:#B49CF6;--violet-wash:#241F4A;
+  --cyan:#7FE9E4;--cyan-wash:#0F3340;
+  --success:#4ADE9F;--error:#FF8A80;
+  --text-on-accent:#0B1B30;
+  --codebg:#02101F;
+  --accent-action-hover:color-mix(in srgb,var(--violet) 85%,#FFFFFF);
+  --surface-glass:color-mix(in srgb,var(--paper) 80%,transparent);
+  --chip-bg:var(--cyan-wash);--chip-fg:var(--cyan);
+  --focus-ring:var(--cyan);
+}
