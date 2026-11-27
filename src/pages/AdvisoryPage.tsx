@@ -733,21 +733,30 @@ export const AdvisoryPage: React.FC = () => {
 
       {/* 8. CLOSING CARD */}
       <Contact
-        title={portfolioData.contact.title}
-        subtitle={portfolioData.contact.subtitle}
-        email={portfolioData.contact.email}
-        emailSubject={portfolioData.contact.emailSubject}
-        linkedinUrl={portfolioData.contact.linkedinUrl}
-        onAdvisoryClick={() => {
-          const reduced =
-            typeof window !== 'undefined' &&
-            window.matchMedia &&
-            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          document.getElementById('intake')?.scrollIntoView({
-            behavior: reduced ? 'auto' : 'smooth',
-            block: 'start'
-          });
+        title={{
+          lead: 'Not sure if your product is ready',
+          italic: 'for an audit?'
         }}
+        subtitle="Send a direct note with your product link, and I will let you know within 24 hours if this engagement makes sense for your current stage."
+        email={portfolioData.contact.email}
+        emailSubject="Advisory Question"
+        linkedinUrl={portfolioData.contact.linkedinUrl}
+        tiles={[
+          {
+            title: 'Have questions first?',
+            description: 'Send a direct note with your product link to hello@olgasirenko.com.',
+            ctaLabel: 'Email me',
+            ariaLabel: 'Email Olga Sirenko at hello@olgasirenko.com',
+            href: `mailto:${portfolioData.contact.email}?subject=${encodeURIComponent('Advisory Question')}`,
+          },
+          {
+            title: 'Ready to start?',
+            description: 'Submit your live or staging link to kick off the 48-hour audit.',
+            ctaLabel: 'Request an audit',
+            ariaLabel: 'Request 48-Hour Architecture Audit',
+            onClick: openAudit,
+          },
+        ]}
       />
 
       {/* AUDIT INTAKE MODAL */}

@@ -12,6 +12,7 @@ interface HeaderProps {
 }
 
 const NAV: { label: string; route: Route }[] = [
+  { label: 'Work', route: { page: 'work' } },
   { label: 'About', route: { page: 'about' } },
   { label: 'Writing', route: { page: 'writing' } },
   { label: 'Advisory', route: { page: 'advisory' } },
@@ -56,11 +57,16 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleTheme,
   route,
 }) => {
-  const active = route.page === 'article' ? 'writing' : route.page;
+  const active =
+    route.page === 'article'
+      ? 'writing'
+      : route.page === 'case'
+      ? 'work'
+      : route.page;
 
-  // The monogram goes to About; when already there it scrolls back to the top.
+  // The monogram goes to Work (home); when already there it scrolls back to the top.
   const onBrandClick = (e: React.MouseEvent) => {
-    if (route.page === 'about') {
+    if (route.page === 'work') {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -74,7 +80,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       <header className="header" id="top">
         <div className="container header__inner">
-          <a className="brand" href={hrefFor({ page: 'about' })} onClick={onBrandClick} aria-label={`${name}, home`}>
+          <a className="brand" href={hrefFor({ page: 'work' })} onClick={onBrandClick} aria-label={`${name}, home`}>
             <span className="monogram" aria-hidden="true">
               <Logo className="monogram__logo" />
             </span>
@@ -114,7 +120,9 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </nav>
         </div>
-        {route.page === 'article' && <ReadingProgress key={route.slug} />}
+        {(route.page === 'article' || route.page === 'case') && (
+          <ReadingProgress key={`${route.page}:${route.slug}`} />
+        )}
       </header>
     </>
   );

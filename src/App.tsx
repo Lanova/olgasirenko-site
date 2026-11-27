@@ -5,19 +5,25 @@ import { portfolioData } from './data/portfolioData';
 import { articles, essays } from './data/essays';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { WorkPage } from './pages/WorkPage';
+import { CaseStudyPage } from './pages/CaseStudyPage';
 import { AboutPage } from './pages/AboutPage';
 import { AdvisoryPage } from './pages/AdvisoryPage';
 import { WritingPage } from './pages/WritingPage';
 import { ArticlePage } from './pages/ArticlePage';
+import { ALL_CASES, getCaseByRoute } from './data/work';
 
 import { FAQS, TRACKS } from './data/advisory';
 
 const SITE_ORIGIN = 'https://olgasirenko.com';
 const PORTRAIT_URL = `${SITE_ORIGIN}/images/portrait-about.jpg`;
 
-const SITE_TITLE = 'Olga Sirenko · Product Designer & Design Leader (Seattle, PNW)';
+const SITE_TITLE = 'Olga Sirenko · Principal Product Designer & Systems Architect (Seattle, PNW)';
 const SITE_DESCRIPTION =
-  'Olga Sirenko is a Product Designer & Design Leader in the Seattle–Portland PNW area with 12+ years in enterprise SaaS, AI systems architecture, and DesignOps.';
+  'Olga Sirenko is a Principal Product Designer & Systems Architect in the Seattle–Portland PNW area with 12+ years leading enterprise SaaS, AI security, and design teams.';
+const ABOUT_TITLE = 'About · Olga Sirenko · Product Design Leader (Seattle, PNW)';
+const ABOUT_DESCRIPTION =
+  'Product Designer & Design Leader in the Seattle–Portland PNW area with a computer programming degree and 12+ years in enterprise SaaS, AI systems architecture, and DesignOps.';
 const ADVISORY_TITLE = 'AI UX Advisory & 48-Hour Audit · Olga Sirenko (Seattle, PNW)';
 const ADVISORY_DESCRIPTION =
   'Forensic 48-hour AI architecture audits and fractional product design advisory in Seattle, PNW & globally for Seed and Series-A SaaS teams.';
@@ -100,10 +106,12 @@ const PERSON_REF = {
 };
 
 const ROUTE_RANK: Record<Route['page'], number> = {
-  about: 0,
-  writing: 1,
-  article: 1.5,
-  advisory: 2
+  work: 0,
+  case: 0.5,
+  about: 1,
+  writing: 2,
+  article: 2.5,
+  advisory: 3
 };
 
 function normalizeRoute(route: Route): Route {
@@ -111,11 +119,17 @@ function normalizeRoute(route: Route): Route {
     const found = articles.find(a => a.slug === route.slug);
     if (!found || !essays[found.slug]) return { page: 'writing' };
   }
+  if (route.page === 'case') {
+    const found = getCaseByRoute(route.company, route.slug);
+    if (!found) return { page: 'work' };
+  }
   return route;
 }
 
 function getRouteKey(route: Route): string {
-  return route.page === 'article' ? `article:${route.slug}` : route.page;
+  if (route.page === 'article') return `article:${route.slug}`;
+  if (route.page === 'case') return `case:${route.slug}`;
+  return route.page;
 }
 
 function getTransitionDirection(from: Route, to: Route): 1 | -1 {
@@ -124,6 +138,16 @@ function getTransitionDirection(from: Route, to: Route): 1 | -1 {
     const toIdx = articles.findIndex(a => a.slug === to.slug);
     if (fromIdx !== -1 && toIdx !== -1) {
       if ((fromIdx + 1) % articles.length === toIdx) return 1;
+      return toIdx > fromIdx ? 1 : -1;
+    }
+    return 1;
+  }
+  if (from.page === 'case' && to.page === 'case') {
+    const fromIdx = ALL_CASES.findIndex(c => c.item.id === from.slug);
+    const toIdx = ALL_CASES.findIndex(c => c.item.id === to.slug);
+    if (fromIdx !== -1 && toIdx !== -1) {
+      if ((fromIdx + 1) % ALL_CASES.length === toIdx) return 1;
+      if ((fromIdx - 1 + ALL_CASES.length) % ALL_CASES.length === toIdx) return -1;
       return toIdx > fromIdx ? 1 : -1;
     }
     return 1;
@@ -229,16 +253,38 @@ export function App() {
   const targetArticle = target.page === 'article' ? articles.find(a => a.slug === target.slug) : undefined;
   const displayedArticle = displayed.page === 'article' ? articles.find(a => a.slug === displayed.slug) : undefined;
   const displayedEssay = displayedArticle && essays[displayedArticle.slug];
+  const targetCase = target.page === 'case' ? getCaseByRoute(target.company, target.slug) : undefined;
+  const displayedCase = displayed.page === 'case' ? getCaseByRoute(displayed.company, displayed.slug) : undefined;
   const page = displayed.page;
 
   useEffect(() => {
-    if (target.page === 'about') {
-      updatePageMetadata(SITE_TITLE, SITE_DESCRIPTION, 'profile', '/', {
+    if (target.page === 'work') {
+      updatePageMetadata(SITE_TITLE, SITE_DESCRIPTION, 'website', '/', {
         '@context': 'https://schema.org',
-        '@type': 'ProfilePage',
+        '@type': 'CollectionPage',
         url: `${SITE_ORIGIN}/`,
         name: SITE_TITLE,
         description: SITE_DESCRIPTION,
+        author: PERSON_REF
+      });
+    } else if (target.page === 'case' && targetCase) {
+      const caseTitle = `${targetCase.item.title} · ${targetCase.group.company} · Olga Sirenko`;
+      const casePath = `/#/work/${encodeURIComponent(targetCase.group.id)}/${encodeURIComponent(targetCase.item.id)}`;
+      updatePageMetadata(caseTitle, targetCase.item.summary, 'article', casePath, {
+        '@context': 'https://schema.org',
+        '@type': 'CreativeWork',
+        name: targetCase.item.title,
+        description: targetCase.item.summary,
+        url: `${SITE_ORIGIN}${casePath}`,
+        author: PERSON_REF
+      });
+    } else if (target.page === 'about') {
+      updatePageMetadata(ABOUT_TITLE, ABOUT_DESCRIPTION, 'profile', '/#/about', {
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        url: `${SITE_ORIGIN}/#/about`,
+        name: ABOUT_TITLE,
+        description: ABOUT_DESCRIPTION,
         mainEntity: { '@id': `${SITE_ORIGIN}/#person` }
       });
     } else if (target.page === 'advisory') {
@@ -316,7 +362,7 @@ export function App() {
         publisher: PERSON_REF
       });
     }
-  }, [target.page, targetArticle]);
+  }, [target.page, targetArticle, targetCase]);
 
   return (
     <div className="glow-wrap">
@@ -335,6 +381,8 @@ export function App() {
 
       <main id="main">
         <div ref={stageRef} className="page-stage">
+          {page === 'work' && <WorkPage />}
+          {page === 'case' && displayedCase && <CaseStudyPage entry={displayedCase} />}
           {page === 'about' && <AboutPage />}
           {page === 'advisory' && <AdvisoryPage />}
           {page === 'writing' && <WritingPage />}

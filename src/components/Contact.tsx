@@ -1,5 +1,14 @@
 import React from 'react';
 
+export interface ContactTile {
+  title: string;
+  description: string;
+  ctaLabel: string;
+  ariaLabel?: string;
+  href?: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
 interface ContactProps {
   title: {
     lead: string;
@@ -9,8 +18,8 @@ interface ContactProps {
   email: string;
   emailSubject: string;
   linkedinUrl: string;
-  /** Optional override for the Advisory CTA when already on the Advisory page. */
-  onAdvisoryClick?: () => void;
+  /** Optional custom intent tiles (defaults to Product design leadership & AI workflow advisory). */
+  tiles?: ContactTile[];
 }
 
 export const Contact: React.FC<ContactProps> = ({
@@ -19,9 +28,26 @@ export const Contact: React.FC<ContactProps> = ({
   email,
   emailSubject,
   linkedinUrl,
-  onAdvisoryClick,
+  tiles,
 }) => {
   const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(emailSubject)}`;
+
+  const resolvedTiles: ContactTile[] = tiles ?? [
+    {
+      title: 'Product design leadership',
+      description: 'Principal and Director roles in enterprise AI.',
+      ctaLabel: 'Email about a role',
+      ariaLabel: `Email Olga Sirenko about a role at ${email}`,
+      href: mailtoUrl,
+    },
+    {
+      title: 'AI workflow advisory',
+      description: 'Selective engagements with product and AI teams.',
+      ctaLabel: 'See how it works',
+      ariaLabel: 'See how AI workflow advisory works',
+      href: '#/advisory',
+    },
+  ];
 
   return (
     <section className="container contact" aria-labelledby="contact-title">
@@ -35,51 +61,34 @@ export const Contact: React.FC<ContactProps> = ({
           </div>
 
           <div className="contact__grid">
-            <div className="contact__tile">
-              <h3 className="contact__tile-title">Product design leadership</h3>
-              <p className="contact__tile-desc">
-                Principal and Director roles in enterprise AI.
-              </p>
-              <div className="contact__tile-action">
-                <a
-                  className="btn btn--primary contact__cta"
-                  href={mailtoUrl}
-                  aria-label={`Email Olga Sirenko about a role at ${email}`}
-                >
-                  <span>Email about a role</span>
-                  <span className="contact__cta-arrow" aria-hidden="true">→</span>
-                </a>
+            {resolvedTiles.map((tile) => (
+              <div key={tile.title} className="contact__tile">
+                <h3 className="contact__tile-title">{tile.title}</h3>
+                <p className="contact__tile-desc">{tile.description}</p>
+                <div className="contact__tile-action">
+                  {tile.onClick ? (
+                    <button
+                      type="button"
+                      className="btn btn--primary contact__cta"
+                      onClick={tile.onClick}
+                      aria-label={tile.ariaLabel ?? tile.ctaLabel}
+                    >
+                      <span>{tile.ctaLabel}</span>
+                      <span className="contact__cta-arrow" aria-hidden="true">→</span>
+                    </button>
+                  ) : (
+                    <a
+                      className="btn btn--primary contact__cta"
+                      href={tile.href}
+                      aria-label={tile.ariaLabel ?? tile.ctaLabel}
+                    >
+                      <span>{tile.ctaLabel}</span>
+                      <span className="contact__cta-arrow" aria-hidden="true">→</span>
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
-
-            <div className="contact__tile">
-              <h3 className="contact__tile-title">AI workflow advisory</h3>
-              <p className="contact__tile-desc">
-                Selective engagements with product and AI teams.
-              </p>
-              <div className="contact__tile-action">
-                {onAdvisoryClick ? (
-                  <button
-                    type="button"
-                    className="btn btn--primary contact__cta"
-                    onClick={onAdvisoryClick}
-                    aria-label="See how AI workflow advisory works"
-                  >
-                    <span>See how it works</span>
-                    <span className="contact__cta-arrow" aria-hidden="true">→</span>
-                  </button>
-                ) : (
-                  <a
-                    className="btn btn--primary contact__cta"
-                    href="#/advisory"
-                    aria-label="See how AI workflow advisory works"
-                  >
-                    <span>See how it works</span>
-                    <span className="contact__cta-arrow" aria-hidden="true">→</span>
-                  </a>
-                )}
-              </div>
-            </div>
+            ))}
           </div>
 
           <p className="contact__alt">
