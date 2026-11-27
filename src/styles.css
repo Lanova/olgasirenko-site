@@ -987,7 +987,7 @@ a {
 
 /* ---------- Writing list ---------- */
 .writing-intro {
-  border-bottom: 1px solid var(--line);
+  border-bottom: none;
 }
 
 .writing-intro__inner {
@@ -1537,7 +1537,7 @@ a {
 }
 
 .advisory-hero-sec {
-  border-bottom: 1px solid var(--line);
+  border-bottom: none;
   padding: clamp(88px, 12vw, 168px) 0 clamp(80px, 10vw, 144px);
 }
 
