@@ -1,0 +1,78 @@
+# Olga Sirenko — Complete Factual Profile (Seattle / Pacific Northwest)
+
+## Identity & Summary
+- **Name**: Olga Sirenko
+- **Title**: Product Designer, Product Design Leader & AI Systems Architect
+- **Location**: Seattle – Portland area, Pacific Northwest (PNW), United States
+- **International Footprint**: US, Austria, Ukraine
+- **Experience**: 12+ years of enterprise SaaS experience; 3+ years of AI workflow automation advisory
+- **Website**: https://olgasirenko.com/
+- **Email**: hello@olgasirenko.com
+- **LinkedIn**: https://www.linkedin.com/in/olga-sirenko-840b08176/
+
+Olga Sirenko helps engineering-led businesses solve hard technical problems: building scalable product design organizations, aligning distributed squads, and turning non-deterministic AI into reliable, automated workflows that drive adoption and revenue.
+
+---
+
+## Operating Principles
+1. **Architectural Rigor — Executable Truth Over Consensus**: Prototyping complex enterprise product logic, API constraints, and state flows directly in code. Replacing subjective debate with empirical validation so product and engineering teams decide with evidence before committing sprints.
+2. **Talent Multiplication — Elevating Product Design Craft & Teams**: Scaling DesignOps and team velocity through structured critique rituals, reusable Figma and code component governance, and technical mentorship. Coaching product designers to evaluate trade-offs and partner directly with engineering peers.
+3. **Systems Governance — State Architecture Before Artifacts**: Structuring underlying data schemas, design token pipelines, and latency budgets before finalizing visual screens. Complex B2B SaaS and AI interfaces are treated as resilient state machines, not static canvases.
+4. **Global Scale — Distributed Team Cohesion**: Unifying product, design, and engineering talent across Pacific Northwest, US, and European hubs through asynchronous DesignOps. Bridging transatlantic communication nuances to build high-trust, low-drag squads.
+
+---
+
+## Career & Leadership History
+
+### Vividly (2025 — Present)
+**Product Design Leadership: AI Dashboard Synthesis & Human-in-the-Loop Architecture**
+Leading the product design team for the next-generation AI-agent-powered Vividly Hub enterprise SaaS platform, enabling operators to analyze complex retail and trade promotion data and generate pricing datasets through autonomous agent workflows. Established DesignOps rituals and automated internal design team operations with AI systems for automated critique feedback, engineering handoff specs, and accelerated prototyping and usability testing.
+
+### Quantum Metric (2020 — 2025)
+**Enterprise Platform Architecture, AI Governance & Observability**
+Partnered directly with the CEO and CTO on high-complexity enterprise SaaS product design initiatives, using a computer programming background to bridge engineering constraints and product strategy. Architected foundational system setups, workspace administrative permissions, and platform-wide AI governance controls. Shipped Visible (real-time web analytics, session overlays, and heatmaps) alongside automated PII masking engines, and designed the inspection workflows and audit logs that made Experience AI anomaly detection transparent and trustworthy for enterprise clients.
+
+### Equinix (2019 — 2020)
+**Distributed Cloud, Bare-Metal & Edge Infrastructure Product Design**
+Led 0-to-1 product design for three foundational enterprise infrastructure products from the ground up: Edge Metal, Millennium DB, and Edge Precision Time, while architecting their consolidation into a unified Edge Platform portal. Directed end-to-end information architecture, user testing, and visual design systems, contributing directly to front-end code where needed. Worked hand-in-hand with engineering architects and executive stakeholders to resolve complex systems constraints and win investment.
+
+### Vienna Press Bureau & Creative Direction (2012 — 2016)
+**Creative Agency Founder & European Market Entry**
+Founded and scaled a Vienna-based creative agency, directing cross-disciplinary teams of designers, researchers, and journalists across multi-channel campaigns. Led creative direction and experiential design for major corporate launches, introducing emerging international products to European markets.
+
+### Advisory Practice (3+ Years)
+**AI Product Design Advisory & Workflow Automation**
+Helps growing companies in the Pacific Northwest and globally pinpoint high-friction, repetitive routines and convert them into automated AI workflows—compressing turnaround times, elevating client satisfaction, and driving new client acquisition.
+
+---
+
+## Academic Foundations
+- **A.S. in Computer Programming**: Trained in data structures, algorithms, and object-oriented programming, with hands-on experience building robotics and programming IoT devices. Translates directly to mapping state transitions, error boundaries, and payload limits before approaching the canvas.
+- **M.A. & B.A. in Communication Systems**: Master's background in journalism and communication frameworks, specializing in information architecture under complexity and translating multi-tenant business logic and high-density analytics into low-cognitive-load interfaces.
+
+---
+
+## Advisory Services (https://olgasirenko.com/#/advisory)
+
+### Track A: 48-Hour Architecture Audit ($1,500 Flat Corporate Investment)
+- **Format**: 100% asynchronous, 48-hour turnaround once environment access is confirmed; mutual NDA signed upfront; payment via corporate card, ACH, or wire (Stripe Invoicing).
+- **Deliverables**:
+  1. **25-Min Forensic Teardown**: Screen-by-screen video breakdown of live web app or staging environment pinpointing latency dead zones, unclear agent execution states, and HITL friction.
+  2. **Priority Matrix**: Sprint-ready backlog categorized into immediate UI fixes vs. core state refactors, prioritized by activation, retention, and engineering complexity.
+  3. **State Architecture Specs**: Production-ready wireframe patterns for token streaming states, optimistic UI updates, non-deterministic error recovery, HITL verification gates, and audit trail layouts.
+- **Four Layers Evaluated**: Agentic Workflows & Tool Calling; Streaming Latency & Perceived Speed; Human-in-the-Loop (HITL) Controls; Dirty Data Ingestion & Recovery.
+
+### Track B: Strategic Advisory & Retainers (Ongoing Advisory · Fractional Leadership)
+- Capped at two companies at a time.
+- Bi-weekly executive strategy syncs, direct PRD, state schema & UX reviews, and team retooling & DesignOps AI automation.
+- Discovery calls booked via Google Calendar (30-Min Architecture Consultation).
+
+---
+
+## Writing & Technical Essays (https://olgasirenko.com/#/writing)
+1. **The Death of Hierarchical Navigation** (Oct 2026, 13 min) — Navigation, Agentic UX
+2. **The death of the passive dashboard** (Sep 2026, 10 min) — Analytics, AI & Automation
+3. **Dual-audience UI** (Aug 2026, 9 min) — Accessibility, Agents
+4. **The death of the Double Diamond** (Jul 2026, 9 min) — Design Leadership
+5. **Why chatbots fail enterprise software** (Jun 2026, 8 min) — AI & Automation, Enterprise SaaS
+6. **Designing for non-deterministic states** (May 2026, 9 min) — State Design, AI Systems

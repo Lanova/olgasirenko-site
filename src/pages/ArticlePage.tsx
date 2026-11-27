@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import type { ArticleMeta, Essay } from '../types';
 import { articles } from '../data/essays';
 import { hrefFor } from '../hooks/useRoute';
@@ -11,51 +11,13 @@ interface ArticlePageProps {
   essay: Essay;
 }
 
-const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-// Set when "Next article" is clicked, so the incoming article slides in.
-let slideInNext = false;
-
 export const ArticlePage: React.FC<ArticlePageProps> = ({ article, essay }) => {
-  const articleRef = useRef<HTMLElement>(null);
-  const exitAnim = useRef<Animation | null>(null);
-
   const index = articles.findIndex(a => a.slug === article.slug);
   const next = articles[(index + 1) % articles.length];
   const nextHref = hrefFor({ page: 'article', slug: next.slug });
 
-  useEffect(() => {
-    document.title = `${article.title} · Olga Sirenko`;
-    const el = articleRef.current;
-    exitAnim.current?.cancel();
-    exitAnim.current = null;
-    if (slideInNext && el && el.animate && !reducedMotion()) {
-      el.animate([{ opacity: 0, transform: 'translateX(64px)' }, { opacity: 1, transform: 'translateX(0)' }], {
-        duration: 650,
-        easing: 'cubic-bezier(0.16,1,0.3,1)',
-      });
-    }
-    slideInNext = false;
-  }, [article.slug, article.title]);
-
-  const onNext = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const el = articleRef.current;
-    if (!el || !el.animate || reducedMotion()) return;
-    e.preventDefault();
-    const out = el.animate([{ opacity: 1, transform: 'translateX(0)' }, { opacity: 0, transform: 'translateX(-48px)' }], {
-      duration: 260,
-      easing: 'cubic-bezier(0.4,0,1,1)',
-      fill: 'forwards',
-    });
-    exitAnim.current = out;
-    out.onfinish = () => {
-      slideInNext = true;
-      window.location.hash = nextHref;
-    };
-  };
-
   return (
-    <article ref={articleRef} className="container essay" aria-labelledby="essay-title">
+    <article className="container essay" aria-labelledby="essay-title">
       <header className="essay-header">
         <a className="essay-back" href={hrefFor({ page: 'writing' })} data-noprint>
           ← All writing
@@ -94,7 +56,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({ article, essay }) => {
         </a>
       </div>
 
-      <a className="essay-next" href={nextHref} onClick={onNext} data-noprint>
+      <a className="essay-next" href={nextHref} data-noprint>
         <span className="essay-label essay-label--cyan">Next article →</span>
         <span className="essay-next__title">{next.title}</span>
       </a>

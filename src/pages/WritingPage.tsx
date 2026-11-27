@@ -17,7 +17,7 @@ export const WritingPage: React.FC = () => (
           <em>AI systems</em> and <em>business impact</em>
         </h1>
         <p className="writing-intro__lede">
-          Exploring how thoughtful interface design simplifies complex workflows, reduces operational overhead, and drives user adoption.
+          Essays by Seattle–Portland Product Design Leader Olga Sirenko on enterprise AI systems, agentic UX, and interface architecture—exploring how thoughtful design simplifies complex workflows, reduces operational overhead, and drives adoption.
         </p>
       </div>
     </section>

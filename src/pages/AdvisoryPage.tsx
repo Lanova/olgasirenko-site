@@ -21,6 +21,8 @@ import {
   formatSlotDateTime
 } from '../services/calendarAuth';
 import type { User } from 'firebase/auth';
+import { Contact } from '../components/Contact';
+import { portfolioData } from '../data/portfolioData';
 
 export const AdvisoryPage: React.FC = () => {
   // Modal state
@@ -146,7 +148,6 @@ export const AdvisoryPage: React.FC = () => {
   const [formError, setFormError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [auditSubmitted, setAuditSubmitted] = useState(false);
-  const [copiedEmail, setCopiedEmail] = useState(false);
 
   // FAQ accordion state (first item open by default)
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -406,16 +407,6 @@ export const AdvisoryPage: React.FC = () => {
     setBookingDone(true);
   };
 
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText('hello@olgasirenko.com');
-      setCopiedEmail(true);
-      setTimeout(() => setCopiedEmail(false), 2500);
-    } catch {
-      // safe
-    }
-  };
-
   // Lock body scroll and handle Escape key when modals are open
   useEffect(() => {
     const isAnyModalOpen = auditModalOpen || callModalOpen;
@@ -522,7 +513,7 @@ export const AdvisoryPage: React.FC = () => {
         <div className="container advisory-hero__inner">
           <div className="advisory-kicker">
             <span className="advisory-kicker__dot" aria-hidden="true" />
-            <span>48-Hour Asynchronous Advisory for Seed &amp; Series-A Founders</span>
+            <span>48-Hour Asynchronous AI UX Advisory · Pacific Northwest (Seattle–Portland) &amp; Global</span>
           </div>
 
           <h1 id="advisory-hero-heading" className="advisory-hero__title">
@@ -531,7 +522,7 @@ export const AdvisoryPage: React.FC = () => {
           </h1>
 
           <p className="advisory-hero__sub">
-            Most venture-backed AI interfaces treat LLMs like standard synchronous APIs. When responses take 3+ seconds to stream or resolve non-deterministically, users lose trust and churn. I run rapid, forensic architectural audits to eliminate cognitive drop-off, design resilient state machines, and protect retention.
+            Most venture-backed AI interfaces treat LLMs like standard synchronous APIs. When responses take 3+ seconds to stream or resolve non-deterministically, users lose trust and churn. As an enterprise Product Designer and AI Systems Architect in the Seattle–Portland area, I run rapid, forensic architectural audits for Seed and Series-A founders to eliminate cognitive drop-off, design resilient state machines, and protect retention.
           </p>
 
           <div className="advisory-hero__cta">
@@ -558,7 +549,7 @@ export const AdvisoryPage: React.FC = () => {
 
           <div className="advisory-gap__right">
             <p className="advisory-body-lead">
-              Most design audits focus on aesthetics: fixing padding, swapping hex codes, or restyling chat bubbles. But in AI-native products, churn rarely happens because of typography.
+              Most product design audits focus on aesthetics: fixing padding, swapping hex codes, or restyling chat bubbles. But in AI-native products, churn rarely happens because of typography.
             </p>
 
             <div className="advisory-churn-wrap">
@@ -574,7 +565,7 @@ export const AdvisoryPage: React.FC = () => {
             </div>
 
             <p className="advisory-muted-body">
-              Because my background combines computer programming with enterprise platform architecture (Equinix, Quantum Metric, Vividly), I evaluate your application through the lens of data schemas, latency budgets, and resilient state machines.
+              Because my background combines a computer programming degree with 12+ years of enterprise SaaS platform architecture (Equinix, Quantum Metric, Vividly), I evaluate your application through the lens of data schemas, latency budgets, and resilient state machines.
             </p>
           </div>
         </div>
@@ -741,55 +732,23 @@ export const AdvisoryPage: React.FC = () => {
       </section>
 
       {/* 8. CLOSING CARD */}
-      <section className="container contact" aria-labelledby="closing-title">
-        <div className="card">
-          <div className="contact__body">
-            <div className="contact__head">
-              <h2 id="closing-title">
-                Not sure if your product is ready <em>for an audit?</em>
-              </h2>
-              <p className="contact__sub">
-                Send a direct note with your product link, and I will let you know within 24 hours if this engagement makes sense for your current stage.
-              </p>
-            </div>
-            <div className="contact__actions">
-              <button
-                type="button"
-                className="btn btn--primary"
-                onClick={handleCopyEmail}
-                aria-label="Copy email hello@olgasirenko.com"
-              >
-                <svg className="btn__icon-mail" viewBox="0 -960 960 960" aria-hidden="true">
-                  <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
-                </svg>
-                <span>{copiedEmail ? 'Copied to clipboard!' : 'Email: hello@olgasirenko.com'}</span>
-              </button>
-
-              <button
-                type="button"
-                className="btn btn--secondary"
-                onClick={openAudit}
-                aria-label="Request 48-Hour Architecture Audit"
-              >
-                <span>Request an Audit</span>
-              </button>
-
-              <a
-                className="btn btn--secondary"
-                href="https://www.linkedin.com/in/olga-sirenko-840b08176/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Connect with Olga Sirenko on LinkedIn"
-              >
-                <span>LinkedIn</span>
-                <svg className="btn__icon-diagonal" viewBox="0 -960 960 960" aria-hidden="true">
-                  <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Contact
+        title={portfolioData.contact.title}
+        subtitle={portfolioData.contact.subtitle}
+        email={portfolioData.contact.email}
+        emailSubject={portfolioData.contact.emailSubject}
+        linkedinUrl={portfolioData.contact.linkedinUrl}
+        onAdvisoryClick={() => {
+          const reduced =
+            typeof window !== 'undefined' &&
+            window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          document.getElementById('intake')?.scrollIntoView({
+            behavior: reduced ? 'auto' : 'smooth',
+            block: 'start'
+          });
+        }}
+      />
 
       {/* AUDIT INTAKE MODAL */}
       {auditModalOpen && (

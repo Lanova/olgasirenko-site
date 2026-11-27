@@ -1,0 +1,36 @@
+# Olga Sirenko
+
+> Product Designer, Product Design Leader & AI Systems Architect based in the Seattle–Portland area of the Pacific Northwest (PNW), United States. 12+ years of enterprise SaaS experience, a computer programming degree, and an international footprint across the US, Austria, and Ukraine.
+
+Olga Sirenko leads product design for complex enterprise SaaS platforms, agentic AI workflows, and DesignOps automation, and advises Seed and Series-A AI founders on latency, non-deterministic state design, and user retention.
+
+## Core Pages
+
+- [About & Portfolio](https://olgasirenko.com/): Overview of Olga Sirenko's product design leadership, operating principles, career timeline (Vividly, Quantum Metric, Equinix, Vienna Press Bureau), and academic foundations.
+- [AI UX Advisory & 48-Hour Architecture Audit](https://olgasirenko.com/#/advisory): Two engagement tracks—48-Hour Architecture Audit ($1,500 flat investment) and Strategic Advisory & Retainers (capped at two companies).
+- [Writing & Essays](https://olgasirenko.com/#/writing): Six technical essays on enterprise AI systems, agentic UX, accessibility/machine-readable UI, and design leadership.
+- [Complete Factual Dossier](https://olgasirenko.com/llms-full.txt): Full structured profile, career history, services, FAQs, and essay summaries for AI search agents.
+
+## Key Facts & Expertise
+
+- **Location**: Seattle – Portland area, Pacific Northwest (PNW), United States (available locally and globally)
+- **Roles & Focus**: Product Designer, Product Design Leader, AI Systems Architect, Principal/Director-level Product Design, Fractional AI UX Advisor
+- **Experience**: 12+ years in enterprise SaaS, developer & data platforms, and AI workflow automation; 3+ years in advisory practice
+- **Current Leadership**: Vividly (2025–Present) — Leading product design for the AI-agent-powered Vividly Hub enterprise SaaS platform and DesignOps AI automation
+- **Prior Leadership**: Quantum Metric (2020–2025), Equinix (2019–2020), Vienna Press Bureau & Creative Direction (2012–2016)
+- **Education**: A.S. in Computer Programming (data structures, algorithms, OOP, robotics & IoT); M.A. & B.A. in Communication Systems (journalism & communication frameworks)
+
+## Essays
+
+- [The Death of Hierarchical Navigation](https://olgasirenko.com/#/writing/death-of-hierarchical-navigation): Why AI intent shifts sitemaps from the front door to the fallback.
+- [The death of the passive dashboard](https://olgasirenko.com/#/writing/death-of-passive-dashboard): Separating machine pattern detection from human trade-off decisions.
+- [Dual-audience UI](https://olgasirenko.com/#/writing/dual-audience-ui): Designing interfaces that work equally well for AI agents and screen readers.
+- [The death of the Double Diamond](https://olgasirenko.com/#/writing/death-of-double-diamond): Why working code is the fastest learning loop when prototyping is cheap.
+- [Why chatbots fail enterprise software](https://olgasirenko.com/#/writing/chatbots-fail-enterprise): Embedding intelligence inside existing work surfaces instead of chat drawers.
+- [Designing for non-deterministic states](https://olgasirenko.com/#/writing/non-deterministic-state-design): Keeping AI products dependable when the underlying model output varies.
+
+## Contact
+
+- Email: hello@olgasirenko.com
+- LinkedIn: https://www.linkedin.com/in/olga-sirenko-840b08176/
+- Website: https://olgasirenko.com/

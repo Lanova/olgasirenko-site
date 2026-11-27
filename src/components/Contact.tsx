@@ -9,6 +9,8 @@ interface ContactProps {
   email: string;
   emailSubject: string;
   linkedinUrl: string;
+  /** Optional override for the Advisory CTA when already on the Advisory page. */
+  onAdvisoryClick?: () => void;
 }
 
 export const Contact: React.FC<ContactProps> = ({
@@ -17,12 +19,13 @@ export const Contact: React.FC<ContactProps> = ({
   email,
   emailSubject,
   linkedinUrl,
+  onAdvisoryClick,
 }) => {
   const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(emailSubject)}`;
 
   return (
     <section className="container contact" aria-labelledby="contact-title">
-      <div className="card">
+      <div className="card contact__card">
         <div className="contact__body">
           <div className="contact__head">
             <h2 id="contact-title">
@@ -30,38 +33,67 @@ export const Contact: React.FC<ContactProps> = ({
             </h2>
             <p className="contact__sub">{subtitle}</p>
           </div>
-          <div className="contact__actions">
-            <a className="btn btn--primary" href={mailtoUrl} aria-label={`Email ${email}`}>
-              <svg className="btn__icon-mail" viewBox="0 -960 960 960" aria-hidden="true">
-                <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
-              </svg>
-              <span>Email: {email}</span>
-            </a>
 
-            <a
-              className="btn btn--secondary"
-              href="#/advisory"
-              aria-label="Explore Advisory Services"
-            >
-              <span>Explore Advisory</span>
-              <svg className="btn__icon-arrow" viewBox="0 -960 960 960" aria-hidden="true">
-                <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-              </svg>
-            </a>
+          <div className="contact__grid">
+            <div className="contact__tile">
+              <h3 className="contact__tile-title">Product design leadership</h3>
+              <p className="contact__tile-desc">
+                Principal and Director roles in enterprise AI.
+              </p>
+              <div className="contact__tile-action">
+                <a
+                  className="btn btn--primary contact__cta"
+                  href={mailtoUrl}
+                  aria-label={`Email Olga Sirenko about a role at ${email}`}
+                >
+                  <span>Email about a role</span>
+                  <span className="contact__cta-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
 
+            <div className="contact__tile">
+              <h3 className="contact__tile-title">AI workflow advisory</h3>
+              <p className="contact__tile-desc">
+                Selective engagements with product and AI teams.
+              </p>
+              <div className="contact__tile-action">
+                {onAdvisoryClick ? (
+                  <button
+                    type="button"
+                    className="btn btn--primary contact__cta"
+                    onClick={onAdvisoryClick}
+                    aria-label="See how AI workflow advisory works"
+                  >
+                    <span>See how it works</span>
+                    <span className="contact__cta-arrow" aria-hidden="true">→</span>
+                  </button>
+                ) : (
+                  <a
+                    className="btn btn--primary contact__cta"
+                    href="#/advisory"
+                    aria-label="See how AI workflow advisory works"
+                  >
+                    <span>See how it works</span>
+                    <span className="contact__cta-arrow" aria-hidden="true">→</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <p className="contact__alt">
+            Or find me on{' '}
             <a
-              className="btn btn--secondary"
+              className="contact__alt-link"
               href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Connect with Olga Sirenko on LinkedIn"
+              aria-label="Find Olga Sirenko on LinkedIn"
             >
-              <span>LinkedIn</span>
-              <svg className="btn__icon-diagonal" viewBox="0 -960 960 960" aria-hidden="true">
-                <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z" />
-              </svg>
+              LinkedIn <span className="contact__alt-arrow" aria-hidden="true">↗</span>
             </a>
-          </div>
+          </p>
         </div>
       </div>
     </section>
